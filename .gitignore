@@ -1,0 +1,15 @@
+# Unity rebuildable or machine-specific folders
+Library/
+Temp/
+Logs/
+UserSettings/
+.vscode/
+
+# All asset files
+Assets/
+
+# Nested repo (if you don’t want it)
+FinalRaccoonRepo/
+
+# macOS system files
+.DS_Store
