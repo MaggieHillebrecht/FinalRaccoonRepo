@@ -5,9 +5,6 @@ Logs/
 UserSettings/
 .vscode/
 
-# All asset files
-Assets/
-
 # Nested repo (if you don’t want it)
 FinalRaccoonRepo/
 
