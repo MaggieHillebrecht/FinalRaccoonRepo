@@ -421,6 +421,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "OpeningMap",
+                    "type": "Button",
+                    "id": "f3bfaf89-c637-4420-b1fa-7ab9533b4c30",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -839,6 +848,17 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "TrackedDeviceOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8c76ee70-9a7c-4068-ad9e-3a4dbbdf557d",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpeningMap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
