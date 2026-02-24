@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -13,15 +14,16 @@ public class PauseMenu : MonoBehaviour
         ResetPauseUI();
     }
 
-    void Update()
+    // Called by New Input System
+    public void OnPause(InputValue value)
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (GameStateController.IsPaused)
-                Resume();
-            else
-                Pause();
-        }
+        // Only act on press, ignore release
+        if (!value.isPressed) return;
+
+        if (GameStateController.IsPaused)
+            Resume();
+        else
+            Pause();
     }
 
     public void Pause()

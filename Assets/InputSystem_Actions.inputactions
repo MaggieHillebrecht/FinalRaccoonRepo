@@ -430,6 +430,15 @@
                     "processors": "",
                     "interactions": "Press(behavior=2)",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "OpeningPauseMenu",
+                    "type": "Button",
+                    "id": "d706c85c-33ea-43fd-8436-38bd4b5276ce",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -859,6 +868,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "OpeningMap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "213f8223-52d0-4cfc-9484-2f311c742a0a",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpeningPauseMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

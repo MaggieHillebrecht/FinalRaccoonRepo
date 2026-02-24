@@ -516,6 +516,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpeningPauseMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""d706c85c-33ea-43fd-8436-38bd4b5276ce"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -947,6 +956,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""action"": ""OpeningMap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""213f8223-52d0-4cfc-9484-2f311c742a0a"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpeningPauseMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1035,6 +1055,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
         m_UI_OpeningMap = m_UI.FindAction("OpeningMap", throwIfNotFound: true);
+        m_UI_OpeningPauseMenu = m_UI.FindAction("OpeningPauseMenu", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -1278,6 +1299,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_TrackedDevicePosition;
     private readonly InputAction m_UI_TrackedDeviceOrientation;
     private readonly InputAction m_UI_OpeningMap;
+    private readonly InputAction m_UI_OpeningPauseMenu;
     /// <summary>
     /// Provides access to input actions defined in input action map "UI".
     /// </summary>
@@ -1333,6 +1355,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "UI/OpeningMap".
         /// </summary>
         public InputAction @OpeningMap => m_Wrapper.m_UI_OpeningMap;
+        /// <summary>
+        /// Provides access to the underlying input action "UI/OpeningPauseMenu".
+        /// </summary>
+        public InputAction @OpeningPauseMenu => m_Wrapper.m_UI_OpeningPauseMenu;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1392,6 +1418,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @OpeningMap.started += instance.OnOpeningMap;
             @OpeningMap.performed += instance.OnOpeningMap;
             @OpeningMap.canceled += instance.OnOpeningMap;
+            @OpeningPauseMenu.started += instance.OnOpeningPauseMenu;
+            @OpeningPauseMenu.performed += instance.OnOpeningPauseMenu;
+            @OpeningPauseMenu.canceled += instance.OnOpeningPauseMenu;
         }
 
         /// <summary>
@@ -1436,6 +1465,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @OpeningMap.started -= instance.OnOpeningMap;
             @OpeningMap.performed -= instance.OnOpeningMap;
             @OpeningMap.canceled -= instance.OnOpeningMap;
+            @OpeningPauseMenu.started -= instance.OnOpeningPauseMenu;
+            @OpeningPauseMenu.performed -= instance.OnOpeningPauseMenu;
+            @OpeningPauseMenu.canceled -= instance.OnOpeningPauseMenu;
         }
 
         /// <summary>
@@ -1668,5 +1700,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnOpeningMap(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "OpeningPauseMenu" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnOpeningPauseMenu(InputAction.CallbackContext context);
     }
 }
