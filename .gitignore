@@ -3,10 +3,29 @@ Library/
 Temp/
 Logs/
 UserSettings/
-.vscode/
+Obj/
+Build/
+Builds/
+MemoryCaptures/
 
-# Nested repo (if you don’t want it)
-FinalRaccoonRepo/
+# Visual Studio / JetBrains / Rider files
+*.csproj
+*.sln
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.opendb
+*.VC.db
+*.mdb
+.cache
+mono_crash.
+
+# IDE folders
+.vscode/
+.idea/
 
 # macOS system files
 .DS_Store
