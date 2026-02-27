@@ -13680,7 +13680,7 @@ GameObject:
   - component: {fileID: 416175976}
   - component: {fileID: 416175977}
   - component: {fileID: 416175978}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13717,8 +13717,8 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 256
-  checkRadius: 0.08
-  checkOffset: 10
+  checkRadius: 0.35
+  checkOffset: 0.9
   coyoteTime: 0.15
 --- !u!135 &416175978
 SphereCollider:
@@ -13739,7 +13739,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.08
+  m_Radius: 0.07
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &416948219
 PrefabInstance:
