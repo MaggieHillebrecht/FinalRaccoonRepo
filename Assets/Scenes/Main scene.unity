@@ -66211,7 +66211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49f7a5e62b42747ebace8dc8f6df52c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSprint
-  sprintMultiplier: 5
+  sprintMultiplier: 1.5
 --- !u!114 &1875818529
 MonoBehaviour:
   m_ObjectHideFlags: 0

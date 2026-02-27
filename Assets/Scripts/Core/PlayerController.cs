@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        motor.Move(input.MoveDir, sprint.CurrentMultiplier);
+        // Apply movement with the current sprint multiplier
+        // Sprint multiplier is managed by PlayerSprint events, not by SprintHeld
+        motor.Move(input.MoveDir, sprint.getCurrentSpeed());
     }
 }

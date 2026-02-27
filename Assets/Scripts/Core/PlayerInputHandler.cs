@@ -6,6 +6,8 @@ public class PlayerInputHandler : MonoBehaviour
     public Vector3 MoveDir { get; private set; }
     public bool SprintHeld { get; private set; }
     public bool InteractHeld { get; private set; }
+    public System.Action OnSprintPressed;
+    public System.Action OnSprintReleased;
     public System.Action OnInteractPressed;
     public System.Action OnInteractReleased;
     PlayerJump jump;
@@ -31,7 +33,16 @@ public class PlayerInputHandler : MonoBehaviour
     public void OnSprint(InputValue value)
     {
         Debug.Log("[INPUT] Sprint received");
-        SprintHeld = value.isPressed;
+        if (value.isPressed)
+        {
+            Debug.Log("[INPUT] Sprint PRESSED");
+            OnSprintPressed?.Invoke();
+        }
+        else
+        {
+            Debug.Log("[INPUT] Sprint RELEASED");
+            OnSprintReleased?.Invoke();
+        }
     }
 
     public void OnInteract(InputValue value)
