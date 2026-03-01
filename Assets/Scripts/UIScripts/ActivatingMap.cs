@@ -1,27 +1,28 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class ActivatingMap : MonoBehaviour
 {
     [SerializeField] GameObject mapPanel;
+    [SerializeField] PlayerInputReader input;
 
-    PlayerInput playerInput;
-
-    void Awake()
+    void OnEnable()
     {
-        playerInput = GetComponent<PlayerInput>();
+        if (input != null)
+            input.OnMapPressed += ToggleMap;
     }
 
-    public void OnMap(InputValue value)
+    void OnDisable()
     {
-        if (value.isPressed)
-        {
-            OpenMap();
-        }
-        else
-        {
+        if (input != null)
+            input.OnMapPressed -= ToggleMap;
+    }
+
+    public void ToggleMap()
+    {
+        if (GameStateController.IsMapOpen)
             CloseMap();
-        }
+        else
+            OpenMap();
     }
 
     public void OpenMap()

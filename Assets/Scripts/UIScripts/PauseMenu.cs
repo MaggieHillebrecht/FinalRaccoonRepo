@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -8,18 +7,27 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] GameObject pausePanel;
     [SerializeField] GameObject resumeButton;
     [SerializeField] GameObject pauseMenuCanvas;
+    [SerializeField] PlayerInputReader input;
 
     void Start()
     {
         ResetPauseUI();
     }
 
-    // Called by New Input System
-    public void OnPause(InputValue value)
+    void OnEnable()
     {
-        // Only act on press, ignore release
-        if (!value.isPressed) return;
+        if (input != null)
+            input.OnPausePressed += TogglePause;
+    }
 
+    void OnDisable()
+    {
+        if (input != null)
+            input.OnPausePressed -= TogglePause;
+    }
+
+    public void TogglePause()
+    {
         if (GameStateController.IsPaused)
             Resume();
         else
@@ -28,7 +36,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
-        EnsureCanvasActive();
+        if (pauseMenuCanvas != null)
+            pauseMenuCanvas.SetActive(true);
 
         pausePanel.SetActive(true);
         GameStateController.Instance.PauseGame();
@@ -40,17 +49,14 @@ public class PauseMenu : MonoBehaviour
     {
         ResetPauseUI();
         GameStateController.Instance.ResumeGame();
+
+        if (input != null)
+            input.enabled = true;
     }
 
     void ResetPauseUI()
     {
         pausePanel.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
-    }
-
-    void EnsureCanvasActive()
-    {
-        if (pauseMenuCanvas != null)
-            pauseMenuCanvas.SetActive(true);
     }
 }

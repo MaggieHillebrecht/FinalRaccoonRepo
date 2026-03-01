@@ -6,16 +6,26 @@ using System.Collections;
 public class SettingAnimationVideo : MonoBehaviour
 {
     [Header("UI Elements")]
-    public GameObject videoPanel;       
+    public GameObject videoPanel;
     public VideoPlayer videoPlayer;
-    public RawImage backgroundImage;       
+    public RawImage backgroundImage;
 
     [Header("Video Clips")]
     public VideoClip forwardVideo;
     public VideoClip reverseVideo;
 
-    private Coroutine backgroundCoroutine;
-    private bool isPlayingForward = true;
+    [Header("Settings UI")]
+    public GameObject settingsUIContainer;
+
+    [Header("Timing")]
+    [SerializeField] private float secondsBeforeEndToShowUI = 1f;
+
+    private bool isPlayingForward;
+
+    private void Start()
+    {
+        videoPlayer.loopPointReached += OnVideoFinished;
+    }
 
     public void PlayForward()
     {
@@ -25,102 +35,76 @@ public class SettingAnimationVideo : MonoBehaviour
 
     public void Exit()
     {
-        if (backgroundImage != null)
-            backgroundImage.gameObject.SetActive(false);
-
         isPlayingForward = false;
         PlayVideo(reverseVideo);
     }
 
-    private void Start()
-    {
-        StartCoroutine(PrewarmVideo());
-    }
-
-    private IEnumerator PrewarmVideo()
-    {
-        if (videoPlayer == null || forwardVideo == null)
-            yield break;
-
-        videoPlayer.clip = forwardVideo;
-        videoPlayer.Prepare();
-
-        while (!videoPlayer.isPrepared)
-            yield return null;
-
-        videoPlayer.frame = 0;
-
-        videoPlayer.Stop();
-    }
-
     private void PlayVideo(VideoClip clip)
     {
+        if (clip == null)
+        {
+            return;
+        }
+
         if (videoPanel != null)
             videoPanel.SetActive(true);
 
-        if (videoPlayer == null || clip == null)
-            return;
-
-        // Hide video visually immediately
-        if (backgroundImage != null)
-            backgroundImage.enabled = false;
-
-        videoPlayer.loopPointReached -= OnVideoFinished;
-        videoPlayer.loopPointReached += OnVideoFinished;
-
-        if (backgroundCoroutine != null)
-            StopCoroutine(backgroundCoroutine);
-
         videoPlayer.Stop();
         videoPlayer.clip = clip;
-        videoPlayer.frame = 0;
-        videoPlayer.Play();
 
-        // Wait for first actual frame render
-        StartCoroutine(EnableVideoWhenReady());
-
-        if (isPlayingForward)
-            backgroundCoroutine = StartCoroutine(ShowBackgroundWithDelay(5.3f));
+        StartCoroutine(PlayRoutine());
     }
 
-    private IEnumerator EnableVideoWhenReady()
+    private IEnumerator PlayRoutine()
     {
-        while (videoPlayer.frame <= 0)
-            yield return null;
+        videoPlayer.Prepare();
+        Debug.Log("Preparing video...");
 
-        if (backgroundImage != null)
-            backgroundImage.enabled = true;
-    }
-
-    private IEnumerator ShowBackgroundWithDelay(float secondsBeforeEnd)
-    {
         while (!videoPlayer.isPrepared)
             yield return null;
 
-        double delay = videoPlayer.length - secondsBeforeEnd;
+        Debug.Log("Video Prepared. Length: " + videoPlayer.length);
 
-        if (delay < 0)
-            delay = 0;
+        videoPlayer.Play();
+        Debug.Log("Video Play called");
 
-        yield return new WaitForSeconds((float)delay);
+        yield return null; // wait one frame so video actually starts
 
-        if (isPlayingForward && backgroundImage != null)
+        // Always show video image
+        if (backgroundImage != null)
             backgroundImage.gameObject.SetActive(true);
+
+        // If playing forward, schedule UI reveal
+        if (isPlayingForward)
+            StartCoroutine(ShowUIBeforeVideoEnds());
+    }
+
+    private IEnumerator ShowUIBeforeVideoEnds()
+    {
+        double videoLength = videoPlayer.length;
+        double triggerTime = videoLength - secondsBeforeEndToShowUI;
+
+        if (triggerTime < 0)
+            triggerTime = 0;
+
+        Debug.Log("UI will show at time: " + triggerTime);
+
+        // Wait until video reaches the trigger time
+        while (videoPlayer.time < triggerTime)
+            yield return null;
+
+        Debug.Log("Activating Settings UI Container");
+
+        if (settingsUIContainer != null)
+            settingsUIContainer.SetActive(true);
     }
 
     private void OnVideoFinished(VideoPlayer vp)
     {
-        if (isPlayingForward)
-        {
-            if (backgroundImage != null)
-                backgroundImage.gameObject.SetActive(true);
-        }
-        else
+        if (!isPlayingForward)
         {
             if (videoPanel != null)
                 videoPanel.SetActive(false);
         }
-
-        vp.loopPointReached -= OnVideoFinished;
     }
 }
