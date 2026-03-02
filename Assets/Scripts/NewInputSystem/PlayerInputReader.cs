@@ -1,36 +1,43 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerInputReader : MonoBehaviour
 {
-    public Vector2 Move { get; private set; }
-    public bool JumpHeld { get; private set; }
-    public bool SprintHeld { get; private set; }
-    public bool InteractPressed { get; private set; }
+    PlayerInput playerInput;
 
-    InputSystem_Actions controls;
+    InputAction move;
+    InputAction jump;
+    InputAction sprint;
+    InputAction interact;
+    InputAction pause;
+    InputAction map;
+
+    public Vector2 Move => move.ReadValue<Vector2>();
+    public bool JumpHeld => jump.IsPressed();
+    public bool SprintHeld => sprint.IsPressed();
+    public bool InteractPressed => interact.triggered;
+    public event Action OnPausePressed;
+    public event Action OnMapPressed;
 
     void Awake()
     {
-        controls = new InputSystem_Actions();
+        playerInput = GetComponent<PlayerInput>();
 
-        controls.Player.Move.performed += c => Move = c.ReadValue<Vector2>();
-        controls.Player.Move.canceled += c => Move = Vector2.zero;
-
-        controls.Player.Jump.performed += c => JumpHeld = true;
-        controls.Player.Jump.canceled += c => JumpHeld = false;
-
-        controls.Player.Sprint.performed += c => SprintHeld = true;
-        controls.Player.Sprint.canceled += c => SprintHeld = false;
-
-        controls.Player.Interact.performed += c => InteractPressed = true;
+        move = playerInput.actions["Move"];
+        jump = playerInput.actions["Jump"];
+        sprint = playerInput.actions["Sprint"];
+        interact = playerInput.actions["Interact"];
+        pause = playerInput.actions["Pause"];
+        map = playerInput.actions["Map"];
     }
 
-    void LateUpdate()
+    void Update()
     {
-        InteractPressed = false;
-    }
+        if (pause.triggered)
+            OnPausePressed?.Invoke();
 
-    void OnEnable() => controls.Enable();
-    void OnDisable() => controls.Disable();
+        if (map.triggered)
+            OnMapPressed?.Invoke();
+    }
 }
