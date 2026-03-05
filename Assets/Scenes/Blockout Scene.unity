@@ -44398,7 +44398,7 @@ MonoBehaviour:
   pausePanel: {fileID: 1278402051}
   resumeButton: {fileID: 1451400995}
   pauseMenuCanvas: {fileID: 1768841558}
-  input: {fileID: 1424958775}
+  input: {fileID: 0}
 --- !u!1 &1033396808
 GameObject:
   m_ObjectHideFlags: 0
@@ -46800,7 +46800,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1068759658
 MonoBehaviour:
   m_ObjectHideFlags: 0
