@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 9034508754870052259}
   - component: {fileID: 2896544484338942145}
   - component: {fileID: 1061482617573272488}
+  - component: {fileID: 8533939845032235395}
+  - component: {fileID: 2561065021876008089}
   m_Layer: 0
   m_Name: NPCBase
   m_TagString: Untagged
@@ -85,6 +87,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCMovement
   patrolPoints: []
+  patrolSpeed: 2
+  reachThreshold: 0.1
 --- !u!114 &9034508754870052259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,3 +182,38 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!136 &8533939845032235395
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6183430476200196864}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.2628348
+  m_Height: 5.382876
+  m_Direction: 1
+  m_Center: {x: 0.14285715, y: -0.7142928, z: 0}
+--- !u!114 &2561065021876008089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6183430476200196864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09ee1468c334b4cfe861bb22abf5e81f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCCollisionHandler

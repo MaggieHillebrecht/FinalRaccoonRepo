@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameStateController : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class GameStateController : MonoBehaviour
 
     public static bool IsPaused { get; private set; }
     public static bool IsMapOpen { get; private set; }
+    public static bool IsGameOver { get; private set; }
 
     void Awake()
     {
@@ -17,6 +19,8 @@ public class GameStateController : MonoBehaviour
 
     public void PauseGame()
     {
+        if (IsGameOver) return;
+
         Time.timeScale = 0f;
         Physics.autoSimulation = false;
         IsPaused = true;
@@ -26,23 +30,45 @@ public class GameStateController : MonoBehaviour
 
     public void ResumeGame()
     {
+        if (IsGameOver) return;
+
         Time.timeScale = 1f;
         Physics.autoSimulation = true;
         IsPaused = false;
-        IsMapOpen = false;
 
         AkSoundEngine.SetState("PauseState", "Unpaused");
     }
 
     public void OpenMap()
     {
+        if (IsGameOver) return;
+
         IsMapOpen = true;
         PauseGame();
     }
 
     public void CloseMap()
     {
+        if (IsGameOver) return;
+
         IsMapOpen = false;
         ResumeGame();
+    }
+
+    public void GameOver()
+    {
+        IsGameOver = true;
+
+        Time.timeScale = 0f;
+        Physics.autoSimulation = false;
+    }
+
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;
+        Physics.autoSimulation = true;
+        IsGameOver = false;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
