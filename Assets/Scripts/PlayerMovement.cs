@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!canMove) return;
 
-        float control = groundChecker.isGrounded ? 1f : airControlMultiplier;
+        float control = groundChecker.IsGrounded ? 1f : airControlMultiplier;
         float currentSpeed = isPulling ? pullSpeed : (isSprinting ? speed * sprintMultiplier : speed);
 
         Vector3 targetVel = inputDir * currentSpeed * control;
@@ -96,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleJump()
     {
-        if (groundChecker.isGrounded)
+        if (groundChecker.IsGrounded)
             lastGroundedTime = Time.time;
 
         bool canJump =
@@ -131,7 +131,7 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleStepClimbing()
     {
-        if (!groundChecker.isGrounded || inputDir.magnitude == 0) return;
+        if (!groundChecker.IsGrounded || inputDir.magnitude == 0) return;
 
         Vector3 moveDir = inputDir.normalized;
 

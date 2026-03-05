@@ -20,8 +20,8 @@ MemoryCaptures/
 *.opendb
 *.VC.db
 *.mdb
-*.cache
-mono_crash.*
+.cache
+mono_crash.
 
 # IDE folders
 .vscode/
@@ -30,4 +30,6 @@ mono_crash.*
 # macOS system files
 .DS_Store
 
+# Optional nested repo (if you don’t want it tracked)
 FinalRaccoonRepo/
+
