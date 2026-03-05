@@ -1,43 +1,44 @@
 using UnityEngine;
+using UnityEngine.InputSystem; // <--- new Input System
 using AK.Wwise;
 
 public class TestMusicState : MonoBehaviour
 {
+    public string stateGroupName = "MusicState"; // Your Wwise State Group
+    public string stateName = "Menu";           // The state to switch to
+
     void Start()
     {
         Debug.Log("TestMusicState is running!");
-        
+
         if (!AkSoundEngine.IsInitialized())
             Debug.Log("Wwise not initialized yet");
     }
 
-    public string stateGroupName = "MusicState"; // Your Wwise State Group
-    public string stateName = "Menu";           // The state to switch to
-
     void Update()
     {
-        
         if (!AkSoundEngine.IsInitialized())
             Debug.Log("Wwise not initialized yet");
 
-        // Press 1 to set this state
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        // Check keys using new Input System
+        var keyboard = Keyboard.current;
+        if (keyboard == null) return;
+
+        if (keyboard.digit1Key.wasPressedThisFrame)
         {
             AkSoundEngine.SetState(stateGroupName, stateName);
             Debug.Log($"Set state {stateName} in group {stateGroupName}");
         }
 
-        // Press 2 to set another state for testing
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (keyboard.digit2Key.wasPressedThisFrame)
         {
-            AkSoundEngine.SetState(stateGroupName, "PinkRaccoon"); // replace with your state
+            AkSoundEngine.SetState(stateGroupName, "PinkRaccoon");
             Debug.Log("Set state PinkRaccoon");
         }
 
-        // Press 3 for another example state
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (keyboard.digit3Key.wasPressedThisFrame)
         {
-            AkSoundEngine.SetState(stateGroupName, "Chase"); // replace with your state
+            AkSoundEngine.SetState(stateGroupName, "Chase");
             Debug.Log("Set state Chase");
         }
     }

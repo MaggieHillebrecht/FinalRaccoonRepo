@@ -9212,6 +9212,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1416141924}
+        m_TargetAssemblyTypeName: GameStateController, Assembly-CSharp
+        m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &235557492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18019,7 +18031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49369b5e0b1f5472aafd2c1f037b1b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RebindUI
-  playerInput: {fileID: 0}
+  playerInput: {fileID: 1424958776}
   actionName: Sprint
   bindingDisplayText: {fileID: 1742959946}
   rebindButton: {fileID: 2066534883}
@@ -35087,7 +35099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49369b5e0b1f5472aafd2c1f037b1b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RebindUI
-  playerInput: {fileID: 0}
+  playerInput: {fileID: 1424958776}
   actionName: Interact
   bindingDisplayText: {fileID: 1695646451}
   rebindButton: {fileID: 2024670633}
@@ -41276,7 +41288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49369b5e0b1f5472aafd2c1f037b1b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RebindUI
-  playerInput: {fileID: 0}
+  playerInput: {fileID: 1424958776}
   actionName: Down
   bindingDisplayText: {fileID: 2072023068}
   rebindButton: {fileID: 66725678}
@@ -42119,6 +42131,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1068759657}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &969314819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42496,6 +42520,8 @@ MonoBehaviour:
   holdPos: {fileID: 176618859}
   pullPos: {fileID: 1426139939}
   debugLogs: 1
+  input: {fileID: 0}
+  movement: {fileID: 0}
 --- !u!1001 &998600949
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44398,7 +44424,7 @@ MonoBehaviour:
   pausePanel: {fileID: 1278402051}
   resumeButton: {fileID: 1451400995}
   pauseMenuCanvas: {fileID: 1768841558}
-  input: {fileID: 0}
+  input: {fileID: 1424958775}
 --- !u!1 &1033396808
 GameObject:
   m_ObjectHideFlags: 0
@@ -62218,7 +62244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GroundChecker
   groundMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   checkRadius: 0.08
   checkOffset: 10
   coyoteTime: 0.15
@@ -64492,7 +64518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49369b5e0b1f5472aafd2c1f037b1b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RebindUI
-  playerInput: {fileID: 0}
+  playerInput: {fileID: 1424958776}
   actionName: Jump
   bindingDisplayText: {fileID: 1541332747}
   rebindButton: {fileID: 1398106878}
@@ -67572,7 +67598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49369b5e0b1f5472aafd2c1f037b1b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RebindUI
-  playerInput: {fileID: 0}
+  playerInput: {fileID: 1424958776}
   actionName: Up
   bindingDisplayText: {fileID: 384648844}
   rebindButton: {fileID: 901570572}
@@ -76776,7 +76802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49369b5e0b1f5472aafd2c1f037b1b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RebindUI
-  playerInput: {fileID: 0}
+  playerInput: {fileID: 1424958776}
   actionName: Right
   bindingDisplayText: {fileID: 1203418678}
   rebindButton: {fileID: 363535010}
@@ -79868,7 +79894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49369b5e0b1f5472aafd2c1f037b1b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RebindUI
-  playerInput: {fileID: 0}
+  playerInput: {fileID: 1424958776}
   actionName: Left
   bindingDisplayText: {fileID: 2058355773}
   rebindButton: {fileID: 931302941}
@@ -92567,7 +92593,6 @@ GameObject:
   - component: {fileID: 2130617563}
   - component: {fileID: 2130617562}
   - component: {fileID: 2130617564}
-  - component: {fileID: 2130617565}
   - component: {fileID: 2130617566}
   m_Layer: 0
   m_Name: Wwise shi
@@ -92629,7 +92654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 972f32c0a30e54031bcc6a38022c4b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnityMainThreadDispatcher
---- !u!114 &2130617565
+--- !u!114 &2130617566
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92638,37 +92663,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2130617557}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a5fbe004fed144f9847ca70cf72be34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MainMenuManager
-  mainMenuCanvas: {fileID: 0}
-  startButton: {fileID: 0}
-  GameplayState:
-    idInternal: 0
-    valueGuidInternal: 
-    groupIdInternal: 0
-    groupGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 52ef3b360cd384e3a92b0f6412c45740, type: 2}
-  musicEvent:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: d71b71901e7b94eff96c7c7b54d26f2b, type: 2}
---- !u!114 &2130617566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2130617557}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b18d65bb9a944cfdb9e45c988d15f74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicCallbackTester
   musicEvent:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 73b498889031a49ad80c7b8ef1dec06a, type: 2}
+    WwiseObjectReference: {fileID: 11400000, guid: d71b71901e7b94eff96c7c7b54d26f2b, type: 2}
 --- !u!114 &2130617567
 MonoBehaviour:
   m_ObjectHideFlags: 0

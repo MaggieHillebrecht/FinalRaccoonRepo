@@ -16,10 +16,12 @@ public class MainMenuManager : MonoBehaviour
     {
         ShowMainMenu();
 
-        uint id = musicEvent.Post(
+        musicEvent.Post(
             gameObject,
             (uint)AkCallbackType.AK_MusicSyncUserCue,
             MusicCallback);
+
+        Debug.Log("Music Event: " + musicEvent.Name);
     }
 
     public void ShowMainMenu()
@@ -30,7 +32,6 @@ public class MainMenuManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(startButton);
     }
-
     public void StartGame()
     {
         GameplayState?.SetValue();

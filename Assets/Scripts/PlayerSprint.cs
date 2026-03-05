@@ -1,16 +1,16 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerSprint : MonoBehaviour
 {
-    float sprintMultiplier = 2f; // reduced from 5, feels more natural
-    PlayerInputHandler input;
+    [SerializeField] float sprintMultiplier = 2f; // Can tweak in inspector
+    PlayerInputReader input;
 
     private float CurrentMultiplier { get; set; } = 1f;
 
     void Awake()
     {
-        input = GetComponentInChildren<PlayerInputHandler>();
+        if (input == null)
+            input = GetComponent<PlayerInputReader>();
     }
 
     void OnEnable()
@@ -27,21 +27,21 @@ public class PlayerSprint : MonoBehaviour
 
     void Walk()
     {
-        Debug.Log("WALKING");
+        Debug.Log("[PlayerSprint] WALKING");
         UpdateMultiplier(false);
     }
+
     void Sprint()
     {
-        Debug.Log("SPRINT");
+        Debug.Log("[PlayerSprint] SPRINT");
         UpdateMultiplier(true);
     }
-    
+
     void UpdateMultiplier(bool sprinting)
     {
         if (sprinting)
         {
-            Debug.Log("[SPRINT] Sprinting - applying multiplier");
-            Debug.Log(sprintMultiplier);
+            Debug.Log($"[PlayerSprint] Sprinting - multiplier {sprintMultiplier}");
             CurrentMultiplier = sprintMultiplier;
         }
         else

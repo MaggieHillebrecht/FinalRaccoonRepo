@@ -4,40 +4,71 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputReader : MonoBehaviour
 {
-    PlayerInput playerInput;
+    // --- Gameplay properties ---
+    public Vector2 Move { get; private set; }
+    public bool JumpHeld { get; private set; }
+    public bool SprintHeld { get; private set; }
+    public bool InteractPressed { get; private set; }
 
-    InputAction move;
-    InputAction jump;
-    InputAction sprint;
-    InputAction interact;
-    InputAction pause;
-    InputAction map;
+    // --- Gameplay events ---
+    public event Action OnSprintPressed;
+    public event Action OnSprintReleased;
+    public event Action OnInteractPressed;
+    public event Action OnInteractReleased;
 
-    public Vector2 Move => move.ReadValue<Vector2>();
-    public bool JumpHeld => jump.IsPressed();
-    public bool SprintHeld => sprint.IsPressed();
-    public bool InteractPressed => interact.triggered;
+    // --- UI events ---
     public event Action OnPausePressed;
     public event Action OnMapPressed;
 
-    void Awake()
+    // --- Gameplay input callbacks ---
+    public void OnMove(InputValue value)
     {
-        playerInput = GetComponent<PlayerInput>();
-
-        move = playerInput.actions["Move"];
-        jump = playerInput.actions["Jump"];
-        sprint = playerInput.actions["Sprint"];
-        interact = playerInput.actions["Interact"];
-        pause = playerInput.actions["Pause"];
-        map = playerInput.actions["Map"];
+        Move = value.Get<Vector2>();
+        Debug.Log($"[INPUT] Move received: {Move}");
     }
 
-    void Update()
+    public void OnJump(InputValue value)
     {
-        if (pause.triggered)
-            OnPausePressed?.Invoke();
+        JumpHeld = value.isPressed;
+        Debug.Log($"[INPUT] Jump: {JumpHeld}");
+    }
 
-        if (map.triggered)
+    public void OnSprint(InputValue value)
+    {
+        SprintHeld = value.isPressed;
+        Debug.Log($"[INPUT] Sprint: {(SprintHeld ? "PRESSED" : "RELEASED")}");
+        if (value.isPressed)
+            OnSprintPressed?.Invoke();
+        else
+            OnSprintReleased?.Invoke();
+    }
+
+    public void OnInteract(InputValue value)
+    {
+        InteractPressed = value.isPressed;
+        Debug.Log($"[INPUT] Interact: {(InteractPressed ? "PRESSED" : "RELEASED")}");
+        if (value.isPressed)
+            OnInteractPressed?.Invoke();
+        else
+            OnInteractReleased?.Invoke();
+    }
+
+    // --- UI input callbacks ---
+    public void OnPause(InputValue value)
+    {
+        if (value.isPressed)
+        {
+            Debug.Log("[INPUT] Pause pressed");
+            OnPausePressed?.Invoke();
+        }
+    }
+
+    public void OnMap(InputValue value)
+    {
+        if (value.isPressed)
+        {
+            Debug.Log("[INPUT] Map pressed");
             OnMapPressed?.Invoke();
+        }
     }
 }

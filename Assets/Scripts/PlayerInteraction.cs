@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    [Header("Interaction Settings")]
     public float range = 3f;
     public Transform holdPos;
     public Transform pullPos;
@@ -9,38 +10,56 @@ public class PlayerInteraction : MonoBehaviour
     [Header("Debug")]
     public bool debugLogs = true;
 
-    PlayerInputReader input;
-    PlayerMovement movement;
+    [Header("References")]
+    [SerializeField] PlayerInputReader input;
+    [SerializeField] PlayerMovement movement;
 
-    GameObject heldObj;
-    GameObject pulledObj;
-    ConfigurableJoint joint;
+    // Internal state
+    private GameObject heldObj;
+    private GameObject pulledObj;
+    private ConfigurableJoint joint;
 
-    void Awake()
+    private void Awake()
     {
-        input = GetComponent<PlayerInputReader>();
-        movement = GetComponent<PlayerMovement>();
+        // Ensure references are assigned
+        if (!input) input = GetComponent<PlayerInputReader>();
+        if (!movement) movement = GetComponent<PlayerMovement>();
     }
 
-    void Update()
+    private void OnEnable()
     {
-        if (input.InteractPressed)
+        if (input != null)
+            input.OnInteractPressed += HandleInteractPressed;
+    }
+
+    private void OnDisable()
+    {
+        if (input != null)
+            input.OnInteractPressed -= HandleInteractPressed;
+    }
+
+    private void HandleInteractPressed()
+    {
+        if (heldObj || pulledObj)
         {
-            if (heldObj || pulledObj)
-            {
-                Release();
-            }
-            else
-            {
-                TryInteract();
-            }
+            Release();
         }
-
-        if (heldObj)
-            heldObj.transform.position = holdPos.position;
+        else
+        {
+            TryInteract();
+        }
     }
 
-    void TryInteract()
+    private void Update()
+    {
+        // Move held object smoothly
+        if (heldObj)
+        {
+            heldObj.transform.position = holdPos.position;
+        }
+    }
+
+    private void TryInteract()
     {
         Vector3 origin = transform.position + Vector3.up * 1.5f;
         Vector3 dir = transform.forward;
@@ -48,56 +67,54 @@ public class PlayerInteraction : MonoBehaviour
         if (debugLogs)
             Debug.DrawRay(origin, dir * range, Color.cyan, 1f);
 
-        RaycastHit hit;
-
-        if (!Physics.Raycast(origin, dir, out hit, range))
+        if (Physics.Raycast(origin, dir, out RaycastHit hit, range))
         {
-            return;
+            if (hit.collider.CompareTag("canPickUp"))
+            {
+                Pickup(hit.collider.attachedRigidbody);
+            }
+            else if (hit.collider.CompareTag("canPull"))
+            {
+                Pull(hit.collider.attachedRigidbody);
+            }
         }
-
-        if (hit.collider.CompareTag("canPickUp"))
+        else
         {
-            Pickup(hit.collider.attachedRigidbody);
-            return;
-        }
-
-        if (hit.collider.CompareTag("canPull"))
-        {
-            Pull(hit.collider.attachedRigidbody);
-            return;
+            if (debugLogs)
+                Debug.Log("No interactable object in range");
         }
     }
 
-    void Pickup(Rigidbody rb)
+    private void Pickup(Rigidbody rb)
     {
-        if (!rb)
-        {
-            return;
-        }
+        if (!rb) return;
 
         heldObj = rb.gameObject;
-
         rb.isKinematic = true;
         heldObj.transform.SetParent(holdPos);
         heldObj.transform.localPosition = Vector3.zero;
+
+        if (debugLogs)
+            Debug.Log($"Picked up {heldObj.name}");
     }
 
-    void Pull(Rigidbody rb)
+    private void Pull(Rigidbody rb)
     {
-        if (!rb)
-        {
-            return;
-        }
+        if (!rb) return;
 
         pulledObj = rb.gameObject;
 
+        // Add a joint to pull the object
         joint = pulledObj.AddComponent<ConfigurableJoint>();
         joint.connectedBody = GetComponent<Rigidbody>();
 
         movement.isPulling = true;
+
+        if (debugLogs)
+            Debug.Log($"Started pulling {pulledObj.name}");
     }
 
-    void Release()
+    private void Release()
     {
         if (heldObj)
         {
@@ -105,19 +122,23 @@ public class PlayerInteraction : MonoBehaviour
             var rb = heldObj.GetComponent<Rigidbody>();
             if (rb) rb.isKinematic = false;
 
+            if (debugLogs)
+                Debug.Log($"Released {heldObj.name}");
+
             heldObj = null;
         }
 
         if (joint)
         {
             Destroy(joint);
+            if (debugLogs && pulledObj) Debug.Log($"Stopped pulling {pulledObj.name}");
         }
 
         pulledObj = null;
         movement.isPulling = false;
     }
 
-    void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, range);

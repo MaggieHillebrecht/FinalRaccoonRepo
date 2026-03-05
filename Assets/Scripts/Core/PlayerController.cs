@@ -2,21 +2,25 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    PlayerInputHandler input;
+    [SerializeField] PlayerInputReader input; // Updated to use PlayerInputReader
     RBMovementMotor motor;
     PlayerSprint sprint;
 
     void Awake()
     {
-        input = GetComponent<PlayerInputHandler>();
+        if (input == null)
+            input = GetComponent<PlayerInputReader>();
+
         motor = GetComponent<RBMovementMotor>();
         sprint = GetComponent<PlayerSprint>();
     }
 
     void FixedUpdate()
     {
-        // Apply movement with the current sprint multiplier
-        // Sprint multiplier is managed by PlayerSprint events, not by SprintHeld
-        motor.Move(input.MoveDir, sprint.getCurrentSpeed());
+        Vector3 moveDir = new Vector3(input.Move.x, 0f, input.Move.y);
+
+        motor.Move(moveDir, sprint.getCurrentSpeed());
+
+        Debug.Log($"[PlayerController] MoveDir: {moveDir}, SprintMult: {sprint.getCurrentSpeed()}");
     }
 }

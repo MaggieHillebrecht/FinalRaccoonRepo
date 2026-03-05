@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ItemInteract : MonoBehaviour
 {
-   [Header("References")]
+    [Header("References")]
     public Rigidbody playerRb;
     public Transform grabPoint;
 
@@ -26,14 +26,16 @@ public class ItemInteract : MonoBehaviour
     GameObject grabbedObj;
     Rigidbody grabbedRb;
 
-    PlayerInputHandler input;
+    PlayerInputReader input; // Updated
     PlayerInteractionState interactionState;
 
     bool isHoldingPickup = false;
 
     void Awake()
     {
-        input = GetComponent<PlayerInputHandler>();
+        if (input == null)
+            input = GetComponent<PlayerInputReader>();
+
         interactionState = GetComponent<PlayerInteractionState>();
     }
 
@@ -54,13 +56,9 @@ public class ItemInteract : MonoBehaviour
         if (grabbedRb == null) return;
 
         if (isHoldingPickup)
-        {
             HoldObject();
-        }
         else
-        {
             PullObject();
-        }
     }
 
     void HoldObject()
@@ -91,12 +89,12 @@ public class ItemInteract : MonoBehaviour
 
     void TryGrab()
     {
-        Debug.Log("TryGrab");
+        Debug.Log("[ItemInteract] TryGrab");
         if (grabbedRb != null) return;
 
         Collider[] pickupHits = Physics.OverlapSphere(grabPoint.position, interactRange, pickupLayers);
-        Debug.Log(pickupHits.Length);
-        
+        Debug.Log($"[ItemInteract] Pickup hits: {pickupHits.Length}");
+
         foreach (Collider col in pickupHits)
         {
             Rigidbody rb = col.attachedRigidbody;
@@ -111,8 +109,8 @@ public class ItemInteract : MonoBehaviour
         }
 
         Collider[] pullHits = Physics.OverlapSphere(grabPoint.position, interactRange, pullLayers);
-        Debug.Log(pullHits.Length);
-        
+        Debug.Log($"[ItemInteract] Pull hits: {pullHits.Length}");
+
         foreach (Collider col in pullHits)
         {
             Rigidbody rb = col.attachedRigidbody;
@@ -125,12 +123,13 @@ public class ItemInteract : MonoBehaviour
             interactionState?.StartPulling();
             return;
         }
-        Debug.Log(grabbedObj == null ? "No valid object to grab" : $"Grabbed {grabbedObj.name}");
+
+        Debug.Log(grabbedObj == null ? "[ItemInteract] No valid object to grab" : $"[ItemInteract] Grabbed {grabbedObj.name}");
     }
 
     void StartPickup()
     {
-        Debug.Log("StartPickup");
+        Debug.Log("[ItemInteract] StartPickup");
         isHoldingPickup = true;
         grabbedRb.useGravity = false;
         grabbedRb.linearDamping = 5f;
