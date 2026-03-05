@@ -30,6 +30,4 @@ mono_crash.*
 # macOS system files
 .DS_Store
 
-# Optional nested repo (if you don’t want it tracked)
 FinalRaccoonRepo/
-
