@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AK.Wwise.Unity.Utilities", "AK.Wwise.Unity.Utilities.csproj", "{33f979e8-cea0-3afa-8955-64adeba07753}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "Assembly-CSharp-firstpass.csproj", "{66e18eb7-fe25-245e-dc13-86522edadead}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ak.Wwise.Api.WAAPI", "Ak.Wwise.Api.WAAPI.csproj", "{7970a0af-8bde-64ac-3bcd-ab7f51205e75}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AK.Wwise.Unity.AddressableUpdater", "AK.Wwise.Unity.AddressableUpdater.csproj", "{44347a60-4cf8-0198-0eb8-f48f839e336a}"
@@ -58,6 +60,8 @@ Global
 		{b0bc7c2a-ec22-9387-73e1-ca339a270e94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33f979e8-cea0-3afa-8955-64adeba07753}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{33f979e8-cea0-3afa-8955-64adeba07753}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66e18eb7-fe25-245e-dc13-86522edadead}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66e18eb7-fe25-245e-dc13-86522edadead}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7970a0af-8bde-64ac-3bcd-ab7f51205e75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7970a0af-8bde-64ac-3bcd-ab7f51205e75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44347a60-4cf8-0198-0eb8-f48f839e336a}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
