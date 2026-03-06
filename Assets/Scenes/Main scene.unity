@@ -40946,7 +40946,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Press ''E''
+  m_text: 'Press ''P''
 
     to Grab
 
