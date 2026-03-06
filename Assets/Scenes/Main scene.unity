@@ -7386,7 +7386,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5248738227666134743, guid: 28a37103d89de554a939beb9905b5674, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5248738227666134743, guid: 28a37103d89de554a939beb9905b5674, type: 3}
       propertyPath: m_IsActive
@@ -8223,6 +8223,8 @@ MonoBehaviour:
   holdPos: {fileID: 1797145655}
   pullPos: {fileID: 583203632}
   debugLogs: 1
+  input: {fileID: 1875818518}
+  movement: {fileID: 1875818514}
 --- !u!1001 &239579869
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14527,6 +14529,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 416175976}
+  - component: {fileID: 416175978}
+  - component: {fileID: 416175977}
   m_Layer: 3
   m_Name: GroundCheck
   m_TagString: Untagged
@@ -14549,6 +14553,45 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1875818509}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &416175977
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416175975}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &416175978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416175975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7dc110d3de4c4c66ba1a48339bf1895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GroundChecker
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 256
+  checkRadius: 0.08
+  checkOffset: 10
+  coyoteTime: 0.15
 --- !u!1001 &416948219
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31404,7 +31447,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5248738227666134743, guid: 28a37103d89de554a939beb9905b5674, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5248738227666134743, guid: 28a37103d89de554a939beb9905b5674, type: 3}
       propertyPath: m_IsActive
@@ -67634,6 +67677,12 @@ GameObject:
   - component: {fileID: 1875818517}
   - component: {fileID: 1875818518}
   - component: {fileID: 1875818519}
+  - component: {fileID: 1875818525}
+  - component: {fileID: 1875818524}
+  - component: {fileID: 1875818523}
+  - component: {fileID: 1875818522}
+  - component: {fileID: 1875818521}
+  - component: {fileID: 1875818520}
   m_Layer: 3
   m_Name: Player Character Controller (1)
   m_TagString: Player
@@ -67792,8 +67841,8 @@ MonoBehaviour:
   pullPos: {fileID: 583203632}
   maxStepHeight: 0
   stepCheckDistance: 1.5
-  sr: {fileID: 0}
-  animator: {fileID: 0}
+  sr: {fileID: 1875818507}
+  animator: {fileID: 1875818508}
   groundChecker: {fileID: 1875818517}
   trampolineLayer:
     serializedVersion: 2
@@ -67832,17 +67881,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7dc110d3de4c4c66ba1a48339bf1895, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GroundChecker
-  groundCheckPoint: {fileID: 416175976}
   groundMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  groundRayLength: 0.3
-  startHeight: 0.25
-  raySpacing: 0.25
-  rayCount: 4
-  isGrounded: 0
-  currentGround: {fileID: 0}
-  currentSurfaceTag: 
+  checkRadius: 0.08
+  checkOffset: 10
+  coyoteTime: 0.15
 --- !u!114 &1875818518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67868,7 +67912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
   m_Actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  m_NotificationBehavior: 2
+  m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 1873014845}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -67957,6 +68001,100 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 330585545}
+--- !u!114 &1875818520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875818504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49f7a5e62b42747ebace8dc8f6df52c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSprint
+  sprintMultiplier: 2
+--- !u!114 &1875818521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875818504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a341117f917545a8afffc9bc5ffdbc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerJump
+  jumpForce: 7
+--- !u!114 &1875818522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875818504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6329ae42bbe450cb1a2828d2204ca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemInteract
+  playerRb: {fileID: 1875818512}
+  grabPoint: {fileID: 1797145655}
+  interactRange: 4
+  pullForce: 6000
+  pullDamping: 150
+  maxPullSpeed: 4
+  holdForce: 20000
+  holdDamping: 200
+  maxHoldSpeed: 10
+  pullLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  pickupLayers:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!114 &1875818523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875818504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0943f551991cf4c968ae5b9cb669ab0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RBMovementMotor
+  speed: 10
+  smoothing: 0.3
+  airControlMultiplier: 0.6
+  deceleration: 20
+--- !u!114 &1875818524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875818504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2385b8aa76954833b8c31c413a37c3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractionState
+--- !u!114 &1875818525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875818504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4991773c3a4e4dc0bc3795850f9182e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  input: {fileID: 1875818518}
 --- !u!1 &1876008860
 GameObject:
   m_ObjectHideFlags: 0
