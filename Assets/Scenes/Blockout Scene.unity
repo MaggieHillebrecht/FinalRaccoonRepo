@@ -11661,7 +11661,7 @@ GameObject:
   - component: {fileID: 298407705}
   - component: {fileID: 298407704}
   - component: {fileID: 298407703}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeftWall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14922,8 +14922,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 353753927}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1736482, y: 0, z: 0, w: 0.9848078}
-  m_LocalPosition: {x: 1810.8873, y: -75.569695, z: 387.2934}
+  m_LocalRotation: {x: 0.21643962, y: 0, z: 0, w: 0.976296}
+  m_LocalPosition: {x: 1810.8873, y: -74.360725, z: 387.79416}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14943,12 +14943,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineDeoccluder
   CollideAgainst:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 512
   IgnoreTag: 
   TransparentLayers:
     serializedVersion: 2
     m_Bits: 0
-  MinimumDistanceFromTarget: 0.3
+  MinimumDistanceFromTarget: 1
   AvoidObstacles:
     Enabled: 1
     DistanceLimit: 0
@@ -14958,8 +14958,8 @@ MonoBehaviour:
       Enabled: 0
       YOffset: 0
     Strategy: 0
-    MaximumEffort: 4
-    SmoothingTime: 0
+    MaximumEffort: 1
+    SmoothingTime: 0.19
     Damping: 0.4
     DampingWhenOccluded: 0.2
   ShotQualityEvaluation:
@@ -14993,7 +14993,7 @@ MonoBehaviour:
       Time: 2
     Restrictions: 0
   TiltAxis:
-    Value: 20
+    Value: 25
     Center: 0
     Range: {x: -70, y: 70}
     Wrap: 0
@@ -28592,7 +28592,7 @@ GameObject:
   - component: {fileID: 660475399}
   - component: {fileID: 660475398}
   - component: {fileID: 660475397}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BackWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32845,8 +32845,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 746806062}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1736482, y: 0, z: 0, w: 0.9848078}
-  m_LocalPosition: {x: 1810.8873, y: -75.569695, z: 387.2934}
+  m_LocalRotation: {x: 0.21643962, y: 0, z: 0, w: 0.976296}
+  m_LocalPosition: {x: 1810.8873, y: -74.360725, z: 387.79416}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -33068,7 +33068,7 @@ GameObject:
   - component: {fileID: 765174971}
   - component: {fileID: 765174970}
   - component: {fileID: 765174969}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RightWall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35373,7 +35373,7 @@ GameObject:
   - component: {fileID: 818681012}
   - component: {fileID: 818681011}
   - component: {fileID: 818681010}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RightWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40232,7 +40232,7 @@ GameObject:
   - component: {fileID: 905070776}
   - component: {fileID: 905070775}
   - component: {fileID: 905070774}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FrontWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48797,7 +48797,7 @@ GameObject:
   - component: {fileID: 1093327325}
   - component: {fileID: 1093327324}
   - component: {fileID: 1093327323}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DividerWalls (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50478,7 +50478,7 @@ GameObject:
   - component: {fileID: 1131179344}
   - component: {fileID: 1131179343}
   - component: {fileID: 1131179342}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DividerWall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57621,7 +57621,7 @@ GameObject:
   - component: {fileID: 1324573844}
   - component: {fileID: 1324573843}
   - component: {fileID: 1324573842}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeftWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72822,7 +72822,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1629076917}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DividerWalls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77403,37 +77403,6 @@ Transform:
   - {fileID: 5734926077789618803}
   m_Father: {fileID: 1087140170}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1738700995
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1738700997}
-  m_Layer: 0
-  m_Name: WwiseGlobal
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1738700997
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1738700995}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1738801429
 GameObject:
   m_ObjectHideFlags: 0
@@ -78800,7 +78769,7 @@ GameObject:
   - component: {fileID: 1763569711}
   - component: {fileID: 1763569710}
   - component: {fileID: 1763569709}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DividerWalls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80955,7 +80924,7 @@ GameObject:
   - component: {fileID: 1806291911}
   - component: {fileID: 1806291910}
   - component: {fileID: 1806291909}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeftWall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91644,6 +91613,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1366498081}
     m_Modifications:
+    - target: {fileID: 2321445537719903885, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
+      propertyPath: speed
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 2516006980784628978, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
       propertyPath: m_Name
       value: Player Character Controller (1)
@@ -99107,7 +99080,6 @@ SceneRoots:
   - {fileID: 1409762821}
   - {fileID: 2135165477}
   - {fileID: 1215428461}
-  - {fileID: 1738700997}
   - {fileID: 342944750}
   - {fileID: 118081948}
   - {fileID: 1768841562}
