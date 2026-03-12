@@ -4,23 +4,21 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputReader : MonoBehaviour
 {
-    // --- Gameplay properties ---
     public Vector2 Move { get; private set; }
     public bool JumpHeld { get; private set; }
     public bool SprintHeld { get; private set; }
+
+    // Interact triggers once per press
     public bool InteractPressed { get; private set; }
 
-    // --- Gameplay events ---
     public event Action OnSprintPressed;
     public event Action OnSprintReleased;
     public event Action OnInteractPressed;
     public event Action OnInteractReleased;
 
-    // --- UI events ---
     public event Action OnPausePressed;
     public event Action OnMapPressed;
 
-    // --- Gameplay input callbacks ---
     public void OnMove(InputValue value)
     {
         Move = value.Get<Vector2>();
@@ -45,15 +43,29 @@ public class PlayerInputReader : MonoBehaviour
 
     public void OnInteract(InputValue value)
     {
-        InteractPressed = value.isPressed;
-        Debug.Log($"[INPUT] Interact: {(InteractPressed ? "PRESSED" : "RELEASED")}");
         if (value.isPressed)
+        {
+            InteractPressed = true; // set to true for one frame
+            Debug.Log("[INPUT] Interact PRESSED");
             OnInteractPressed?.Invoke();
+        }
         else
+        {
+            Debug.Log("[INPUT] Interact RELEASED");
             OnInteractReleased?.Invoke();
+        }
     }
 
-    // --- UI input callbacks ---
+    private void LateUpdate()
+    {
+        // Reset interact after all scripts have had a chance to read it
+        if (InteractPressed)
+        {
+            Debug.Log("[INPUT] Interact reset at end of frame");
+            InteractPressed = false;
+        }
+    }
+
     public void OnPause(InputValue value)
     {
         if (value.isPressed)

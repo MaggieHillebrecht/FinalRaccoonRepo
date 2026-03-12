@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody rb;
     PlayerInputReader input;
+    PlayerInteractionState playerState; 
 
     Vector3 inputDir;
     bool isSprinting;
@@ -41,12 +42,11 @@ public class PlayerMovement : MonoBehaviour
     float lastGroundedTime;
     float lastJumpTime;
 
-    public bool canMove = true;
-
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         input = GetComponent<PlayerInputReader>();
+        playerState = GetComponent<PlayerInteractionState>(); 
 
         rb.freezeRotation = true;
         rb.interpolation = RigidbodyInterpolation.Interpolate;
@@ -58,6 +58,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (playerState.IsHidden || playerState.IsMovementBlocked) return;
+
         HandleInput();
         HandleAnimations();
         HandleFlip();
@@ -65,6 +67,8 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (playerState.IsHidden || playerState.IsMovementBlocked) return;
+
         MovePlayer();
         HandleJump();
         HandleStepClimbing();
@@ -81,16 +85,22 @@ public class PlayerMovement : MonoBehaviour
 
     void MovePlayer()
     {
-        if (!canMove) return;
+        if (playerState != null && playerState.IsMovementBlocked)
+        {
+            Debug.Log("[DEBUG] Movement blocked by PlayerInteractionState");
+            return;
+        }
+
+        // Log movement input
+        if (inputDir.magnitude > 0.01f)
+            Debug.Log($"[DEBUG] PlayerMovement moving: {inputDir} | speed: {speed}");
 
         float control = groundChecker.IsGrounded ? 1f : airControlMultiplier;
         float currentSpeed = isPulling ? pullSpeed : (isSprinting ? speed * sprintMultiplier : speed);
-
         Vector3 targetVel = inputDir * currentSpeed * control;
 
         Vector3 horiz = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
         Vector3 newHoriz = Vector3.Lerp(horiz, targetVel, stopLerpFactor);
-
         rb.linearVelocity = new Vector3(newHoriz.x, rb.linearVelocity.y, newHoriz.z);
     }
 
