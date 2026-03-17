@@ -1,33 +1,21 @@
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerMovement))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] PlayerInputReader input;
-
-    RBMovementMotor motor;
-    PlayerSprint sprint;
-    PlayerInteractionState state;
+    [SerializeField] private PlayerInputReader input;
+    private PlayerMovement playerMovement;
 
     void Awake()
     {
-        if (input == null)
-            input = GetComponent<PlayerInputReader>();
-
-        motor = GetComponent<RBMovementMotor>();
-        sprint = GetComponent<PlayerSprint>();
-        state = GetComponent<PlayerInteractionState>();
+        if (input == null) input = GetComponent<PlayerInputReader>();
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        if (state != null && state.IsMovementBlocked)
-        {
-            motor.Move(Vector3.zero, 0f);
-            return;
-        }
-
         Vector3 moveDir = new Vector3(input.Move.x, 0f, input.Move.y);
-
-        motor.Move(moveDir, sprint.getCurrentSpeed());
+        if (moveDir.magnitude > 1f) moveDir.Normalize();
+        playerMovement.SetMovementDirection(moveDir);
     }
 }
