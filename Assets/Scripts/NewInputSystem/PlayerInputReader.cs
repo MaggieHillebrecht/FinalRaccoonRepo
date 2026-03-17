@@ -7,10 +7,10 @@ public class PlayerInputReader : MonoBehaviour
     public Vector2 Move { get; private set; }
     public bool JumpHeld { get; private set; }
     public bool SprintHeld { get; private set; }
-
-    // Interact triggers once per press
     public bool InteractPressed { get; private set; }
+    public bool JumpPressedThisFrame { get; private set; }
 
+    public event Action OnJumpPressedEvent;
     public event Action OnSprintPressed;
     public event Action OnSprintReleased;
     public event Action OnInteractPressed;
@@ -18,18 +18,17 @@ public class PlayerInputReader : MonoBehaviour
 
     public event Action OnPausePressed;
     public event Action OnMapPressed;
-
+    public string GetInteractKey()
+    {
+        var action = GetComponent<PlayerInput>().actions["Interact"];
+        return action.GetBindingDisplayString();
+    }
+    
     public void OnMove(InputValue value)
-    {
-        Move = value.Get<Vector2>();
-        Debug.Log($"[INPUT] Move received: {Move}");
-    }
-
-    public void OnJump(InputValue value)
-    {
-        JumpHeld = value.isPressed;
-        Debug.Log($"[INPUT] Jump: {JumpHeld}");
-    }
+{
+    Move = value.Get<Vector2>();
+    Debug.Log($"[INPUT] Move received: {Move}");
+}
 
     public void OnSprint(InputValue value)
     {
@@ -58,12 +57,12 @@ public class PlayerInputReader : MonoBehaviour
 
     private void LateUpdate()
     {
-        // Reset interact after all scripts have had a chance to read it
         if (InteractPressed)
         {
             Debug.Log("[INPUT] Interact reset at end of frame");
             InteractPressed = false;
         }
+        JumpPressedThisFrame = false;
     }
 
     public void OnPause(InputValue value)

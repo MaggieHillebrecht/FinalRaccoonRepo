@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4168185061088977824}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HidePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 4505148557324832316}
   - component: {fileID: 2072454575526491549}
   - component: {fileID: -8318842359500070917}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TrashCan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,3 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HideSpot
   hidePoint: {fileID: 4168185061088977824}
   interactRange: 3
+  playerInput: {fileID: 0}
+  playerMovement: {fileID: 0}
+  playerState: {fileID: 0}
+  playerSprite: {fileID: 0}

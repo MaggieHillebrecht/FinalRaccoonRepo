@@ -62,6 +62,9 @@ public class MainMenuManager : MonoBehaviour
     public void StartGame()
     {
         GameplayState?.SetValue();
+
+        if (GameStateController.Instance != null)
+            GameStateController.Instance.SetState(GameState.Playing);
     }
 
     private void MusicCallback(object cookie, AkCallbackType type, object info)

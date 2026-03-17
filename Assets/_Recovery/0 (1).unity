@@ -2228,15 +2228,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7454082279972290892, guid: 7e070b8a088d2554c835734206c89dd3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.769608
+      value: 18.65
       objectReference: {fileID: 0}
     - target: {fileID: 7454082279972290892, guid: 7e070b8a088d2554c835734206c89dd3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.836
+      value: -0.586
       objectReference: {fileID: 0}
     - target: {fileID: 7454082279972290892, guid: 7e070b8a088d2554c835734206c89dd3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.8290563
+      value: 8.4
       objectReference: {fileID: 0}
     - target: {fileID: 7454082279972290892, guid: 7e070b8a088d2554c835734206c89dd3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4525,8 +4525,7 @@ GameObject:
   - component: {fileID: 109835456}
   - component: {fileID: 109835455}
   - component: {fileID: 109835454}
-  - component: {fileID: 109835458}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Hotdog
   m_TagString: canPickUp
   m_Icon: {fileID: 0}
@@ -4652,18 +4651,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109835452}
   m_Mesh: {fileID: 4300000, guid: e7eacd470b794d04e889bdf581747aa3, type: 3}
---- !u!114 &109835458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 109835452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d2ea12a300f458495692afb23f658e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HotDogCart
 --- !u!1001 &111169217
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13886,7 +13873,7 @@ Transform:
   m_GameObject: {fileID: 335376091}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -23.833984, y: -1.8984082, z: -28.908691}
+  m_LocalPosition: {x: -23.833984, y: -0.89840823, z: -28.908691}
   m_LocalScale: {x: 1.1131, y: 1, z: 1.1338397}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14780,8 +14767,7 @@ GameObject:
   - component: {fileID: 352191879}
   - component: {fileID: 352191878}
   - component: {fileID: 352191877}
-  - component: {fileID: 352191881}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Hotdog
   m_TagString: canPickUp
   m_Icon: {fileID: 0}
@@ -14907,18 +14893,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 352191875}
   m_Mesh: {fileID: 4300000, guid: e7eacd470b794d04e889bdf581747aa3, type: 3}
---- !u!114 &352191881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 352191875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d2ea12a300f458495692afb23f658e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HotDogCart
 --- !u!4 &353607599 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8062976695670142527, guid: b68e95bca4d48ac4dafa36bd9157baa4, type: 3}
@@ -15119,8 +15093,7 @@ GameObject:
   - component: {fileID: 355850301}
   - component: {fileID: 355850300}
   - component: {fileID: 355850299}
-  - component: {fileID: 355850303}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Hotdog
   m_TagString: canPickUp
   m_Icon: {fileID: 0}
@@ -15246,18 +15219,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 355850297}
   m_Mesh: {fileID: 4300000, guid: e7eacd470b794d04e889bdf581747aa3, type: 3}
---- !u!114 &355850303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 355850297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d2ea12a300f458495692afb23f658e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HotDogCart
 --- !u!1001 &356727677
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17440,7 +17401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7454082279972290892, guid: 7e070b8a088d2554c835734206c89dd3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.905
+      value: -0.655
       objectReference: {fileID: 0}
     - target: {fileID: 7454082279972290892, guid: 7e070b8a088d2554c835734206c89dd3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -20111,15 +20072,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1429a7e00960a34bbbc01a5ed2bd560, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -105.863525
+      value: -16.863525
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1429a7e00960a34bbbc01a5ed2bd560, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.061994277
+      value: 0.06199
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1429a7e00960a34bbbc01a5ed2bd560, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -118.89354
+      value: -20.893524
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f1429a7e00960a34bbbc01a5ed2bd560, type: 3}
       propertyPath: m_LocalRotation.w
@@ -20175,9 +20136,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1429a7e00960a34bbbc01a5ed2bd560, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1371879903}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f1429a7e00960a34bbbc01a5ed2bd560, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1371879906}
   m_SourcePrefab: {fileID: 100100000, guid: f1429a7e00960a34bbbc01a5ed2bd560, type: 3}
 --- !u!1001 &441634786
 PrefabInstance:
@@ -21210,8 +21168,7 @@ GameObject:
   - component: {fileID: 475240107}
   - component: {fileID: 475240106}
   - component: {fileID: 475240105}
-  - component: {fileID: 475240109}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Hotdog
   m_TagString: canPickUp
   m_Icon: {fileID: 0}
@@ -21337,18 +21294,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 475240103}
   m_Mesh: {fileID: 4300000, guid: e7eacd470b794d04e889bdf581747aa3, type: 3}
---- !u!114 &475240109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 475240103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d2ea12a300f458495692afb23f658e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HotDogCart
 --- !u!1 &475961177
 GameObject:
   m_ObjectHideFlags: 0
@@ -21779,7 +21724,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &490178785
 MonoBehaviour:
@@ -22952,8 +22897,7 @@ GameObject:
   - component: {fileID: 514975204}
   - component: {fileID: 514975203}
   - component: {fileID: 514975202}
-  - component: {fileID: 514975206}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Hotdog
   m_TagString: canPickUp
   m_Icon: {fileID: 0}
@@ -23079,18 +23023,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514975200}
   m_Mesh: {fileID: 4300000, guid: e7eacd470b794d04e889bdf581747aa3, type: 3}
---- !u!114 &514975206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 514975200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d2ea12a300f458495692afb23f658e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HotDogCart
 --- !u!1 &515225173
 GameObject:
   m_ObjectHideFlags: 0
@@ -32694,7 +32626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2573741825222658002, guid: 6eae65c8cb0d03349b0445ed9122ac6e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.63666666
+      value: -0.47
       objectReference: {fileID: 0}
     - target: {fileID: 2573741825222658002, guid: 6eae65c8cb0d03349b0445ed9122ac6e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -36775,8 +36707,7 @@ GameObject:
   - component: {fileID: 842492687}
   - component: {fileID: 842492686}
   - component: {fileID: 842492685}
-  - component: {fileID: 842492689}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Hotdog
   m_TagString: canPickUp
   m_Icon: {fileID: 0}
@@ -36902,18 +36833,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 842492683}
   m_Mesh: {fileID: 4300000, guid: e7eacd470b794d04e889bdf581747aa3, type: 3}
---- !u!114 &842492689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 842492683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d2ea12a300f458495692afb23f658e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HotDogCart
 --- !u!1 &844449192 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1e5c3766907015b4f9e8f23258d8f464, type: 3}
@@ -37125,8 +37044,7 @@ GameObject:
   - component: {fileID: 852698976}
   - component: {fileID: 852698975}
   - component: {fileID: 852698974}
-  - component: {fileID: 852698978}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Hotdog
   m_TagString: canPickUp
   m_Icon: {fileID: 0}
@@ -37252,18 +37170,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 852698972}
   m_Mesh: {fileID: 4300000, guid: e7eacd470b794d04e889bdf581747aa3, type: 3}
---- !u!114 &852698978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 852698972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d2ea12a300f458495692afb23f658e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HotDogCart
 --- !u!1001 &852979364
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40358,6 +40264,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -46141,7 +46059,7 @@ MonoBehaviour:
   pausePanel: {fileID: 1278402051}
   resumeButton: {fileID: 1451400995}
   pauseMenuCanvas: {fileID: 1768841558}
-  input: {fileID: 2048831530}
+  input: {fileID: 0}
 --- !u!1 &1033396808
 GameObject:
   m_ObjectHideFlags: 0
@@ -52279,8 +52197,7 @@ GameObject:
   - component: {fileID: 1154892337}
   - component: {fileID: 1154892336}
   - component: {fileID: 1154892335}
-  - component: {fileID: 1154892339}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Hotdog
   m_TagString: canPickUp
   m_Icon: {fileID: 0}
@@ -52406,18 +52323,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1154892333}
   m_Mesh: {fileID: 4300000, guid: e7eacd470b794d04e889bdf581747aa3, type: 3}
---- !u!114 &1154892339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1154892333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d2ea12a300f458495692afb23f658e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HotDogCart
 --- !u!1 &1155131000 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: dfd707e535765b5428a7254a8a3a1ac1, type: 3}
@@ -53026,15 +52931,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2573741825222658002, guid: 6eae65c8cb0d03349b0445ed9122ac6e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.091614
+      value: 20.09
       objectReference: {fileID: 0}
     - target: {fileID: 2573741825222658002, guid: 6eae65c8cb0d03349b0445ed9122ac6e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.4566421
+      value: -0.29
       objectReference: {fileID: 0}
     - target: {fileID: 2573741825222658002, guid: 6eae65c8cb0d03349b0445ed9122ac6e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.4076414
+      value: 7.41
       objectReference: {fileID: 0}
     - target: {fileID: 2573741825222658002, guid: 6eae65c8cb0d03349b0445ed9122ac6e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -53517,8 +53422,7 @@ GameObject:
   - component: {fileID: 1195820964}
   - component: {fileID: 1195820963}
   - component: {fileID: 1195820962}
-  - component: {fileID: 1195820966}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Hotdog
   m_TagString: canPickUp
   m_Icon: {fileID: 0}
@@ -53644,18 +53548,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1195820960}
   m_Mesh: {fileID: 4300000, guid: e7eacd470b794d04e889bdf581747aa3, type: 3}
---- !u!114 &1195820966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1195820960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d2ea12a300f458495692afb23f658e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HotDogCart
 --- !u!1001 &1196133614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56231,8 +56123,7 @@ GameObject:
   - component: {fileID: 1284736812}
   - component: {fileID: 1284736811}
   - component: {fileID: 1284736810}
-  - component: {fileID: 1284736814}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Hotdog
   m_TagString: canPickUp
   m_Icon: {fileID: 0}
@@ -56358,18 +56249,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284736808}
   m_Mesh: {fileID: 4300000, guid: e7eacd470b794d04e889bdf581747aa3, type: 3}
---- !u!114 &1284736814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284736808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d2ea12a300f458495692afb23f658e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HotDogCart
 --- !u!1 &1287994417
 GameObject:
   m_ObjectHideFlags: 0
@@ -60699,18 +60578,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -9136049569271898293, guid: f1429a7e00960a34bbbc01a5ed2bd560, type: 3}
---- !u!114 &1371879906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1371879898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef4e7d613d8964083b3b1241c0a73c14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PullObject
 --- !u!1001 &1372292224
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62139,7 +62006,7 @@ GameObject:
   - component: {fileID: 1401019556}
   - component: {fileID: 1401019555}
   - component: {fileID: 1401019554}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: City Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63054,9 +62921,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ada4da15e7eb4afd88d6a011d7bb9be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameStateController
-  winScreen: {fileID: 1708468277}
-  playerStartPoint: {fileID: 0}
-  player: {fileID: 0}
 --- !u!1 &1416496452
 GameObject:
   m_ObjectHideFlags: 0
@@ -65464,8 +65328,7 @@ GameObject:
   - component: {fileID: 1450281350}
   - component: {fileID: 1450281349}
   - component: {fileID: 1450281348}
-  - component: {fileID: 1450281352}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Hotdog
   m_TagString: canPickUp
   m_Icon: {fileID: 0}
@@ -65591,18 +65454,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1450281346}
   m_Mesh: {fileID: 4300000, guid: e7eacd470b794d04e889bdf581747aa3, type: 3}
---- !u!114 &1450281352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1450281346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d2ea12a300f458495692afb23f658e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HotDogCart
 --- !u!1 &1451400995
 GameObject:
   m_ObjectHideFlags: 0
@@ -66380,8 +66231,7 @@ GameObject:
   - component: {fileID: 1464056775}
   - component: {fileID: 1464056774}
   - component: {fileID: 1464056773}
-  - component: {fileID: 1464056777}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Hotdog
   m_TagString: canPickUp
   m_Icon: {fileID: 0}
@@ -66507,18 +66357,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1464056771}
   m_Mesh: {fileID: 4300000, guid: e7eacd470b794d04e889bdf581747aa3, type: 3}
---- !u!114 &1464056777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464056771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d2ea12a300f458495692afb23f658e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HotDogCart
 --- !u!1 &1464573043
 GameObject:
   m_ObjectHideFlags: 0
@@ -66594,8 +66432,7 @@ GameObject:
   - component: {fileID: 1464724320}
   - component: {fileID: 1464724319}
   - component: {fileID: 1464724318}
-  - component: {fileID: 1464724322}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Hotdog
   m_TagString: canPickUp
   m_Icon: {fileID: 0}
@@ -66611,7 +66448,7 @@ Transform:
   m_GameObject: {fileID: 1464724316}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071069, y: 0.000000014901161, z: -0, w: 0.70710677}
-  m_LocalPosition: {x: 0.026398495, y: 0.1259996, z: -1.4523758}
+  m_LocalPosition: {x: 0.026398495, y: 0.126, z: 0.00016118029}
   m_LocalScale: {x: 154.65685, y: 154.65678, z: 154.65678}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -66721,18 +66558,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1464724316}
   m_Mesh: {fileID: 4300000, guid: e7eacd470b794d04e889bdf581747aa3, type: 3}
---- !u!114 &1464724322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464724316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d2ea12a300f458495692afb23f658e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HotDogCart
 --- !u!1 &1466277922
 GameObject:
   m_ObjectHideFlags: 0
@@ -70123,8 +69948,7 @@ GameObject:
   - component: {fileID: 1547296112}
   - component: {fileID: 1547296111}
   - component: {fileID: 1547296110}
-  - component: {fileID: 1547296114}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Hotdog
   m_TagString: canPickUp
   m_Icon: {fileID: 0}
@@ -70250,18 +70074,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1547296108}
   m_Mesh: {fileID: 4300000, guid: e7eacd470b794d04e889bdf581747aa3, type: 3}
---- !u!114 &1547296114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1547296108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d2ea12a300f458495692afb23f658e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HotDogCart
 --- !u!1 &1552773745 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7254914416697388165, guid: b68e95bca4d48ac4dafa36bd9157baa4, type: 3}
@@ -71765,9 +71577,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7730050036802806413, guid: 1724242fa75b9224a8c8eaa6fefebd41, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1721317507}
-    - targetCorrespondingSourceObject: {fileID: 7730050036802806413, guid: 1724242fa75b9224a8c8eaa6fefebd41, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1721317508}
   m_SourcePrefab: {fileID: 100100000, guid: 1724242fa75b9224a8c8eaa6fefebd41, type: 3}
 --- !u!1 &1601960935
 GameObject:
@@ -71989,8 +71798,7 @@ GameObject:
   - component: {fileID: 1608711593}
   - component: {fileID: 1608711592}
   - component: {fileID: 1608711591}
-  - component: {fileID: 1608711595}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Hotdog
   m_TagString: canPickUp
   m_Icon: {fileID: 0}
@@ -72116,18 +71924,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1608711589}
   m_Mesh: {fileID: 4300000, guid: e7eacd470b794d04e889bdf581747aa3, type: 3}
---- !u!114 &1608711595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1608711589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d2ea12a300f458495692afb23f658e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HotDogCart
 --- !u!1 &1611103241
 GameObject:
   m_ObjectHideFlags: 0
@@ -72970,142 +72766,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59db3e1adec764d4db9a4412b3fa5fbd, type: 3}
---- !u!1 &1621867073
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1621867074}
-  - component: {fileID: 1621867076}
-  - component: {fileID: 1621867075}
-  m_Layer: 5
-  m_Name: InteractionText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1621867074
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1621867073}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1768841562}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 794, y: -497}
-  m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1621867075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1621867073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: joemama
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 43.62
-  m_fontSizeBase: 43.62
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: -245.48413, y: 0, z: -33.034912, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1621867076
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1621867073}
-  m_CullTransparentMesh: 1
 --- !u!1 &1628710045
 GameObject:
   m_ObjectHideFlags: 0
@@ -74465,8 +74125,7 @@ GameObject:
   - component: {fileID: 1662531951}
   - component: {fileID: 1662531950}
   - component: {fileID: 1662531949}
-  - component: {fileID: 1662531953}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Hotdog
   m_TagString: canPickUp
   m_Icon: {fileID: 0}
@@ -74592,23 +74251,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1662531947}
   m_Mesh: {fileID: 4300000, guid: e7eacd470b794d04e889bdf581747aa3, type: 3}
---- !u!114 &1662531953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1662531947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d2ea12a300f458495692afb23f658e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HotDogCart
---- !u!1 &1662555679 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2516006980784628978, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
-  m_PrefabInstance: {fileID: 2048831524}
-  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1663967541
 Mesh:
   m_ObjectHideFlags: 0
@@ -76620,18 +76262,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 73e45f50773c0f64c9382f6827b1708d, type: 3}
   m_PrefabInstance: {fileID: 1747181615}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1699534369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1699534361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50eb9bcd51a124333b65a834b9af891d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PickupObject
 --- !u!1001 &1701530549
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76811,7 +76441,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1708468278
 RectTransform:
   m_ObjectHideFlags: 0
@@ -77662,18 +77292,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Trampoline
   objectBounceForce: 25
   bounceCooldown: 0.001
---- !u!114 &1721317508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1721317495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef4e7d613d8964083b3b1241c0a73c14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PullObject
 --- !u!1 &1728965628
 GameObject:
   m_ObjectHideFlags: 0
@@ -78050,8 +77668,7 @@ GameObject:
   - component: {fileID: 1741552911}
   - component: {fileID: 1741552910}
   - component: {fileID: 1741552909}
-  - component: {fileID: 1741552913}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Hotdog
   m_TagString: canPickUp
   m_Icon: {fileID: 0}
@@ -78177,18 +77794,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1741552907}
   m_Mesh: {fileID: 4300000, guid: e7eacd470b794d04e889bdf581747aa3, type: 3}
---- !u!114 &1741552913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1741552907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d2ea12a300f458495692afb23f658e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HotDogCart
 --- !u!1 &1742959944
 GameObject:
   m_ObjectHideFlags: 0
@@ -78688,15 +78293,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 73e45f50773c0f64c9382f6827b1708d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -88.399895
+      value: -68.3999
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 73e45f50773c0f64c9382f6827b1708d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.1499934
+      value: 2.14999
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 73e45f50773c0f64c9382f6827b1708d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -111.99085
+      value: -36.990845
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 73e45f50773c0f64c9382f6827b1708d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -78752,9 +78357,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 73e45f50773c0f64c9382f6827b1708d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1699534362}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 73e45f50773c0f64c9382f6827b1708d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1699534369}
   m_SourcePrefab: {fileID: 100100000, guid: 73e45f50773c0f64c9382f6827b1708d, type: 3}
 --- !u!1001 &1750263967
 PrefabInstance:
@@ -79250,7 +78852,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2573741825222658002, guid: 6eae65c8cb0d03349b0445ed9122ac6e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.7673333
+      value: -0.684
       objectReference: {fileID: 0}
     - target: {fileID: 2573741825222658002, guid: 6eae65c8cb0d03349b0445ed9122ac6e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -79875,7 +79477,6 @@ RectTransform:
   - {fileID: 861660621}
   - {fileID: 1708468278}
   - {fileID: 338918991}
-  - {fileID: 1621867074}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -84386,8 +83987,7 @@ GameObject:
   - component: {fileID: 1851926770}
   - component: {fileID: 1851926769}
   - component: {fileID: 1851926768}
-  - component: {fileID: 1851926772}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Hotdog
   m_TagString: canPickUp
   m_Icon: {fileID: 0}
@@ -84513,18 +84113,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1851926766}
   m_Mesh: {fileID: 4300000, guid: e7eacd470b794d04e889bdf581747aa3, type: 3}
---- !u!114 &1851926772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1851926766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d2ea12a300f458495692afb23f658e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HotDogCart
 --- !u!1001 &1852442531
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -87490,7 +87078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ActivatingMap
   mapPanel: {fileID: 861660618}
-  input: {fileID: 2048831530}
+  input: {fileID: 0}
 --- !u!4 &1910350606 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4871930763248794733, guid: 28a37103d89de554a939beb9905b5674, type: 3}
@@ -89718,8 +89306,7 @@ GameObject:
   - component: {fileID: 1989437293}
   - component: {fileID: 1989437292}
   - component: {fileID: 1989437291}
-  - component: {fileID: 1989437295}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Hotdog
   m_TagString: canPickUp
   m_Icon: {fileID: 0}
@@ -89845,18 +89432,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989437289}
   m_Mesh: {fileID: 4300000, guid: e7eacd470b794d04e889bdf581747aa3, type: 3}
---- !u!114 &1989437295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1989437289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d2ea12a300f458495692afb23f658e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HotDogCart
 --- !u!1 &1989814012
 GameObject:
   m_ObjectHideFlags: 0
@@ -91443,8 +91018,7 @@ GameObject:
   - component: {fileID: 2035385892}
   - component: {fileID: 2035385891}
   - component: {fileID: 2035385890}
-  - component: {fileID: 2035385894}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Hotdog
   m_TagString: canPickUp
   m_Icon: {fileID: 0}
@@ -91570,18 +91144,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2035385888}
   m_Mesh: {fileID: 4300000, guid: e7eacd470b794d04e889bdf581747aa3, type: 3}
---- !u!114 &2035385894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2035385888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3d2ea12a300f458495692afb23f658e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HotDogCart
 --- !u!4 &2037733282 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1901138913387538288, guid: 32a78cbf4555a174c81d63cd9d95ea94, type: 3}
@@ -92048,11 +91610,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2321445537719903885, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
       propertyPath: speed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2321445537719903885, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
-      propertyPath: groundChecker
-      value: 
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 2516006980784628978, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
       propertyPath: m_Name
@@ -92098,59 +91656,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5896302567984677483, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
-      propertyPath: speed
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 5965027194425972414, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
-      propertyPath: sprintMultiplier
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7260852247023616438, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7767365825750987641, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
-      propertyPath: groundMask.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
     - target: {fileID: 8357621829268764536, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 746806063}
-    - target: {fileID: 8483356063430233089, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
-      propertyPath: range
-      value: 1.96
-      objectReference: {fileID: 0}
-    - target: {fileID: 8483356063430233089, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
-      propertyPath: interactText
-      value: 
-      objectReference: {fileID: 1621867075}
-    - target: {fileID: 8483356063430233089, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
-      propertyPath: interactLayer.m_Bits
-      value: 1024
-      objectReference: {fileID: 0}
-    - target: {fileID: 9039809734838382411, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
-      propertyPath: checkOffset
-      value: -0.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 9039809734838382411, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
-      propertyPath: checkRadius
-      value: 0.8
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 216734048964005633, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
-    - {fileID: 5896302567984677483, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
-    - {fileID: 7767365825750987641, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
-    - {fileID: 7260852247023616438, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
-    - {fileID: 5825458187481304881, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
-    m_RemovedGameObjects:
-    - {fileID: 501197932453373925, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2516006980784628978, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2048831546}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
 --- !u!4 &2048831525 stripped
 Transform:
@@ -92162,7 +91675,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2321445537719903885, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
   m_PrefabInstance: {fileID: 2048831524}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1662555679}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d519a7b2e16a946d68d28e5a594fd7ee, type: 3}
@@ -92178,7 +91691,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3439096042905507157, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
   m_PrefabInstance: {fileID: 2048831524}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1662555679}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65803f96504de4ae29db897fb73b0546, type: 3}
@@ -92189,30 +91702,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7800071098537539358, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
   m_PrefabInstance: {fileID: 2048831524}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1662555679}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2385b8aa76954833b8c31c413a37c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractionState
---- !u!114 &2048831546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1662555679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1a3233d9b7db413ab9d9f3168b38a67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteraction
-  range: 2.55
-  interactLayer:
-    serializedVersion: 2
-    m_Bits: 1024
-  input: {fileID: 2048831530}
-  interactText: {fileID: 1621867075}
 --- !u!1001 &2051034787
 PrefabInstance:
   m_ObjectHideFlags: 0
