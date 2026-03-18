@@ -9,6 +9,9 @@ public class PlayerInteraction : MonoBehaviour
     [Header("References")]
     [SerializeField] PlayerInputReader input;
     [SerializeField] TMPro.TextMeshProUGUI interactText;
+    [SerializeField] Transform holdPoint; // ✅ ADD THIS
+
+    public PickupObject currentHeldObject; // ✅ ADD THIS
 
     void Awake()
     {
@@ -32,7 +35,6 @@ public class PlayerInteraction : MonoBehaviour
         foreach (Collider hit in hits)
         {
             IInteractable interactable = hit.GetComponentInParent<IInteractable>();
-
             if (interactable == null) continue;
 
             float dist = Vector3.Distance(transform.position, hit.transform.position);
@@ -76,10 +78,8 @@ public class PlayerInteraction : MonoBehaviour
 
         foreach (Collider hit in hits)
         {
-            IInteractable interactable = hit.GetComponent<IInteractable>();
-
-            if (interactable == null)
-                continue;
+            IInteractable interactable = hit.GetComponentInParent<IInteractable>();
+            if (interactable == null) continue;
 
             float dist = Vector3.Distance(transform.position, hit.transform.position);
 
@@ -98,6 +98,11 @@ public class PlayerInteraction : MonoBehaviour
         {
             Debug.Log("No interactable nearby");
         }
+    }
+
+    public Transform GetHoldPoint()
+    {
+        return holdPoint;
     }
 
     void OnDrawGizmosSelected()

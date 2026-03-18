@@ -20155,7 +20155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f1429a7e00960a34bbbc01a5ed2bd560, type: 3}
       propertyPath: m_Name
-      value: SM_Toy_04
+      value: TestBucket
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f1429a7e00960a34bbbc01a5ed2bd560, type: 3}
       propertyPath: m_Layer
@@ -60653,7 +60653,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1371879898}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 20
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -67491,6 +67491,11 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!4 &1485973320 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8990690259907464168, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
+  m_PrefabInstance: {fileID: 2048831524}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1488173400
 Mesh:
   m_ObjectHideFlags: 0
@@ -76574,7 +76579,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699534361}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 20
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -78732,7 +78737,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 73e45f50773c0f64c9382f6827b1708d, type: 3}
       propertyPath: m_Name
-      value: SM_Toy_08
+      value: TestBall
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 73e45f50773c0f64c9382f6827b1708d, type: 3}
       propertyPath: m_Layer
@@ -92207,12 +92212,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a3233d9b7db413ab9d9f3168b38a67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteraction
-  range: 2.55
+  range: 1.8
   interactLayer:
     serializedVersion: 2
     m_Bits: 1024
   input: {fileID: 2048831530}
   interactText: {fileID: 1621867075}
+  holdPoint: {fileID: 1485973320}
+  currentHeldObject: {fileID: 0}
 --- !u!1001 &2051034787
 PrefabInstance:
   m_ObjectHideFlags: 0
