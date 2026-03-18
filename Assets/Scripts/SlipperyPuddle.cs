@@ -7,17 +7,17 @@ public class SlipperyPuddle : MonoBehaviour
     public Vector3 slideDirection = new Vector3(0, 0, 1); // set this in Inspector to match hallway
     public float slideForce = 20f;  // stronger force to push up ramp
     public float maxSpeed = 12f;    // prevents overshooting
-    public PhysicsMaterial slipperyMaterial; // set a low-friction material (Dynamic Friction = 0, Static Friction = 0, Combine = Minimum)
+    public PhysicsMaterial slipperyMaterial; // low-friction material
 
     private void OnCollisionEnter(Collision collision)
     {
         if (!collision.gameObject.CompareTag("Player")) return;
 
-        PlayerMovement pm = collision.gameObject.GetComponent<PlayerMovement>();
         Rigidbody rb = collision.rigidbody;
+        PlayerInteractionState state = collision.gameObject.GetComponent<PlayerInteractionState>();
 
-        if (pm != null)
-            pm.canMove = false;
+        if (state != null)
+            state.BlockMovement();  // block movement while on puddle
 
         // optional: assign low-friction material for smooth sliding
         if (slipperyMaterial != null)
@@ -30,7 +30,7 @@ public class SlipperyPuddle : MonoBehaviour
         // Normalize slide direction in world space
         Vector3 worldDir = transform.TransformDirection(slideDirection.normalized);
 
-        // give initial push
+        // initial push
         rb.AddForce(worldDir * slideForce, ForceMode.VelocityChange);
     }
 
@@ -41,6 +41,9 @@ public class SlipperyPuddle : MonoBehaviour
         Rigidbody rb = collision.rigidbody;
         if (rb == null) return;
 
+        PlayerInteractionState state = collision.gameObject.GetComponent<PlayerInteractionState>();
+        if (state != null && state.IsHidden) return; // don't slide if hidden
+
         // Assume grounded if we have any upward-facing contact normal
         bool grounded = false;
         Vector3 averagedNormal = Vector3.zero;
@@ -48,12 +51,10 @@ public class SlipperyPuddle : MonoBehaviour
         foreach (var contact in collision.contacts)
         {
             averagedNormal += contact.normal;
-            if (contact.normal.y > 0.3f) grounded = true; // ignore walls
+            if (contact.normal.y > 0.3f) grounded = true;
         }
-
         averagedNormal.Normalize();
 
-        // Only apply forces and velocity clamping if grounded
         if (grounded)
         {
             // Base world direction
@@ -61,21 +62,19 @@ public class SlipperyPuddle : MonoBehaviour
             worldDir = Vector3.ProjectOnPlane(worldDir, averagedNormal).normalized;
             rb.AddForce(worldDir * slideForce * Time.fixedDeltaTime, ForceMode.VelocityChange);
 
-            // Clamp velocity only while grounded
+            // Clamp velocity while grounded
             if (rb.linearVelocity.magnitude > maxSpeed)
                 rb.linearVelocity = rb.linearVelocity.normalized * maxSpeed;
         }
-        // If not grounded, do nothing - let physics handle the trajectory
     }
-
 
     private void OnCollisionExit(Collision collision)
     {
         if (!collision.gameObject.CompareTag("Player")) return;
 
-        PlayerMovement pm = collision.gameObject.GetComponent<PlayerMovement>();
-        if (pm != null)
-            pm.canMove = true;
+        PlayerInteractionState state = collision.gameObject.GetComponent<PlayerInteractionState>();
+        if (state != null)
+            state.UnblockMovement(); // restore movement
 
         // reset friction
         Collider col = GetComponent<Collider>();

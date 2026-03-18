@@ -14,40 +14,72 @@ public class MainMenuManager : MonoBehaviour
 
     void Awake()
     {
-        ShowMainMenu();
+        // Safely show main menu without null reference
+        ShowMainMenuSafe();
 
-        musicEvent.Post(
-            gameObject,
-            (uint)AkCallbackType.AK_MusicSyncUserCue,
-            MusicCallback);
+        // Safely post music event if it exists
+        if (musicEvent != null)
+        {
+            musicEvent.Post(
+                gameObject,
+                (uint)AkCallbackType.AK_MusicSyncUserCue,
+                MusicCallback);
 
-        Debug.Log("Music Event: " + musicEvent.Name);
+            Debug.Log("Music Event: " + musicEvent.Name);
+        }
+        else
+        {
+            Debug.LogWarning("MusicEvent is not assigned in MainMenuManager.");
+        }
     }
 
-    public void ShowMainMenu()
+    public void ShowMainMenuSafe()
     {
-        mainMenuCanvas.SetActive(true);
-        GameStateController.Instance.PauseGame();
+        // Safely enable main menu canvas
+        if (mainMenuCanvas != null)
+            mainMenuCanvas.SetActive(true);
+        else
+            Debug.LogWarning("MainMenuCanvas is not assigned.");
 
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(startButton);
+        // Safely pause the game
+        if (GameStateController.Instance != null)
+            GameStateController.Instance.PauseGame();
+        else
+            Debug.LogWarning("GameStateController.Instance is null.");
+
+        // Safely set UI selection
+        if (EventSystem.current != null && startButton != null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(startButton);
+        }
+        else
+        {
+            Debug.LogWarning("EventSystem or StartButton is not assigned.");
+        }
     }
+
     public void StartGame()
     {
         GameplayState?.SetValue();
+
+        if (GameStateController.Instance != null)
+            GameStateController.Instance.SetState(GameState.Playing);
     }
 
     private void MusicCallback(object cookie, AkCallbackType type, object info)
     {
         if (type != AkCallbackType.AK_MusicSyncUserCue) return;
-
         RunGameplayStartLogic();
     }
 
     private void RunGameplayStartLogic()
     {
-        mainMenuCanvas.SetActive(false);
-        GameStateController.Instance.ResumeGame();
+        if (mainMenuCanvas != null)
+            mainMenuCanvas.SetActive(false);
+
+        if (GameStateController.Instance != null)
+            GameStateController.Instance.ResumeGame();
     }
 
     public void QuitGame()
