@@ -19,17 +19,15 @@ public class NPCMovement : MonoBehaviour
         agent.updateRotation = false;   // keep 2D/top-down vibe
         agent.updatePosition = false;   // we control position manually
     }
-
-    void Update()
-    {
-        Patrol(); // no arguments needed
-    }
-
+    
     // Public patrol method (no parameter)
     public void Patrol()
     {
         if (patrolPoints == null || patrolPoints.Length == 0)
             return;
+        
+        agent.updatePosition = false;
+        agent.ResetPath();
 
         Transform targetPoint = patrolPoints[patrolIndex];
         if (targetPoint == null) return;
@@ -56,6 +54,27 @@ public class NPCMovement : MonoBehaviour
         agent.updatePosition = true; // let NavMeshAgent handle movement
         agent.SetDestination(player.transform.position);
         agent.speed = speed;
+    }
+
+    public void Investigate(Vector3 target, float speed)
+    {
+        agent.updatePosition = true;
+        agent.speed = speed;
+        agent.SetDestination(target);
+    }
+
+    public bool ReachedDestination(float threshold = 0.2f)
+    {
+        if (agent.pathPending) return false;
+        return agent.remainingDistance <= threshold;
+    }
+
+    public void StopAgent()
+    {
+        if (agent != null)
+        {
+            agent.ResetPath();
+        }
     }
 
     // ===== Debug Gizmos =====
