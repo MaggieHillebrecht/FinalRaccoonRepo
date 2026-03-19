@@ -14,8 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody rb;
     private Vector3 inputDir;
-    private Vector3 lastMoveDir;
-    [SerializeField] private Transform graphics; 
+    [SerializeField] private Transform graphics;
 
     private float currentSpeedMultiplier = 1f;
 
@@ -47,13 +46,12 @@ public class PlayerMovement : MonoBehaviour
         Vector3 newHoriz = Vector3.Lerp(horiz, targetVel, stopLerpFactor);
         rb.linearVelocity = new Vector3(newHoriz.x, rb.linearVelocity.y, newHoriz.z);
     }
+
     void UpdateAnimation()
     {
-        if (animator == null) return;
-
+        if (!animator) return;
         animator.SetFloat("MoveX", inputDir.x);
         animator.SetFloat("MoveZ", inputDir.z);
-
         animator.speed = currentSpeedMultiplier;
     }
 
@@ -61,9 +59,6 @@ public class PlayerMovement : MonoBehaviour
     {
         inputDir = dir.normalized;
         currentSpeedMultiplier = speedMultiplier;
-
-        if (inputDir != Vector3.zero)
-            lastMoveDir = inputDir;
     }
 
     void HandleFlip()

@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using TMPro;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -6,24 +8,39 @@ public class PlayerInteraction : MonoBehaviour
     public float range = 3f;
     public LayerMask interactLayer;
 
+    [Header("Climb Settings")]
+    public float climbSpeed = 3f;
+    private bool isClimbing = false;
+    private float climbWallTop;
+    private Vector3 climbWallNormal;
+    private float climbStartY;
+    private bool climbedFromSide;
+
     [Header("References")]
     [SerializeField] PlayerInputReader input;
-    [SerializeField] TMPro.TextMeshProUGUI interactText;
-    [SerializeField] Transform holdPoint; 
+    [SerializeField] TextMeshProUGUI interactText;
+    [SerializeField] Transform holdPoint;
+    [SerializeField] PlayerMovement movement;
+    [SerializeField] SpriteRenderer spriteRenderer;
+    public bool ClimbedFromSide => climbedFromSide;
+    public Vector3 ClimbWallNormal => climbWallNormal;
 
-    public PickupObject currentHeldObject; 
+    public PickupObject currentHeldObject;
+    public bool IsClimbing => isClimbing;
 
     void Awake()
     {
-        if (!input)
-            input = GetComponent<PlayerInputReader>();
+        if (!input) input = GetComponent<PlayerInputReader>();
+        if (!movement) movement = GetComponent<PlayerMovement>();
     }
 
     void Update()
     {
         CheckForInteractable();
+        HandleClimbingInput();
     }
 
+    // --- Interaction logic ---
     void CheckForInteractable()
     {
         Vector3 center = transform.position + Vector3.up * 1.5f;
@@ -38,12 +55,22 @@ public class PlayerInteraction : MonoBehaviour
             if (interactable == null) continue;
 
             float dist = Vector3.Distance(transform.position, hit.transform.position);
-
             if (dist < closestDist)
             {
                 closest = interactable;
                 closestDist = dist;
             }
+        }
+
+        // Now interactText shows the closest one
+        if (closest != null)
+        {
+            interactText.text = closest.GetInteractText(gameObject);
+            interactText.gameObject.SetActive(true);
+        }
+        else
+        {
+            interactText.gameObject.SetActive(false);
         }
 
         if (closest != null)
@@ -74,7 +101,7 @@ public class PlayerInteraction : MonoBehaviour
         Collider[] hits = Physics.OverlapSphere(transform.position, range, interactLayer);
 
         float closest = Mathf.Infinity;
-        IInteractable closestInteractable = null;
+        IInteractable closestInteractable = null; // declare here, outside loop
 
         foreach (Collider hit in hits)
         {
@@ -100,14 +127,85 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-    public Transform GetHoldPoint()
-    {
-        return holdPoint;
-    }
+    public Transform GetHoldPoint() => holdPoint;
 
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position + Vector3.up * 1.5f, range);
+    }
+
+    // --- Climbing logic ---
+    void HandleClimbingInput()
+    {
+        if (Keyboard.current.spaceKey.wasPressedThisFrame && !isClimbing && !currentHeldObject)
+        {
+            TryClimb();
+        }
+
+        if (isClimbing && Keyboard.current.spaceKey.wasReleasedThisFrame)
+        {
+            StopClimb();
+        }
+
+        if (isClimbing)
+        {
+            Vector3 PlayerTransform = movement.transform.position;
+            if (Keyboard.current.wKey.isPressed)
+                movement.transform.position += Vector3.up * climbSpeed * Time.deltaTime;
+            else if (Keyboard.current.sKey.isPressed)
+                movement.transform.position -= Vector3.up * climbSpeed * Time.deltaTime;
+
+            bool hasClimbed = movement.transform.position.y > climbStartY + 1f;
+            if (hasClimbed && movement.transform.position.y >= climbWallTop)
+            {
+                StopClimb();
+            }
+        }
+    }
+
+    void TryClimb()
+    {
+        Vector3 origin = transform.position + Vector3.up * 1.5f;
+        Vector3[] directions = { transform.forward, -transform.forward, transform.right, -transform.right };
+
+        foreach (Vector3 dir in directions)
+        {
+            if (Physics.Raycast(origin, dir, out RaycastHit hit, range) && hit.collider.CompareTag("canClimb"))
+            {
+                climbWallNormal = hit.normal;
+                climbedFromSide = Mathf.Abs(hit.normal.x) > Mathf.Abs(hit.normal.z);
+                climbStartY = movement.transform.position.y;
+                climbWallTop = hit.collider.bounds.max.y;
+
+                Rigidbody rb = movement.GetComponent<Rigidbody>();
+                if (rb != null) rb.isKinematic = true;
+
+                isClimbing = true;
+                movement.enabled = false;
+                return;
+            }
+        }
+    }
+
+    void StopClimb()
+    {
+        Rigidbody rb = movement.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = false;
+            rb.linearVelocity = new Vector3(0f, -0.5f, 0f);
+            rb.angularVelocity = Vector3.zero;
+        }
+
+        isClimbing = false;
+        if (climbedFromSide && spriteRenderer != null)
+        {
+            spriteRenderer.flipX = false;
+            movement.transform.rotation = Quaternion.identity;
+        }
+
+        climbedFromSide = false;
+        movement.enabled = true;
     }
 }
