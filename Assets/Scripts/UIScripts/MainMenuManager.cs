@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using AK.Wwise;
+using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -14,41 +15,80 @@ public class MainMenuManager : MonoBehaviour
 
     void Awake()
     {
-        ShowMainMenu();
+        // Safely show main menu without null reference
+        ShowMainMenuSafe();
 
-        musicEvent.Post(
-            gameObject,
-            (uint)AkCallbackType.AK_MusicSyncUserCue,
-            MusicCallback);
+        // Safely post music event if it exists
+        if (musicEvent != null)
+        {
+            musicEvent.Post(
+                gameObject,
+                (uint)AkCallbackType.AK_MusicSyncUserCue,
+                MusicCallback);
 
-        Debug.Log("Music Event: " + musicEvent.Name);
+            Debug.Log("Music Event: " + musicEvent.Name);
+        }
+        else
+        {
+            Debug.LogWarning("MusicEvent is not assigned in MainMenuManager.");
+        }
     }
 
-    public void ShowMainMenu()
+    public void ShowMainMenuSafe()
     {
-        mainMenuCanvas.SetActive(true);
-        GameStateController.Instance.PauseGame();
+        if (GameStateController.Instance != null)
+        {
+            if (!GameStateController.forceMainMenu && GameStateController.CurrentState == GameState.Playing)
+            {
+                // Game is already running, skip showing main menu
+                if (mainMenuCanvas != null) mainMenuCanvas.SetActive(false);
+                return;
+            }
 
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(startButton);
+            GameStateController.Instance.PauseGame();
+        }
+
+        if (mainMenuCanvas != null)
+            mainMenuCanvas.SetActive(true);
+
+        if (EventSystem.current != null && startButton != null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(startButton);
+        }
     }
+
     public void StartGame()
     {
-        GameplayState?.SetValue();
+        GameStateController.forceMainMenu = false; // skip menu next time
+        GameStateController.gameStarted = true;    // mark game as started
+        if (GameStateController.Instance != null)
+            GameStateController.Instance.SetState(GameState.Playing);
+
+        if (mainMenuCanvas != null)
+            mainMenuCanvas.SetActive(false);
     }
 
     private void MusicCallback(object cookie, AkCallbackType type, object info)
     {
         if (type != AkCallbackType.AK_MusicSyncUserCue) return;
-
         RunGameplayStartLogic();
     }
 
     private void RunGameplayStartLogic()
     {
-        mainMenuCanvas.SetActive(false);
-        GameStateController.Instance.ResumeGame();
+        if (mainMenuCanvas != null)
+            mainMenuCanvas.SetActive(false);
+
+        if (GameStateController.Instance != null)
+            GameStateController.Instance.ResumeGame();
     }
+    public void GoToMainMenu()
+    {
+        GameStateController.forceMainMenu = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    
 
     public void QuitGame()
     {

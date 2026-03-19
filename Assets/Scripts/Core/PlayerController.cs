@@ -1,26 +1,28 @@
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerMovement))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] PlayerInputReader input; // Updated to use PlayerInputReader
-    RBMovementMotor motor;
-    PlayerSprint sprint;
+    [SerializeField] private PlayerInputReader input;
+
+    private PlayerMovement playerMovement;
+    private PlayerSprint sprint; 
 
     void Awake()
     {
-        if (input == null)
-            input = GetComponent<PlayerInputReader>();
+        if (input == null) input = GetComponent<PlayerInputReader>();
 
-        motor = GetComponent<RBMovementMotor>();
-        sprint = GetComponent<PlayerSprint>();
+        playerMovement = GetComponent<PlayerMovement>();
+        sprint = GetComponent<PlayerSprint>(); 
     }
 
-    void FixedUpdate()
+    void Update()
     {
         Vector3 moveDir = new Vector3(input.Move.x, 0f, input.Move.y);
+        if (moveDir.magnitude > 1f) moveDir.Normalize();
 
-        motor.Move(moveDir, sprint.getCurrentSpeed());
+        float sprintMultiplier = sprint != null ? sprint.GetCurrentSpeed() : 1f;
 
-        Debug.Log($"[PlayerController] MoveDir: {moveDir}, SprintMult: {sprint.getCurrentSpeed()}");
+        playerMovement.SetMovementDirection(moveDir, sprintMultiplier); 
     }
 }

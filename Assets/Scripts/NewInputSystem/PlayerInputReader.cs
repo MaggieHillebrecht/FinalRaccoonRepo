@@ -4,34 +4,31 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputReader : MonoBehaviour
 {
-    // --- Gameplay properties ---
     public Vector2 Move { get; private set; }
     public bool JumpHeld { get; private set; }
     public bool SprintHeld { get; private set; }
     public bool InteractPressed { get; private set; }
+    public bool JumpPressedThisFrame { get; private set; }
 
-    // --- Gameplay events ---
+    public event Action OnJumpPressedEvent;
     public event Action OnSprintPressed;
     public event Action OnSprintReleased;
     public event Action OnInteractPressed;
     public event Action OnInteractReleased;
 
-    // --- UI events ---
     public event Action OnPausePressed;
     public event Action OnMapPressed;
-
-    // --- Gameplay input callbacks ---
+    public string GetInteractKey()
+    {
+        var action = GetComponent<PlayerInput>().actions["Interact"];
+        return action.GetBindingDisplayString();
+    }
+    
     public void OnMove(InputValue value)
-    {
-        Move = value.Get<Vector2>();
-        Debug.Log($"[INPUT] Move received: {Move}");
-    }
-
-    public void OnJump(InputValue value)
-    {
-        JumpHeld = value.isPressed;
-        Debug.Log($"[INPUT] Jump: {JumpHeld}");
-    }
+{
+    Move = value.Get<Vector2>();
+    Debug.Log($"[INPUT] Move received: {Move}");
+}
 
     public void OnSprint(InputValue value)
     {
@@ -45,15 +42,29 @@ public class PlayerInputReader : MonoBehaviour
 
     public void OnInteract(InputValue value)
     {
-        InteractPressed = value.isPressed;
-        Debug.Log($"[INPUT] Interact: {(InteractPressed ? "PRESSED" : "RELEASED")}");
         if (value.isPressed)
+        {
+            InteractPressed = true; // set to true for one frame
+            Debug.Log("[INPUT] Interact PRESSED");
             OnInteractPressed?.Invoke();
+        }
         else
+        {
+            Debug.Log("[INPUT] Interact RELEASED");
             OnInteractReleased?.Invoke();
+        }
     }
 
-    // --- UI input callbacks ---
+    private void LateUpdate()
+    {
+        if (InteractPressed)
+        {
+            Debug.Log("[INPUT] Interact reset at end of frame");
+            InteractPressed = false;
+        }
+        JumpPressedThisFrame = false;
+    }
+
     public void OnPause(InputValue value)
     {
         if (value.isPressed)
