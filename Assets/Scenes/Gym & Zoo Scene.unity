@@ -7167,6 +7167,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 338320653626380038, guid: 60452a2ee3251c54c9455fd64682ff9b, type: 3}
   m_PrefabInstance: {fileID: 588099269}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &146985469 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2516006980784628978, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
+  m_PrefabInstance: {fileID: 2048831524}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &147109495
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51076,7 +51081,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6881572769840279059, guid: 02af3f7645118454f94a58768dc08baf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1079899821}
+    - targetCorrespondingSourceObject: {fileID: 6881572769840279059, guid: 02af3f7645118454f94a58768dc08baf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1079899820}
   m_SourcePrefab: {fileID: 100100000, guid: 02af3f7645118454f94a58768dc08baf, type: 3}
 --- !u!1 &904890131
 GameObject:
@@ -60725,6 +60736,59 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5636959924584143644, guid: 02af3f7645118454f94a58768dc08baf, type: 3}
   m_PrefabInstance: {fileID: 904365725}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1079899820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079899818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb7f05ada7ac4c05a68c4833d8eb7ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: AK.Wwise.Unity.MonoBehaviour::AkEvent
+  triggerList: f7e1664c
+  useOtherObject: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  enableActionOnEvent: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 04de86911e3a94b4f898e11b6375a56a, type: 2}
+  useCallbacks: 0
+  stopSoundOnDestroy: 1
+  Callbacks: []
+  soundEmitterObject: {fileID: 0}
+  transitionDuration: 0
+  eventIdInternal: 0
+  valueGuidInternal: 
+  m_callbackDataInternal: {fileID: 0}
+--- !u!114 &1079899821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079899818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4fbe43b758934f20bd521c893850521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: AK.Wwise.Unity.MonoBehaviour::AkGameObj
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 0
+  isStaticObject: 0
+  usePositionOffsetData: 0
+  m_positionOffsetData:
+    KeepMe: 1
+    positionOffset: {x: 0, y: 0, z: 0}
+  scalingFactor: 1
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
 --- !u!1001 &1082126346
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -113991,7 +114055,7 @@ Transform:
   m_GameObject: {fileID: 1996018170}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1924.8, y: 18.041447, z: 660.1119}
+  m_LocalPosition: {x: 1924.8, y: 67.4, z: 660.1119}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -116394,13 +116458,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2516006980784628978, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2048831540}
   m_SourcePrefab: {fileID: 100100000, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
 --- !u!4 &2048831525 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4819802243101651760, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
   m_PrefabInstance: {fileID: 2048831524}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2048831540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146985469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c02be53c6c5841408df6d80913eb648, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSound
 --- !u!1001 &2051034787
 PrefabInstance:
   m_ObjectHideFlags: 0
