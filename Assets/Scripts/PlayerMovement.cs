@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
     public float speed = 5f;
+
     public float airControlMultiplier = 0.6f;
     public float stopLerpFactor = 0.15f;
 
@@ -90,10 +91,6 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("[DEBUG] Movement blocked by PlayerInteractionState");
             return;
         }
-
-        // Log movement input
-        if (inputDir.magnitude > 0.01f)
-            Debug.Log($"[DEBUG] PlayerMovement moving: {inputDir} | speed: {speed}");
 
         float control = groundChecker.IsGrounded ? 1f : airControlMultiplier;
         float currentSpeed = isPulling ? pullSpeed : (isSprinting ? speed * sprintMultiplier : speed);
