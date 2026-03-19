@@ -12,14 +12,12 @@ public class PickupObject : MonoBehaviour, IInteractable
 
         if (!rb || state == null || interaction == null) return;
 
-        // 🔁 TOGGLE
         if (interaction.currentHeldObject == this)
         {
             Drop(rb, state, interaction);
             return;
         }
 
-        // ❌ already holding something else
         if (interaction.currentHeldObject != null)
             return;
 
