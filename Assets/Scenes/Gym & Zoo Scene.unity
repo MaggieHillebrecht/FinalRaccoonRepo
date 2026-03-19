@@ -24330,7 +24330,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 503402730}
   serializedVersion: 5
-  m_Mass: 20
+  m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -24361,7 +24361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54797ff4853954d15940d82de1d145f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BreakableObject
-  breakForceThreshold: 1000
+  breakForceThreshold: 1100
   fracturedVersion: {fileID: 1684224284}
   disableDelay: 0.01
 --- !u!1001 &503622641
@@ -25929,7 +25929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54797ff4853954d15940d82de1d145f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BreakableObject
-  breakForceThreshold: 1000
+  breakForceThreshold: 1100
   fracturedVersion: {fileID: 1343276334}
   disableDelay: 0.01
 --- !u!54 &538397030
@@ -28697,7 +28697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54797ff4853954d15940d82de1d145f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BreakableObject
-  breakForceThreshold: 1000
+  breakForceThreshold: 1100
   fracturedVersion: {fileID: 1079899818}
   disableDelay: 0.01
 --- !u!54 &592689506
@@ -116339,6 +116339,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Character Controller (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3427802661940830094, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 76be6e3b2810f48508417f4eaa9c2deb, type: 2}
     - target: {fileID: 4819802243101651760, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1938
@@ -116378,6 +116382,10 @@ PrefabInstance:
     - target: {fileID: 4819802243101651760, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965027194425972414, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
+      propertyPath: sprintMultiplier
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8357621829268764536, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
       propertyPath: m_Camera
@@ -120333,7 +120341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54797ff4853954d15940d82de1d145f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BreakableObject
-  breakForceThreshold: 1000
+  breakForceThreshold: 1100
   fracturedVersion: {fileID: 2071277983}
   disableDelay: 0.01
 --- !u!54 &2125096722
@@ -120344,7 +120352,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2125096719}
   serializedVersion: 5
-  m_Mass: 20
+  m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
