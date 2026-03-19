@@ -11,11 +11,10 @@ public class PlayerMovement : MonoBehaviour
     [Header("Refs")]
     public SpriteRenderer sr;
     public Animator animator;
+    [SerializeField] private Transform graphics;
 
     private Rigidbody rb;
     private Vector3 inputDir;
-    [SerializeField] private Transform graphics;
-
     private float currentSpeedMultiplier = 1f;
 
     void Awake()
@@ -38,9 +37,8 @@ public class PlayerMovement : MonoBehaviour
 
     void MovePlayer()
     {
-        float control = 1f;
         float moveSpeed = speed * currentSpeedMultiplier;
-        Vector3 targetVel = inputDir * moveSpeed * control;
+        Vector3 targetVel = inputDir * moveSpeed;
 
         Vector3 horiz = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
         Vector3 newHoriz = Vector3.Lerp(horiz, targetVel, stopLerpFactor);
@@ -61,10 +59,15 @@ public class PlayerMovement : MonoBehaviour
         currentSpeedMultiplier = speedMultiplier;
     }
 
-    void HandleFlip()
+    public void SetFacingDirection(float xDir)
     {
         if (graphics == null) return;
-
+        float dir = xDir > 0 ? 1f : -1f;
+        graphics.localScale = new Vector3(dir, 1f, 1f);
+    }
+    
+    void HandleFlip()
+    {
         if (inputDir.x > 0.01f)
             graphics.localScale = new Vector3(1, 1, 1);
         else if (inputDir.x < -0.01f)
