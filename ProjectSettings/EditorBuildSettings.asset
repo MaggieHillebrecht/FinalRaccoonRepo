@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/Blockout Scene.unity
+    path: Assets/Scenes/Gym & Zoo Scene.unity
     guid: c6db911f75e7c4de5a9cef88e143ab13
   - enabled: 0
     path: Assets/Scenes/Main scene.unity

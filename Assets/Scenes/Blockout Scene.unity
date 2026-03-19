@@ -6869,6 +6869,23 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28a37103d89de554a939beb9905b5674, type: 3}
+--- !u!1 &173347616 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1154829124472114, guid: 110af0d3eee946d4d9ee0ca4e522611a, type: 3}
+  m_PrefabInstance: {fileID: 1816742688}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &173347622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173347616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3d2ea12a300f458495692afb23f658e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HotDogCart
 --- !u!1001 &174595201
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -83144,7 +83161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1154829124472114, guid: 110af0d3eee946d4d9ee0ca4e522611a, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1161163637068138, guid: 110af0d3eee946d4d9ee0ca4e522611a, type: 3}
       propertyPath: m_Layer
@@ -83598,6 +83615,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.154
       objectReference: {fileID: 0}
+    - target: {fileID: 4120301329095182, guid: 110af0d3eee946d4d9ee0ca4e522611a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.6586602
+      objectReference: {fileID: 0}
+    - target: {fileID: 4120301329095182, guid: 110af0d3eee946d4d9ee0ca4e522611a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4120301329095182, guid: 110af0d3eee946d4d9ee0ca4e522611a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0000024864114
+      objectReference: {fileID: 0}
     - target: {fileID: 4510028502143114, guid: 110af0d3eee946d4d9ee0ca4e522611a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.111
@@ -83681,7 +83710,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1154829124472114, guid: 110af0d3eee946d4d9ee0ca4e522611a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 173347622}
   m_SourcePrefab: {fileID: 100100000, guid: 110af0d3eee946d4d9ee0ca4e522611a, type: 3}
 --- !u!1 &1823254039 stripped
 GameObject:
