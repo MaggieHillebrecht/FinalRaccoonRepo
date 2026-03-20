@@ -58,6 +58,13 @@ public class PlayerMovement : MonoBehaviour
         inputDir = dir.normalized;
         currentSpeedMultiplier = speedMultiplier;
     }
+    
+    public void ResetGraphicsScale(float xDir)
+    {
+        if (graphics == null) return;
+        float dir = xDir > 0 ? 1f : -1f;
+        graphics.localScale = new Vector3(dir, 1f, 1f);
+    }
 
     public void SetFacingDirection(float xDir)
     {
