@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public SpriteRenderer sr;
     public Animator animator;
     [SerializeField] private Transform graphics;
+    private bool lockFlip = false;
 
     private Rigidbody rb;
     private Vector3 inputDir;
@@ -64,17 +65,23 @@ public class PlayerMovement : MonoBehaviour
         if (graphics == null) return;
         float dir = xDir > 0 ? 1f : -1f;
         graphics.localScale = new Vector3(dir, 1f, 1f);
+        lockFlip = false; // explicitly unlock so HandleFlip resumes
     }
-
     public void SetFacingDirection(float xDir)
     {
         if (graphics == null) return;
         float dir = xDir > 0 ? 1f : -1f;
         graphics.localScale = new Vector3(dir, 1f, 1f);
+        lockFlip = true;
     }
-    
+    public void UnlockFlip()
+    {
+        lockFlip = false;
+    }
     void HandleFlip()
     {
+        if (graphics == null || lockFlip) return;
+
         if (inputDir.x > 0.01f)
             graphics.localScale = new Vector3(1, 1, 1);
         else if (inputDir.x < -0.01f)
