@@ -16,6 +16,7 @@ public class PlayerInteraction : MonoBehaviour
     private Vector3 climbWallNormal;
     private float climbStartY;
     private bool climbedFromSide;
+    private Quaternion rotationBeforeClimb;
 
     [Header("References")]
     [SerializeField] PlayerInputReader input;
@@ -156,14 +157,6 @@ public class PlayerInteraction : MonoBehaviour
                     rb.angularVelocity = Vector3.zero;
                 }
                 StartCoroutine(LockVerticalBriefly());
-
-                //
-                // if (wasSideClimb)
-                // {
-                //     Vector3 euler = movement.transform.eulerAngles;
-                //     euler.y = storedNormal.x < 0 ? 0f : 180f;
-                //     movement.transform.eulerAngles = euler;
-                // }
             }
         }
     }
@@ -177,10 +170,17 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (Physics.Raycast(origin, dir, out RaycastHit hit, range) && hit.collider.CompareTag("canClimb"))
             {
+                
                 climbWallNormal = hit.normal;
                 climbedFromSide = Mathf.Abs(hit.normal.x) > Mathf.Abs(hit.normal.z);
+                rotationBeforeClimb = movement.transform.rotation; // store it
+
                 if (climbedFromSide)
-                    movement.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+                {
+                    Vector3 euler = movement.transform.eulerAngles;
+                    euler.y = 90f;
+                    movement.transform.eulerAngles = euler;
+                }
                 
                 climbStartY = movement.transform.position.y;
                 climbWallTop = hit.collider.bounds.max.y;
@@ -198,8 +198,8 @@ public class PlayerInteraction : MonoBehaviour
     void StopClimb()
     {
         if (climbedFromSide)
-            movement.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-        
+            movement.transform.rotation = rotationBeforeClimb; // restore original
+
         Rigidbody rb = movement.GetComponent<Rigidbody>();
         if (rb != null)
         {
