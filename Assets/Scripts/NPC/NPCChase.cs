@@ -69,20 +69,21 @@ public class NPCChase : MonoBehaviour
 
     void Update()
     {
-        if (player == null) return;
-
-        if (isChasing)
+        if (agent != null && agent.isActiveAndEnabled && agent.isOnNavMesh)
         {
-            agent.SetDestination(player.position);
+            if (isChasing)
+            {
+                agent.SetDestination(player.position);
 
-            if (Vector3.Distance(transform.position, player.position) <= stopDistance)
-                agent.isStopped = true;
+                if (Vector3.Distance(transform.position, player.position) <= stopDistance)
+                    agent.isStopped = true;
+                else
+                    agent.isStopped = false;
+            }
             else
-                agent.isStopped = false;
-        }
-        else
-        {
-            agent.isStopped = true;
+            {
+                agent.isStopped = true;
+            }
         }
 
         // Keep the root orientation fixed (you wanted no spinning).
@@ -189,7 +190,7 @@ public class NPCChase : MonoBehaviour
     public void StopChase()
     {
         isChasing = false;
-        if (agent != null)
+        if (agent != null && agent.isActiveAndEnabled && agent.isOnNavMesh)
             agent.isStopped = true;
     }
 
