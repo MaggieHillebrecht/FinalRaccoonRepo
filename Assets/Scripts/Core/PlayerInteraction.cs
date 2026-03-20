@@ -17,6 +17,8 @@ public class PlayerInteraction : MonoBehaviour
     private float climbStartY;
     private bool climbedFromSide;
     private Quaternion rotationBeforeClimb;
+    private float climbCooldown = 0f;
+    private float climbCooldownDuration = 1f;
 
     [Header("References")]
     [SerializeField] PlayerInputReader input;
@@ -40,7 +42,8 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (!input) input = GetComponent<PlayerInputReader>();
         if (!movement) movement = GetComponent<PlayerMovement>();
-    }
+        rotationBeforeClimb = movement.transform.rotation;
+    }    
 
     void OnEnable()
     {
@@ -56,6 +59,10 @@ public class PlayerInteraction : MonoBehaviour
 
     void Update()
     {
+        // Continuously restore rotation while not climbing to prevent getting stuck
+        if (!isClimbing)
+            movement.transform.rotation = rotationBeforeClimb;
+
         CheckForInteractable();
         HandleClimbingInput();
     }
@@ -122,21 +129,24 @@ public class PlayerInteraction : MonoBehaviour
 
     void HandleClimbingInput()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame && !isClimbing && !currentHeldObject)
+        if (climbCooldown > 0f)
+            climbCooldown -= Time.deltaTime;
+
+        if (Keyboard.current.spaceKey.wasPressedThisFrame && !isClimbing && !currentHeldObject && climbCooldown <= 0f)
             TryClimb();
 
-        if (isClimbing && Keyboard.current.spaceKey.wasReleasedThisFrame){
-            Debug.Log("Space bar released " + climbedFromSide);
-            if (climbedFromSide)
-            {
-                transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-            }
-
+        if (isClimbing && Keyboard.current.spaceKey.wasReleasedThisFrame)
             StopClimb();
-        }
 
         if (isClimbing)
         {
+            // Fallback — if player falls off the wall, stop climbing
+            if (movement.transform.position.y < climbStartY - 0.5f)
+            {
+                StopClimb();
+                return;
+            }
+
             if (Keyboard.current.wKey.isPressed && !lockVertical)
                 movement.transform.position += Vector3.up * climbSpeed * Time.deltaTime;
             else if (Keyboard.current.sKey.isPressed)
@@ -145,12 +155,6 @@ public class PlayerInteraction : MonoBehaviour
             bool hasClimbed = movement.transform.position.y > climbStartY + 1f;
             if (hasClimbed && movement.transform.position.y >= climbWallTop)
             {
-                
-                if (climbedFromSide)
-                {
-                    transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-                }
-                
                 Vector3 storedNormal = climbWallNormal;
                 float storedWallTop = climbWallTop;
 
@@ -160,8 +164,7 @@ public class PlayerInteraction : MonoBehaviour
                 vaultPos.y = storedWallTop + 1f;
                 vaultPos += -storedNormal * 1.2f;
                 movement.transform.position = vaultPos;
-                
-                // Freeze rigidbody briefly so physics doesn't push player off
+
                 Rigidbody rb = movement.GetComponent<Rigidbody>();
                 if (rb != null)
                 {
@@ -177,15 +180,14 @@ public class PlayerInteraction : MonoBehaviour
     {
         Vector3 origin = transform.position + Vector3.up * 1.5f;
         Vector3[] directions = { transform.forward, -transform.forward, transform.right, -transform.right };
-        
+    
         foreach (Vector3 dir in directions)
         {
             if (Physics.Raycast(origin, dir, out RaycastHit hit, range) && hit.collider.CompareTag("canClimb"))
             {
-                
                 climbWallNormal = hit.normal;
                 climbedFromSide = Mathf.Abs(hit.normal.x) > Mathf.Abs(hit.normal.z);
-                rotationBeforeClimb = movement.transform.rotation; // store it
+                rotationBeforeClimb = movement.transform.rotation;
 
                 if (climbedFromSide)
                 {
@@ -193,7 +195,7 @@ public class PlayerInteraction : MonoBehaviour
                     euler.y = 90f;
                     movement.transform.eulerAngles = euler;
                 }
-                
+
                 climbStartY = movement.transform.position.y;
                 climbWallTop = hit.collider.bounds.max.y;
 
@@ -205,16 +207,20 @@ public class PlayerInteraction : MonoBehaviour
                 return;
             }
         }
+
+        // No climbable surface found — reset rotation in case player is stuck at 90°
+        movement.transform.rotation = rotationBeforeClimb;
+        float xScale = rotationBeforeClimb.eulerAngles.y > 90f && rotationBeforeClimb.eulerAngles.y < 270f ? -1f : 1f;
+        movement.ResetGraphicsScale(xScale);
     }
 
     void StopClimb()
     {
-        if (climbedFromSide)
-        {
-            movement.transform.rotation = rotationBeforeClimb;
-            float xScale = rotationBeforeClimb.eulerAngles.y > 90f && rotationBeforeClimb.eulerAngles.y < 270f ? -1f : 1f;
-            movement.ResetGraphicsScale(xScale);
-        }
+        climbCooldown = climbCooldownDuration;
+
+        movement.transform.rotation = rotationBeforeClimb;
+        float xScale = rotationBeforeClimb.eulerAngles.y > 90f && rotationBeforeClimb.eulerAngles.y < 270f ? -1f : 1f;
+        movement.ResetGraphicsScale(xScale);
 
         Rigidbody rb = movement.GetComponent<Rigidbody>();
         if (rb != null)
