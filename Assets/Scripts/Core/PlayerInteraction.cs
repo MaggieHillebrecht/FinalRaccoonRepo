@@ -125,8 +125,15 @@ public class PlayerInteraction : MonoBehaviour
         if (Keyboard.current.spaceKey.wasPressedThisFrame && !isClimbing && !currentHeldObject)
             TryClimb();
 
-        if (isClimbing && Keyboard.current.spaceKey.wasReleasedThisFrame)
+        if (isClimbing && Keyboard.current.spaceKey.wasReleasedThisFrame){
+            Debug.Log("Space bar released " + climbedFromSide);
+            if (climbedFromSide)
+            {
+                transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            }
+
             StopClimb();
+        }
 
         if (isClimbing)
         {
@@ -138,7 +145,12 @@ public class PlayerInteraction : MonoBehaviour
             bool hasClimbed = movement.transform.position.y > climbStartY + 1f;
             if (hasClimbed && movement.transform.position.y >= climbWallTop)
             {
-                bool wasSideClimb = climbedFromSide;
+                
+                if (climbedFromSide)
+                {
+                    transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                }
+                
                 Vector3 storedNormal = climbWallNormal;
                 float storedWallTop = climbWallTop;
 
@@ -148,7 +160,7 @@ public class PlayerInteraction : MonoBehaviour
                 vaultPos.y = storedWallTop + 1f;
                 vaultPos += -storedNormal * 1.2f;
                 movement.transform.position = vaultPos;
-
+                
                 // Freeze rigidbody briefly so physics doesn't push player off
                 Rigidbody rb = movement.GetComponent<Rigidbody>();
                 if (rb != null)
@@ -160,7 +172,7 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
     }
-
+    
     void TryClimb()
     {
         Vector3 origin = transform.position + Vector3.up * 1.5f;
@@ -198,7 +210,11 @@ public class PlayerInteraction : MonoBehaviour
     void StopClimb()
     {
         if (climbedFromSide)
-            movement.transform.rotation = rotationBeforeClimb; // restore original
+        {
+            movement.transform.rotation = rotationBeforeClimb;
+            float xScale = rotationBeforeClimb.eulerAngles.y > 90f && rotationBeforeClimb.eulerAngles.y < 270f ? -1f : 1f;
+            movement.ResetGraphicsScale(xScale);
+        }
 
         Rigidbody rb = movement.GetComponent<Rigidbody>();
         if (rb != null)
