@@ -179,6 +179,7 @@ public class PlayerInteraction : MonoBehaviour
             {
                 climbWallNormal = hit.normal;
                 climbedFromSide = Mathf.Abs(hit.normal.x) > Mathf.Abs(hit.normal.z);
+                
                 if (climbedFromSide)
                     movement.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
                 
