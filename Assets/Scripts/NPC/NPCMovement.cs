@@ -17,7 +17,29 @@ public class NPCMovement : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;   // keep 2D/top-down vibe
-        agent.updatePosition = false;   // we control position manually
+        agent.updatePosition = true;   
+        agent.updateUpAxis = false;
+    }
+    public bool CanReach(Vector3 target)
+    {
+        NavMeshPath path = new NavMeshPath();
+
+        if (agent.CalculatePath(target, path))
+        {
+            return path.status == NavMeshPathStatus.PathComplete;
+        }
+
+        return false;
+    }
+    public void MoveToPoint(Vector3 target, float speed)
+    {
+        agent.speed = speed;
+        agent.isStopped = false;
+
+        if (!agent.hasPath || Vector3.Distance(agent.destination, target) > 0.1f)
+        {
+            agent.SetDestination(target);
+        }
     }
     
     // Public patrol method (no parameter)
@@ -26,24 +48,39 @@ public class NPCMovement : MonoBehaviour
         if (patrolPoints == null || patrolPoints.Length == 0)
             return;
         
-        agent.updatePosition = false;
-        agent.ResetPath();
-
         Transform targetPoint = patrolPoints[patrolIndex];
-        if (targetPoint == null) return;
+        if (targetPoint == null)
+            return;
 
-        Vector3 direction = targetPoint.position - transform.position;
+        agent.speed = patrolSpeed;
+        agent.isStopped = false;
+        agent.SetDestination(targetPoint.position);
 
-        // Arrived at the patrol point
-        if (direction.magnitude <= reachThreshold)
+        Debug.Log($"{name} patrolling to: {targetPoint.position}, remaining: {agent.remainingDistance}");
+        
+        if (!agent.pathPending && agent.remainingDistance <= reachThreshold)
         {
-            patrolIndex = (patrolIndex + 1) % patrolPoints.Length;
+            patrolIndex = (patrolIndex + 1) % patrolPoints.Length;  
         }
-        else
-        {
-            // Move manually along the line
-            transform.position += direction.normalized * patrolSpeed * Time.deltaTime;
-        }
+        //
+        // agent.updatePosition = false;
+        // agent.ResetPath();
+        //
+        // Transform targetPoint = patrolPoints[patrolIndex];
+        // if (targetPoint == null) return;
+        //
+        // Vector3 direction = targetPoint.position - transform.position;
+        //
+        // // Arrived at the patrol point
+        // if (direction.magnitude <= reachThreshold)
+        // {
+        //     patrolIndex = (patrolIndex + 1) % patrolPoints.Length;
+        // }
+        // else
+        // {
+        //     // Move manually along the line
+        //     transform.position += direction.normalized * patrolSpeed * Time.deltaTime;
+        // }
     }
 
     public void Chase(float speed)
@@ -51,22 +88,49 @@ public class NPCMovement : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player == null) return;
 
-        agent.updatePosition = true; // let NavMeshAgent handle movement
-        agent.SetDestination(player.transform.position);
         agent.speed = speed;
+        agent.isStopped = false;// let NavMeshAgent handle movement
+        agent.SetDestination(player.transform.position);
     }
 
     public void Investigate(Vector3 target, float speed)
     {
-        agent.updatePosition = true;
         agent.speed = speed;
+        agent.isStopped = false;
         agent.SetDestination(target);
     }
 
     public bool ReachedDestination(float threshold = 0.2f)
     {
-        if (agent.pathPending) return false;
+        if (agent.pathPending)
+            return false;
+
+        if (agent.pathStatus == NavMeshPathStatus.PathInvalid)
+            return true;
+
+        if (!agent.hasPath)
+            return true;
+
         return agent.remainingDistance <= threshold;
+    }
+
+    public bool TryGetNearestNavMeshPoint(Vector3 target, float maxDistance, out Vector3 validPoint)
+    {
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(target, out hit, maxDistance, NavMesh.AllAreas))
+        {
+            validPoint = hit.position;
+            return true;
+        }
+
+        validPoint = Vector3.zero;
+        return false;
+    }
+    
+    public void StopMoving()
+    {
+        agent.isStopped = true;
+        agent.ResetPath();
     }
 
     public void StopAgent()
