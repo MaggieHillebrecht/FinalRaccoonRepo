@@ -50,7 +50,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6183430476200196864, guid: fbbd6d217e6814f909c801169d6b2652, type: 3}
       propertyPath: m_Name
-      value: NPCBase
+      value: NPCGuard
+      objectReference: {fileID: 0}
+    - target: {fileID: 6877677437078831125, guid: fbbd6d217e6814f909c801169d6b2652, type: 3}
+      propertyPath: currentState
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

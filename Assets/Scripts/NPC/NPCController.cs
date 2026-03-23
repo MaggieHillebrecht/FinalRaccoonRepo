@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.XR;
 
 public class NPCController : MonoBehaviour
 {
@@ -77,12 +76,19 @@ public class NPCController : MonoBehaviour
         {
             if (player != null)
                 lastKnownPlayerPosition = player.position;
-            
+
             ChangeState(NPCState.Chase);
             return;
         }
-        
-        movement.Investigate(investigateTarget, data.investigateSpeed);
+
+        movement.MoveToPoint(investigateTarget, data.investigateSpeed);
+
+        if (!movement.CanReach(investigateTarget))
+        {
+            Debug.LogWarning($"{name} cannot reach investigate target, returning to patrol");
+            ChangeState(NPCState.Patrol);
+            return;
+        }
 
         if (movement.ReachedDestination())
         {
@@ -92,6 +98,10 @@ public class NPCController : MonoBehaviour
             {
                 ChangeState(NPCState.Patrol);
             }
+        }
+        else
+        {
+            investigateWaitTimer = 0f;
         }
     }
 
@@ -127,8 +137,33 @@ public class NPCController : MonoBehaviour
 
     public void InvestigateLocation(Vector3 worldPosition)
     {
-        investigateTarget = worldPosition;
-        ChangeState(NPCState.Investigate);
+        Vector3 validPoint;
+
+        if (movement.TryGetNearestNavMeshPoint(worldPosition, 12f, out validPoint))
+        {
+            if (movement.CanReach(validPoint))
+            {
+                investigateTarget = validPoint;
+                Debug.Log($"{name} investigating reachable location: {validPoint}");
+                ChangeState(NPCState.Investigate);
+            }
+            else
+            {
+                Debug.LogWarning($"{name} found a NavMesh point, but it is not reachable: {validPoint}");
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"{name} could not find any NavMesh point near {worldPosition}");
+        }
+    }
+
+    [ContextMenu("Investigate")]
+    public void TestInvestigate()
+    {
+        Vector3 testPosition = transform.position + new Vector3(2f, 0, 0);
+        InvestigateLocation(testPosition);
+        Debug.Log($"{name} investigating test position: " + testPosition);
     }
     // public NPCData data;
     //
