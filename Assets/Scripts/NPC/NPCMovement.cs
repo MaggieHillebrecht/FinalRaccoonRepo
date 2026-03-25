@@ -35,6 +35,7 @@ public class NPCMovement : MonoBehaviour
     {
         agent.speed = speed;
         agent.isStopped = false;
+        Debug.Log($"{name} moving to {target}, remainingDistance={agent.remainingDistance}, hasPath={agent.hasPath}, pathPending={agent.pathPending}");
 
         if (!agent.hasPath || Vector3.Distance(agent.destination, target) > 0.1f)
         {
@@ -55,8 +56,6 @@ public class NPCMovement : MonoBehaviour
         agent.speed = patrolSpeed;
         agent.isStopped = false;
         agent.SetDestination(targetPoint.position);
-
-        Debug.Log($"{name} patrolling to: {targetPoint.position}, remaining: {agent.remainingDistance}");
         
         if (!agent.pathPending && agent.remainingDistance <= reachThreshold)
         {
@@ -105,11 +104,8 @@ public class NPCMovement : MonoBehaviour
         if (agent.pathPending)
             return false;
 
-        if (agent.pathStatus == NavMeshPathStatus.PathInvalid)
-            return true;
-
         if (!agent.hasPath)
-            return true;
+            return false;
 
         return agent.remainingDistance <= threshold;
     }
