@@ -11,7 +11,10 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] TMPro.TextMeshProUGUI interactText;
     [SerializeField] Transform holdPoint; 
 
-    public PickupObject currentHeldObject; 
+    public PickupObject currentHeldObject;
+    public bool IsClimbing;
+    public bool ClimbedFromSide;
+    public Vector3 ClimbWallNormal = Vector3.zero;
 
     void Awake()
     {
