@@ -82,22 +82,23 @@ public class NPCController : MonoBehaviour
             return;
         }
 
-        movement.MoveToPoint(investigateTarget, data.investigateSpeed);
         Debug.DrawLine(transform.position, investigateTarget, Color.yellow, 10f);
         Debug.Log($"{name} → target: {investigateTarget}");
 
-        if (movement.ReachedDestination())
+        if (!movement.IsCloseToTarget(investigateTarget, data.investigateArrivalDistance))
         {
+            movement.MoveToPoint(investigateTarget, data.investigateSpeed);
+            investigateWaitTimer = 0f; // reset wait timer while moving
+        }
+        else
+        {
+            movement.StopMoving();
             investigateWaitTimer += Time.deltaTime;
-
+            
             if (investigateWaitTimer >= data.investigateWaitTime)
             {
                 ChangeState(NPCState.Patrol);
             }
-        }
-        else
-        {
-            investigateWaitTimer = 0f;
         }
     }
 
@@ -134,45 +135,19 @@ public class NPCController : MonoBehaviour
     public void InvestigateLocation(Vector3 worldPosition)
     {
         investigateTarget = worldPosition;
-        Debug.Log($"{name} investigate target set to {investigateTarget}");
         ChangeState(NPCState.Investigate);
     }
 
     [ContextMenu("Investigate")]
     public void TestInvestigate()
     {
-        Vector3 testPosition = investigateTestPoint.position;
-        if (investigateTestPoint != null)
+        if (investigateTestPoint == null)
         {
-            InvestigateLocation(testPosition);
+            Debug.LogWarning($"{name} has no investigateTestPoint assigned");
+            return;
         }
-        // Vector3 testPosition = transform.position + transform.forward * 2f;
-        // InvestigateLocation(testPosition);
-        Debug.Log($"{name} investigating test position: " + testPosition);
+
+        Vector3 testPosition = investigateTestPoint.position;
+        InvestigateLocation(testPosition);
     }
-    // public NPCData data;
-    //
-    // private NPCMovement movement;
-    // private NPCDetection detection;
-    //
-    // void Awake()
-    // {
-    //     movement = GetComponent<NPCMovement>();
-    //     detection = GetComponent<NPCDetection>();
-    // }
-    //
-    // void Update()
-    // {
-    //     if (detection == null || movement == null || data == null)
-    //         return;
-    //
-    //     if (detection.CanSeePlayer())
-    //     {
-    //         movement.Chase(data.chaseSpeed);
-    //     }
-    //     else
-    //     {
-    //         movement.Patrol(); // no parameter needed
-    //     }
-    //}
 }

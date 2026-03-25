@@ -35,12 +35,14 @@ public class NPCMovement : MonoBehaviour
     {
         agent.speed = speed;
         agent.isStopped = false;
-        Debug.Log($"{name} moving to {target}, remainingDistance={agent.remainingDistance}, hasPath={agent.hasPath}, pathPending={agent.pathPending}");
 
         if (!agent.hasPath || Vector3.Distance(agent.destination, target) > 0.1f)
         {
             agent.SetDestination(target);
         }
+        
+        Debug.Log($"{name} moving to {target}, remainingDistance={agent.remainingDistance}, hasPath={agent.hasPath}, pathPending={agent.pathPending}");
+
     }
     
     // Public patrol method (no parameter)
@@ -104,10 +106,23 @@ public class NPCMovement : MonoBehaviour
         if (agent.pathPending)
             return false;
 
-        if (!agent.hasPath)
+        if (agent.remainingDistance > threshold)
             return false;
 
-        return agent.remainingDistance <= threshold;
+        if (agent.hasPath && agent.velocity.sqrMagnitude > 0.01f)
+            return false;
+
+        return true;
+    }
+
+    public bool IsCloseToTarget(Vector3 target, float threshold = 0.5f)
+    {
+        Vector3 currentPos = transform.position;
+
+        currentPos.y = 0f;
+        target.y = 0f;
+
+        return Vector3.Distance(currentPos, target) <= threshold;
     }
 
     public bool TryGetNearestNavMeshPoint(Vector3 target, float maxDistance, out Vector3 validPoint)
