@@ -2,55 +2,103 @@ using UnityEngine;
 
 public class HideSpot : MonoBehaviour, IInteractable
 {
-    [SerializeField] Transform hidePoint;
+    [Header("Hide Settings")]
+    [SerializeField] private Transform hidePoint; 
+    [SerializeField] private float moveSmooth = 10f; 
 
-    public void Interact(GameObject player)
+    private GameObject player;
+    private PlayerMovement movement;
+    private PlayerInteractionState state;
+    private Rigidbody rb;
+    private SpriteRenderer sprite;
+
+    private bool isPlayerHidden => state != null && state.IsHidden;
+
+    private void LateUpdate()
     {
-        PlayerMovement movement = player.GetComponent<PlayerMovement>();
-        PlayerInteractionState state = player.GetComponent<PlayerInteractionState>();
-        SpriteRenderer sprite = player.GetComponent<SpriteRenderer>();
+        if (isPlayerHidden && player != null && hidePoint != null)
+        {
+            Vector3 targetPos = hidePoint.position;
+            if (rb != null && rb.isKinematic)
+            {
+                player.transform.position = Vector3.Lerp(player.transform.position, targetPos, moveSmooth * Time.deltaTime);
+            }
+        }
+    }
+
+    public void Interact(GameObject interactingPlayer)
+    {
+        player = interactingPlayer;
+        movement = player.GetComponent<PlayerMovement>();
+        state = player.GetComponent<PlayerInteractionState>();
+        rb = player.GetComponent<Rigidbody>();
+        sprite = player.GetComponentInChildren<SpriteRenderer>();
 
         if (!movement || !state || !sprite)
+        {
+            Debug.LogWarning("Missing components on player for HideSpot!", this);
             return;
+        }
 
         if (!state.IsHidden)
-            EnterHide(player, movement, state, sprite);
+            EnterHide();
         else
-            ExitHide(movement, state, sprite);
+            ExitHide();
     }
 
-    public string GetInteractText(GameObject player)
+    public string GetInteractText(GameObject interactingPlayer)
     {
-        PlayerInteractionState state = player.GetComponent<PlayerInteractionState>();
-        PlayerInputReader input = player.GetComponent<PlayerInputReader>();
-
-        if (state == null || input == null) return "";
+        PlayerInteractionState s = interactingPlayer.GetComponent<PlayerInteractionState>();
+        PlayerInputReader input = interactingPlayer.GetComponent<PlayerInputReader>();
+        if (s == null || input == null) return "";
 
         string key = input.GetInteractKey();
-
-        return state.IsHidden
-            ? $"{key} to exit"
-            : $"{key} to hide";
+        return s.IsHidden ? $"[{key}] Exit Hide" : $"[{key}] Hide";
     }
 
-    void EnterHide(GameObject player, PlayerMovement movement, PlayerInteractionState state, SpriteRenderer sprite)
+    private void EnterHide()
     {
         state.EnterHide();
 
-        Rigidbody rb = movement.GetComponent<Rigidbody>();
-        if (rb) rb.linearVelocity = Vector3.zero;
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector3.zero;
+            rb.isKinematic = true;        // prevent physics from pushing player
+            rb.detectCollisions = false;  
+        }
 
-        player.transform.position = hidePoint.position;
+        if (hidePoint != null)
+            player.transform.position = hidePoint.position;
+        else
+            Debug.LogWarning("HidePoint not assigned!", this);
 
         movement.enabled = false;
-        sprite.enabled = false;
+
+        if (sprite != null)
+            sprite.enabled = false;
     }
 
-    void ExitHide(PlayerMovement movement, PlayerInteractionState state, SpriteRenderer sprite)
+    private void ExitHide()
     {
         state.ExitHide();
 
+        if (rb != null)
+        {
+            rb.isKinematic = false;
+            rb.detectCollisions = true;
+        }
+
         movement.enabled = true;
-        sprite.enabled = true;
+
+        if (sprite != null)
+            sprite.enabled = true;
+    }
+    private void OnDrawGizmosSelected()
+    {
+        if (hidePoint != null)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(hidePoint.position, 0.2f);
+        }
     }
 }

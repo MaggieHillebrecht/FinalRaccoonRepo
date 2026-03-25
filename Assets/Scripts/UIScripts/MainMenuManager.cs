@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using AK.Wwise;
+using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -35,36 +36,37 @@ public class MainMenuManager : MonoBehaviour
 
     public void ShowMainMenuSafe()
     {
-        // Safely enable main menu canvas
+        if (GameStateController.Instance != null)
+        {
+            if (!GameStateController.forceMainMenu && GameStateController.CurrentState == GameState.Playing)
+            {
+                // Game is already running, skip showing main menu
+                if (mainMenuCanvas != null) mainMenuCanvas.SetActive(false);
+                return;
+            }
+
+            GameStateController.Instance.PauseGame();
+        }
+
         if (mainMenuCanvas != null)
             mainMenuCanvas.SetActive(true);
-        else
-            Debug.LogWarning("MainMenuCanvas is not assigned.");
 
-        // Safely pause the game
-        if (GameStateController.Instance != null)
-            GameStateController.Instance.PauseGame();
-        else
-            Debug.LogWarning("GameStateController.Instance is null.");
-
-        // Safely set UI selection
         if (EventSystem.current != null && startButton != null)
         {
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(startButton);
         }
-        else
-        {
-            Debug.LogWarning("EventSystem or StartButton is not assigned.");
-        }
     }
 
     public void StartGame()
     {
-        GameplayState?.SetValue();
-
+        GameStateController.forceMainMenu = false; // skip menu next time
+        GameStateController.gameStarted = true;    // mark game as started
         if (GameStateController.Instance != null)
             GameStateController.Instance.SetState(GameState.Playing);
+
+        if (mainMenuCanvas != null)
+            mainMenuCanvas.SetActive(false);
     }
 
     private void MusicCallback(object cookie, AkCallbackType type, object info)
@@ -81,6 +83,12 @@ public class MainMenuManager : MonoBehaviour
         if (GameStateController.Instance != null)
             GameStateController.Instance.ResumeGame();
     }
+    public void GoToMainMenu()
+    {
+        GameStateController.forceMainMenu = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    
 
     public void QuitGame()
     {

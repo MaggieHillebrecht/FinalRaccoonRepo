@@ -8,6 +8,7 @@ TagManager:
   - Prop
   - canPull
   - NPC
+  - canClimb
   layers:
   - Default
   - TransparentFX

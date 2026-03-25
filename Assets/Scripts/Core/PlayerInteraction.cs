@@ -9,9 +9,9 @@ public class PlayerInteraction : MonoBehaviour
     [Header("References")]
     [SerializeField] PlayerInputReader input;
     [SerializeField] TMPro.TextMeshProUGUI interactText;
-    [SerializeField] Transform holdPoint; // ✅ ADD THIS
+    [SerializeField] Transform holdPoint; 
 
-    public PickupObject currentHeldObject; // ✅ ADD THIS
+    public PickupObject currentHeldObject; 
 
     void Awake()
     {
@@ -107,7 +107,7 @@ public class PlayerInteraction : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, range);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position + Vector3.up * 1.5f, range);
     }
 }
