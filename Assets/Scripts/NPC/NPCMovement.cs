@@ -4,47 +4,54 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class NPCMovement : MonoBehaviour
 {
+    public NPCData data;
     private NavMeshAgent agent;
 
     public Transform[] patrolPoints;
     private int patrolIndex = 0;
 
     [Header("Patrol Settings")]
-    public float patrolSpeed = 2f;      // speed along the lines
     public float reachThreshold = 0.1f; // distance to consider "arrived"
 
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;   // keep 2D/top-down vibe
-        agent.updatePosition = false;   // we control position manually
+        agent.updatePosition = true;   
+        agent.updateUpAxis = false;
     }
-
-    void Update()
+    
+    public void MoveToPoint(Vector3 target, float speed)
     {
-        Patrol(); // no arguments needed
-    }
+        agent.speed = speed;
+        agent.isStopped = false;
 
+        if (!agent.hasPath || Vector3.Distance(agent.destination, target) > 0.1f)
+        {
+            agent.SetDestination(target);
+        }
+        
+        Debug.Log($"{name} moving to {target}, remainingDistance={agent.remainingDistance}, hasPath={agent.hasPath}, pathPending={agent.pathPending}");
+
+    }
+    
     // Public patrol method (no parameter)
     public void Patrol()
     {
         if (patrolPoints == null || patrolPoints.Length == 0)
             return;
+        
+        Transform patrolPoint = patrolPoints[patrolIndex];
+        if (patrolPoint == null)
+            return;
 
-        Transform targetPoint = patrolPoints[patrolIndex];
-        if (targetPoint == null) return;
-
-        Vector3 direction = targetPoint.position - transform.position;
-
-        // Arrived at the patrol point
-        if (direction.magnitude <= reachThreshold)
+        agent.speed = data.moveSpeed;
+        agent.isStopped = false;
+        agent.SetDestination(patrolPoint.position);
+        
+        if (!agent.pathPending && agent.remainingDistance <= reachThreshold)
         {
-            patrolIndex = (patrolIndex + 1) % patrolPoints.Length;
-        }
-        else
-        {
-            // Move manually along the line
-            transform.position += direction.normalized * patrolSpeed * Time.deltaTime;
+            patrolIndex = (patrolIndex + 1) % patrolPoints.Length;  
         }
     }
 
@@ -53,9 +60,25 @@ public class NPCMovement : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player == null) return;
 
-        agent.updatePosition = true; // let NavMeshAgent handle movement
-        agent.SetDestination(player.transform.position);
         agent.speed = speed;
+        agent.isStopped = false;// let NavMeshAgent handle movement
+        agent.SetDestination(player.transform.position);
+    }
+
+    public bool IsCloseToTarget(Vector3 target, float threshold = 0.5f)
+    {
+        Vector3 currentPos = transform.position;
+
+        currentPos.y = 0f;
+        target.y = 0f;
+
+        return Vector3.Distance(currentPos, target) <= threshold;
+    }
+    
+    public void StopMoving()
+    {
+        agent.isStopped = true;
+        agent.ResetPath();
     }
 
     // ===== Debug Gizmos =====
