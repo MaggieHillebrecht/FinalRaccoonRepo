@@ -62653,6 +62653,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 499667019}
     - target: {fileID: 4294292914260934884, guid: 729a28263d468456eb1f22d05157a70e, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: dd1deb157531848c3a8aa7036745f0f5, type: 2}
+    - target: {fileID: 4294292914260934884, guid: 729a28263d468456eb1f22d05157a70e, type: 3}
+      propertyPath: viewAngle
+      value: 170
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294292914260934884, guid: 729a28263d468456eb1f22d05157a70e, type: 3}
       propertyPath: detectionRange
       value: 40
       objectReference: {fileID: 0}
@@ -72700,6 +72708,14 @@ PrefabInstance:
     - target: {fileID: 1898719295130974386, guid: 52e7bd88d8cd042b7b2ada1e828aa9f4, type: 3}
       propertyPath: m_TagString
       value: NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 3672522468412958225, guid: 52e7bd88d8cd042b7b2ada1e828aa9f4, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: dd1deb157531848c3a8aa7036745f0f5, type: 2}
+    - target: {fileID: 3672522468412958225, guid: 52e7bd88d8cd042b7b2ada1e828aa9f4, type: 3}
+      propertyPath: viewAngle
+      value: 170
       objectReference: {fileID: 0}
     - target: {fileID: 3672522468412958225, guid: 52e7bd88d8cd042b7b2ada1e828aa9f4, type: 3}
       propertyPath: detectionRange
