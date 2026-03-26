@@ -4,13 +4,13 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class NPCMovement : MonoBehaviour
 {
+    public NPCData data;
     private NavMeshAgent agent;
 
     public Transform[] patrolPoints;
     private int patrolIndex = 0;
 
     [Header("Patrol Settings")]
-    public float patrolSpeed = 2f;      // speed along the lines
     public float reachThreshold = 0.1f; // distance to consider "arrived"
 
     void Awake()
@@ -20,17 +20,7 @@ public class NPCMovement : MonoBehaviour
         agent.updatePosition = true;   
         agent.updateUpAxis = false;
     }
-    public bool CanReach(Vector3 target)
-    {
-        NavMeshPath path = new NavMeshPath();
-
-        if (agent.CalculatePath(target, path))
-        {
-            return path.status == NavMeshPathStatus.PathComplete;
-        }
-
-        return false;
-    }
+    
     public void MoveToPoint(Vector3 target, float speed)
     {
         agent.speed = speed;
@@ -51,37 +41,18 @@ public class NPCMovement : MonoBehaviour
         if (patrolPoints == null || patrolPoints.Length == 0)
             return;
         
-        Transform targetPoint = patrolPoints[patrolIndex];
-        if (targetPoint == null)
+        Transform patrolPoint = patrolPoints[patrolIndex];
+        if (patrolPoint == null)
             return;
 
-        agent.speed = patrolSpeed;
+        agent.speed = data.moveSpeed;
         agent.isStopped = false;
-        agent.SetDestination(targetPoint.position);
+        agent.SetDestination(patrolPoint.position);
         
         if (!agent.pathPending && agent.remainingDistance <= reachThreshold)
         {
             patrolIndex = (patrolIndex + 1) % patrolPoints.Length;  
         }
-        //
-        // agent.updatePosition = false;
-        // agent.ResetPath();
-        //
-        // Transform targetPoint = patrolPoints[patrolIndex];
-        // if (targetPoint == null) return;
-        //
-        // Vector3 direction = targetPoint.position - transform.position;
-        //
-        // // Arrived at the patrol point
-        // if (direction.magnitude <= reachThreshold)
-        // {
-        //     patrolIndex = (patrolIndex + 1) % patrolPoints.Length;
-        // }
-        // else
-        // {
-        //     // Move manually along the line
-        //     transform.position += direction.normalized * patrolSpeed * Time.deltaTime;
-        // }
     }
 
     public void Chase(float speed)
@@ -94,27 +65,6 @@ public class NPCMovement : MonoBehaviour
         agent.SetDestination(player.transform.position);
     }
 
-    public void Investigate(Vector3 target, float speed)
-    {
-        agent.speed = speed;
-        agent.isStopped = false;
-        agent.SetDestination(target);
-    }
-
-    public bool ReachedDestination(float threshold = 0.2f)
-    {
-        if (agent.pathPending)
-            return false;
-
-        if (agent.remainingDistance > threshold)
-            return false;
-
-        if (agent.hasPath && agent.velocity.sqrMagnitude > 0.01f)
-            return false;
-
-        return true;
-    }
-
     public bool IsCloseToTarget(Vector3 target, float threshold = 0.5f)
     {
         Vector3 currentPos = transform.position;
@@ -124,32 +74,11 @@ public class NPCMovement : MonoBehaviour
 
         return Vector3.Distance(currentPos, target) <= threshold;
     }
-
-    public bool TryGetNearestNavMeshPoint(Vector3 target, float maxDistance, out Vector3 validPoint)
-    {
-        NavMeshHit hit;
-        if (NavMesh.SamplePosition(target, out hit, maxDistance, NavMesh.AllAreas))
-        {
-            validPoint = hit.position;
-            return true;
-        }
-
-        validPoint = Vector3.zero;
-        return false;
-    }
     
     public void StopMoving()
     {
         agent.isStopped = true;
         agent.ResetPath();
-    }
-
-    public void StopAgent()
-    {
-        if (agent != null)
-        {
-            agent.ResetPath();
-        }
     }
 
     // ===== Debug Gizmos =====
