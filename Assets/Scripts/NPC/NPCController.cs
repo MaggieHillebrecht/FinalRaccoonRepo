@@ -104,6 +104,8 @@ public class NPCController : MonoBehaviour
 
     void HandleChaseState(bool seesPlayer)
     {
+        Debug.Log($"{name} is chasing");
+
         if (seesPlayer)
         {
             lostSightTimer = 0f;
@@ -119,8 +121,7 @@ public class NPCController : MonoBehaviour
 
             if (lostSightTimer >= data.loseSightDelay)
             {
-                investigateTarget = lastKnownPlayerPosition;
-                ChangeState(NPCState.Investigate);
+                ChangeState(NPCState.Patrol);
             }
         }
     }
@@ -149,5 +150,11 @@ public class NPCController : MonoBehaviour
 
         Vector3 testPosition = investigateTestPoint.position;
         InvestigateLocation(testPosition);
+    }
+
+    [ContextMenu("Chase")]
+    public void TestChase()
+    {
+        ChangeState(NPCState.Chase);
     }
 }
