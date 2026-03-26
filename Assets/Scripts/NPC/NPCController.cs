@@ -139,6 +139,19 @@ public class NPCController : MonoBehaviour
         ChangeState(NPCState.Investigate);
     }
 
+    public void OnDistractionEvent(Vector3 eventPosition, float eventRange)
+    {
+        if (currentState == NPCState.Chase)
+            return;
+        
+        float distanceToEvent = Vector3.Distance(transform.position, eventPosition);
+        
+        if (distanceToEvent <= eventRange)
+        {
+            InvestigateLocation(eventPosition);
+        }
+    }
+
     [ContextMenu("Investigate")]
     public void TestInvestigate()
     {
