@@ -5,6 +5,7 @@ using UnityEngine.AI;
 public class NPCDetection : MonoBehaviour
 {
     public NPCData data;
+    public LayerMask obstacleMask;
     
     private Transform player;
     private NavMeshAgent agent;
@@ -39,10 +40,20 @@ public class NPCDetection : MonoBehaviour
             return false;
         
         float angleToPlayer = Vector3.Angle(facingDirection, toPlayer.normalized);
+        if (angleToPlayer > data.viewAngle * 0.5f)
+            return false;
+
+        Vector3 rayOrigin = transform.position + Vector3.up * 0.5f;
+        Vector3 rayDirection = (player.position + Vector3.up * 0.5f) - rayOrigin;
+
+        if (Physics.Raycast(rayOrigin, rayDirection.normalized, out RaycastHit hit, distanceToPlayer, obstacleMask))
+        {
+            Debug.Log($"{name} vision blocked by {hit.collider.name}");
+            Debug.DrawRay(rayOrigin, rayDirection.normalized * distanceToPlayer, Color.red);
+            return false;
+        }
         
-        Debug.Log($"{name}: distance to player = {distanceToPlayer}, angle to player = {angleToPlayer}");
-        
-        return angleToPlayer <= data.viewAngle * 0.5f;
+        return true;
     }
 
     private void OnDrawGizmos()

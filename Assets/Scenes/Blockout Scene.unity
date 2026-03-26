@@ -854,7 +854,7 @@ GameObject:
   - component: {fileID: 24948035}
   - component: {fileID: 24948034}
   - component: {fileID: 24948033}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ExhibitWall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7627,7 +7627,7 @@ GameObject:
   - component: {fileID: 189811254}
   - component: {fileID: 189811253}
   - component: {fileID: 189811252}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ExhibitWall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10400,7 +10400,7 @@ GameObject:
   - component: {fileID: 273234699}
   - component: {fileID: 273234698}
   - component: {fileID: 273234697}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ExhibitWall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11001,7 +11001,7 @@ GameObject:
   - component: {fileID: 278772062}
   - component: {fileID: 278772061}
   - component: {fileID: 278772060}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ExhibitWall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11678,7 +11678,7 @@ GameObject:
   - component: {fileID: 298407705}
   - component: {fileID: 298407704}
   - component: {fileID: 298407703}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: LeftWall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16054,7 +16054,7 @@ GameObject:
   - component: {fileID: 372095642}
   - component: {fileID: 372095641}
   - component: {fileID: 372095640}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ExhibitWall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17064,7 +17064,7 @@ GameObject:
   - component: {fileID: 384720074}
   - component: {fileID: 384720073}
   - component: {fileID: 384720072}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ExhibitWall (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22156,7 +22156,7 @@ GameObject:
   - component: {fileID: 494398068}
   - component: {fileID: 494398067}
   - component: {fileID: 494398066}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ExhibitWall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24646,7 +24646,7 @@ GameObject:
   - component: {fileID: 567388721}
   - component: {fileID: 567388720}
   - component: {fileID: 567388719}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ExhibitWall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27405,7 +27405,7 @@ GameObject:
   - component: {fileID: 636337126}
   - component: {fileID: 636337125}
   - component: {fileID: 636337124}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ExhibitWall (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28900,7 +28900,7 @@ GameObject:
   - component: {fileID: 660475399}
   - component: {fileID: 660475398}
   - component: {fileID: 660475397}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: BackWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33371,7 +33371,7 @@ GameObject:
   - component: {fileID: 765174971}
   - component: {fileID: 765174970}
   - component: {fileID: 765174969}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: RightWall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35678,7 +35678,7 @@ GameObject:
   - component: {fileID: 818681012}
   - component: {fileID: 818681011}
   - component: {fileID: 818681010}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: RightWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37443,7 +37443,7 @@ GameObject:
   - component: {fileID: 857155036}
   - component: {fileID: 857155035}
   - component: {fileID: 857155034}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ExhibitWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40728,7 +40728,7 @@ GameObject:
   - component: {fileID: 905070776}
   - component: {fileID: 905070775}
   - component: {fileID: 905070774}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: FrontWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43123,7 +43123,7 @@ GameObject:
   - component: {fileID: 953605102}
   - component: {fileID: 953605101}
   - component: {fileID: 953605100}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ExhibitWall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46979,7 +46979,7 @@ GameObject:
   - component: {fileID: 1040461464}
   - component: {fileID: 1040461463}
   - component: {fileID: 1040461462}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ExhibitWall (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49346,7 +49346,7 @@ GameObject:
   - component: {fileID: 1093327325}
   - component: {fileID: 1093327324}
   - component: {fileID: 1093327323}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: DividerWalls (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51027,7 +51027,7 @@ GameObject:
   - component: {fileID: 1131179344}
   - component: {fileID: 1131179343}
   - component: {fileID: 1131179342}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: DividerWall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57439,7 +57439,7 @@ GameObject:
   - component: {fileID: 1319179646}
   - component: {fileID: 1319179645}
   - component: {fileID: 1319179644}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ExhibitWall (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58112,7 +58112,7 @@ GameObject:
   - component: {fileID: 1324573844}
   - component: {fileID: 1324573843}
   - component: {fileID: 1324573842}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: LeftWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60364,7 +60364,7 @@ GameObject:
   - component: {fileID: 1370972647}
   - component: {fileID: 1370972646}
   - component: {fileID: 1370972645}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ExhibitWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62663,6 +62663,10 @@ PrefabInstance:
     - target: {fileID: 4294292914260934884, guid: 729a28263d468456eb1f22d05157a70e, type: 3}
       propertyPath: detectionRange
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294292914260934884, guid: 729a28263d468456eb1f22d05157a70e, type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 2048
       objectReference: {fileID: 0}
     - target: {fileID: 6918155308523931467, guid: 729a28263d468456eb1f22d05157a70e, type: 3}
       propertyPath: m_LocalScale.x
@@ -69754,7 +69758,7 @@ GameObject:
   - component: {fileID: 1536489014}
   - component: {fileID: 1536489013}
   - component: {fileID: 1536489012}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ExhibitWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72720,6 +72724,10 @@ PrefabInstance:
     - target: {fileID: 3672522468412958225, guid: 52e7bd88d8cd042b7b2ada1e828aa9f4, type: 3}
       propertyPath: detectionRange
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 3672522468412958225, guid: 52e7bd88d8cd042b7b2ada1e828aa9f4, type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 2048
       objectReference: {fileID: 0}
     - target: {fileID: 4696492120335083546, guid: 52e7bd88d8cd042b7b2ada1e828aa9f4, type: 3}
       propertyPath: m_Controller
@@ -79546,7 +79554,7 @@ GameObject:
   - component: {fileID: 1763569711}
   - component: {fileID: 1763569710}
   - component: {fileID: 1763569709}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: DividerWalls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81703,7 +81711,7 @@ GameObject:
   - component: {fileID: 1806291911}
   - component: {fileID: 1806291910}
   - component: {fileID: 1806291909}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: LeftWall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82767,7 +82775,7 @@ GameObject:
   - component: {fileID: 1814830838}
   - component: {fileID: 1814830837}
   - component: {fileID: 1814830836}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ExhibitWall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86340,7 +86348,7 @@ GameObject:
   - component: {fileID: 1893237876}
   - component: {fileID: 1893237875}
   - component: {fileID: 1893237874}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ExhibitWall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86916,7 +86924,7 @@ GameObject:
   - component: {fileID: 1897386004}
   - component: {fileID: 1897386003}
   - component: {fileID: 1897386002}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ExhibitWall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90718,7 +90726,7 @@ GameObject:
   - component: {fileID: 2022227837}
   - component: {fileID: 2022227836}
   - component: {fileID: 2022227835}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ExhibitWall (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
