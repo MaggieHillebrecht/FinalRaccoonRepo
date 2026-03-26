@@ -7,7 +7,7 @@ public class NPCData : ScriptableObject
     public float chaseSpeed = 15f;
 
     public float investigateSpeed = 10f;
-    public float investigateArrivalDistance = 3f;
+    public float investigateArrivalDistance = 0.5f;
     public float investigateWaitTime = 2f;
     
     public float loseSightDelay = 2f;
