@@ -40,7 +40,9 @@ public class GameStateController : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
+        
+        ResetGameFlags();
+        
         if (!gameStarted || forceMainMenu)
         {
             SetState(GameState.MainMenu);
@@ -63,6 +65,7 @@ public class GameStateController : MonoBehaviour
                 break;
 
             case GameState.Playing:
+                ResetGameFlags();
                 Time.timeScale = 1f;
                 Physics.autoSimulation = true;
                 if (winScreen != null) winScreen.SetActive(false);
@@ -88,6 +91,7 @@ public class GameStateController : MonoBehaviour
 
     public void RestartGame()
     {
+        ResetGameFlags();
         forceMainMenu = false; // skip main menu on restart
         Time.timeScale = 1f;
         Physics.autoSimulation = true;
@@ -124,9 +128,10 @@ public class GameStateController : MonoBehaviour
 
     public void GameOver()
     {
+        if (CurrentState == GameState.GameOver) return;
+        
         IsGameOver = true;
-        Time.timeScale = 0f;
-        Physics.autoSimulation = false;
+        SetState(GameState.GameOver);
     }
 
     public void WinGame()
@@ -134,5 +139,13 @@ public class GameStateController : MonoBehaviour
         if (CurrentState == GameState.Won) return;
         Debug.Log("Game Won!");
         SetState(GameState.Won);
+    }
+
+    void ResetGameFlags()
+    {
+        IsPaused = false;
+        IsGameWon = false;
+        IsGameOver = false;
+        IsMapOpen = false;
     }
 }
