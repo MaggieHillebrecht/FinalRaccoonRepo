@@ -11901,7 +11901,7 @@ NavMeshObstacle:
   serializedVersion: 3
   m_Shape: 1
   m_Extents: {x: 216.64601, y: 0.89800006, z: 120.425}
-  m_MoveThreshold: 0.1
+  m_MoveThreshold: 0
   m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -12802,7 +12802,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.6666667
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
@@ -14323,7 +14323,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.6666667
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: f71c0402c39b84a51b4e43cdfa825105, type: 2}
   m_BuildHeightMesh: 0
@@ -31937,7 +31937,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.6666667
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: b17b5cca6e0a946f29d35ad348af9cb3, type: 2}
   m_BuildHeightMesh: 0
@@ -35975,7 +35975,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.6666667
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
@@ -63978,7 +63978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7805657964128402745, guid: 729a28263d468456eb1f22d05157a70e, type: 3}
       propertyPath: patrolPoints.Array.size
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7805657964128402745, guid: 729a28263d468456eb1f22d05157a70e, type: 3}
       propertyPath: 'patrolPoints.Array.data[0]'
@@ -63987,23 +63987,23 @@ PrefabInstance:
     - target: {fileID: 7805657964128402745, guid: 729a28263d468456eb1f22d05157a70e, type: 3}
       propertyPath: 'patrolPoints.Array.data[1]'
       value: 
-      objectReference: {fileID: 377290510}
+      objectReference: {fileID: 2017828542}
     - target: {fileID: 7805657964128402745, guid: 729a28263d468456eb1f22d05157a70e, type: 3}
       propertyPath: 'patrolPoints.Array.data[2]'
       value: 
-      objectReference: {fileID: 2017828542}
+      objectReference: {fileID: 1327669784}
     - target: {fileID: 7805657964128402745, guid: 729a28263d468456eb1f22d05157a70e, type: 3}
       propertyPath: 'patrolPoints.Array.data[3]'
       value: 
-      objectReference: {fileID: 1327669784}
+      objectReference: {fileID: 1785387208}
     - target: {fileID: 7805657964128402745, guid: 729a28263d468456eb1f22d05157a70e, type: 3}
       propertyPath: 'patrolPoints.Array.data[4]'
       value: 
-      objectReference: {fileID: 1785387208}
+      objectReference: {fileID: 1859882775}
     - target: {fileID: 7805657964128402745, guid: 729a28263d468456eb1f22d05157a70e, type: 3}
       propertyPath: 'patrolPoints.Array.data[5]'
       value: 
-      objectReference: {fileID: 1859882775}
+      objectReference: {fileID: 410184891}
     - target: {fileID: 7805657964128402745, guid: 729a28263d468456eb1f22d05157a70e, type: 3}
       propertyPath: 'patrolPoints.Array.data[6]'
       value: 
@@ -64031,6 +64031,10 @@ PrefabInstance:
     - target: {fileID: 8696334781911296718, guid: 729a28263d468456eb1f22d05157a70e, type: 3}
       propertyPath: m_AutoBraking
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8696334781911296718, guid: 729a28263d468456eb1f22d05157a70e, type: 3}
+      propertyPath: m_Acceleration
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8696334781911296718, guid: 729a28263d468456eb1f22d05157a70e, type: 3}
       propertyPath: m_StoppingDistance
@@ -74109,6 +74113,10 @@ PrefabInstance:
     - target: {fileID: 8196720053108296763, guid: 52e7bd88d8cd042b7b2ada1e828aa9f4, type: 3}
       propertyPath: m_AutoBraking
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196720053108296763, guid: 52e7bd88d8cd042b7b2ada1e828aa9f4, type: 3}
+      propertyPath: m_Acceleration
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8196720053108296763, guid: 52e7bd88d8cd042b7b2ada1e828aa9f4, type: 3}
       propertyPath: m_StoppingDistance
@@ -92855,7 +92863,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5965027194425972414, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
       propertyPath: sprintMultiplier
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7260852247023616438, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
       propertyPath: m_IsTrigger

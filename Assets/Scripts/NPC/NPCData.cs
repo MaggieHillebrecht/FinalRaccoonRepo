@@ -4,7 +4,9 @@ using UnityEngine;
 public class NPCData : ScriptableObject
 {
     //patrol settings
-    public float moveSpeed = 8f;
+    public float moveSpeed = 20f;
+    public float patrolArrivalDistance = 0.5f;
+    public float patrolWaitTime = 2f;
     
     //investigate settings
     public float investigateSpeed = 10f;
