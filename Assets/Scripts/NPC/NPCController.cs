@@ -20,6 +20,7 @@ public class NPCController : MonoBehaviour
 
     private Vector3 investigateTarget;
     private Vector3 lastKnownPlayerPosition;
+    private float patrolWaitTimer;
     private float investigateWaitTimer;
     private float lostSightTimer;
 
@@ -68,8 +69,26 @@ public class NPCController : MonoBehaviour
             ChangeState(NPCState.Chase);
             return;
         }
-        
-        movement.Patrol();
+
+        Transform patrolPoint = movement.GetCurrentPatrolPoint();
+        if (patrolPoint == null)
+            return;
+
+        if (!movement.IsCloseToTarget(patrolPoint.position, data.patrolArrivalDistance))
+        {
+            movement.Patrol();
+        }
+        else
+        {
+            movement.StopMoving();
+            patrolWaitTimer += Time.deltaTime;
+
+            if (patrolWaitTimer >= data.patrolWaitTime)
+            {
+                movement.AdvancePatrolPoint();
+                patrolWaitTimer = 0f;
+            }
+        }
     }
     void HandleInvestigateState(bool seesPlayer)
     {
@@ -121,7 +140,7 @@ public class NPCController : MonoBehaviour
 
             if (lostSightTimer >= data.loseSightDelay)
             {
-                ChangeState(NPCState.Patrol);
+                InvestigateLocation(lastKnownPlayerPosition);
             }
         }
     }
@@ -129,6 +148,7 @@ public class NPCController : MonoBehaviour
     void ChangeState(NPCState newState)
     {
         currentState = newState;
+        patrolWaitTimer = 0f;
         investigateWaitTimer = 0f;
         lostSightTimer = 0f;
     }
