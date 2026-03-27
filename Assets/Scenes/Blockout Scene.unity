@@ -92855,7 +92855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5965027194425972414, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
       propertyPath: sprintMultiplier
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7260852247023616438, guid: c793d508d1fa44f3c85598c10085f6d1, type: 3}
       propertyPath: m_IsTrigger
