@@ -56,21 +56,6 @@ public class NPCMovement : MonoBehaviour
             return;
         
         MoveToPoint(patrolPoint.position, data.moveSpeed);
-        // if (patrolPoints == null || patrolPoints.Length == 0)
-        //     return;
-        //
-        // Transform patrolPoint = patrolPoints[patrolIndex];
-        // if (patrolPoint == null)
-        //     return;
-        //
-        // agent.speed = data.moveSpeed;
-        // agent.isStopped = false;
-        // agent.SetDestination(patrolPoint.position);
-        //
-        // if (!agent.pathPending && agent.remainingDistance <= reachThreshold)
-        // {
-        //     patrolIndex = (patrolIndex + 1) % patrolPoints.Length;  
-        // }
     }
 
     public void Chase(float speed)
