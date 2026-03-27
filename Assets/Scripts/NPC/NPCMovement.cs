@@ -8,7 +8,7 @@ public class NPCMovement : MonoBehaviour
     private NavMeshAgent agent;
 
     public Transform[] patrolPoints;
-    private int patrolIndex = 0;
+    private int patrolIndex;
 
     [Header("Patrol Settings")]
     public float reachThreshold = 0.1f; // distance to consider "arrived"
@@ -30,29 +30,47 @@ public class NPCMovement : MonoBehaviour
         {
             agent.SetDestination(target);
         }
-        
-        Debug.Log($"{name} moving to {target}, remainingDistance={agent.remainingDistance}, hasPath={agent.hasPath}, pathPending={agent.pathPending}");
+    }
 
+    public Transform GetCurrentPatrolPoint()
+    {
+        if (patrolPoints == null || patrolPoints.Length == 0)
+            return null;
+        
+        return patrolPoints[patrolIndex];
+    }
+
+    public void AdvancePatrolPoint()
+    {
+        if (patrolPoints == null || patrolPoints.Length == 0)
+            return;
+        
+        patrolIndex = (patrolIndex +1) % patrolPoints.Length;
     }
     
     // Public patrol method (no parameter)
     public void Patrol()
     {
-        if (patrolPoints == null || patrolPoints.Length == 0)
-            return;
-        
-        Transform patrolPoint = patrolPoints[patrolIndex];
+        Transform patrolPoint = GetCurrentPatrolPoint();
         if (patrolPoint == null)
             return;
-
-        agent.speed = data.moveSpeed;
-        agent.isStopped = false;
-        agent.SetDestination(patrolPoint.position);
         
-        if (!agent.pathPending && agent.remainingDistance <= reachThreshold)
-        {
-            patrolIndex = (patrolIndex + 1) % patrolPoints.Length;  
-        }
+        MoveToPoint(patrolPoint.position, data.moveSpeed);
+        // if (patrolPoints == null || patrolPoints.Length == 0)
+        //     return;
+        //
+        // Transform patrolPoint = patrolPoints[patrolIndex];
+        // if (patrolPoint == null)
+        //     return;
+        //
+        // agent.speed = data.moveSpeed;
+        // agent.isStopped = false;
+        // agent.SetDestination(patrolPoint.position);
+        //
+        // if (!agent.pathPending && agent.remainingDistance <= reachThreshold)
+        // {
+        //     patrolIndex = (patrolIndex + 1) % patrolPoints.Length;  
+        // }
     }
 
     public void Chase(float speed)
