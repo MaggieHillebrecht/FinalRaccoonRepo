@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8741e686ef4548aa8c8c2fec1189c11, type: 3}
   m_Name: GuardData
   m_EditorClassIdentifier: Assembly-CSharp::NPCData
-  moveSpeed: 18
+  moveSpeed: 15
   patrolArrivalDistance: 0.5
-  patrolWaitTime: 1.5
-  investigateSpeed: 20
-  investigateArrivalDistance: 1
+  patrolWaitTime: 1
+  investigateSpeed: 18
+  investigateArrivalDistance: 0.5
   investigateWaitTime: 3
-  chaseSpeed: 40
+  chaseSpeed: 35
   detectionRange: 50
   viewAngle: 170
   loseSightDelay: 8
