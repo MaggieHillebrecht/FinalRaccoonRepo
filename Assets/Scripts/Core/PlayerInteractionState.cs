@@ -6,12 +6,21 @@ public class PlayerInteractionState : MonoBehaviour
     public bool IsPulling { get; private set; }
     public bool IsHidden { get; private set; }
     public bool IsMovementBlocked { get; private set; }
+    public Vector3 PullDirection { get; private set; }
 
     public void StartHolding() => IsHolding = true;
     public void StopHolding() => IsHolding = false;
 
-    public void StartPulling() => IsPulling = true;
-    public void StopPulling() => IsPulling = false;
+    public void StartPulling(Vector3 dir)
+    {
+        IsPulling = true;
+        PullDirection = dir.normalized;
+    }
+
+    public void StopPulling()
+    {
+        IsPulling = false;
+    }
 
     public void EnterHide()
     {

@@ -16,13 +16,10 @@ public class PlayerController : MonoBehaviour
         sprint = GetComponent<PlayerSprint>(); 
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Vector3 moveDir = new Vector3(input.Move.x, 0f, input.Move.y);
         if (moveDir.magnitude > 1f) moveDir.Normalize();
-
-        float sprintMultiplier = sprint != null ? sprint.GetCurrentSpeed() : 1f;
-
-        playerMovement.SetMovementDirection(moveDir, sprintMultiplier); 
+        playerMovement.SetMovementDirection(moveDir);
     }
 }

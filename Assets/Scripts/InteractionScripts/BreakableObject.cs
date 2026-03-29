@@ -1,46 +1,75 @@
 using UnityEngine;
+using TMPro;
 
 public class BreakableObject : MonoBehaviour, IInteractable
 {
+    [Header("UI & Highlight")]
+    [SerializeField] private TextMeshProUGUI interactText;
+    [SerializeField] private Outline outline;
+    [SerializeField] private float highlightRange = 3f;
+
     public Distraction distraction;
     public bool isBroken = false;
 
-    public void Interact(GameObject player)
-    {
-        if (isBroken)
-            return;
+    private GameObject player;
 
-        BreakObject();
+    private void Awake()
+    {
+        if (outline != null) outline.enabled = false;
+        if (interactText != null) interactText.gameObject.SetActive(false);
+
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    void BreakObject()
+    private void LateUpdate()
+    {
+        if (player != null)
+        {
+            float distance = Vector3.Distance(player.transform.position, transform.position);
+            bool inRange = distance <= highlightRange;
+
+            if (outline != null) outline.enabled = inRange;
+            if (interactText != null)
+            {
+                interactText.gameObject.SetActive(inRange);
+                if (inRange) interactText.text = GetInteractText(player);
+            }
+        }
+    }
+
+    public void Interact(GameObject player)
+    {
+        if (!isBroken) BreakObject();
+    }
+
+    private void BreakObject()
     {
         Debug.Log($"{name} broke");
         isBroken = true;
 
-        if (distraction != null)
-        {
-            distraction.TriggerEvent();
-        }
-        
+        if (distraction != null) distraction.TriggerEvent();
+
         Collider col = GetComponent<Collider>();
-        if (col != null)
-            col.enabled = false;
-        
+        if (col != null) col.enabled = false;
+
         gameObject.SetActive(false);
     }
 
     public string GetInteractText(GameObject player)
     {
         PlayerInputReader input = player.GetComponent<PlayerInputReader>();
-
-        if (input == null) 
-            return "";
+        if (input == null) return "";
 
         string key = input.GetInteractKey();
+        return isBroken ? "Already broken" : $"[{key}] Break";
+    }
 
-        if (isBroken)
-            return "Already broken";
-        return $"[{key}] Break";
+    private void OnDrawGizmosSelected()
+    {
+        if (highlightRange > 0f)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, highlightRange);
+        }
     }
 }
