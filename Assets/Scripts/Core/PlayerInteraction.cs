@@ -9,7 +9,6 @@ public class PlayerInteraction : MonoBehaviour
 
     [Header("References")]
     [SerializeField] PlayerInputReader input;
-    [SerializeField] TMPro.TextMeshProUGUI interactText;
     [SerializeField] Transform holdPoint;
 
     public PickupObject currentHeldObject;
@@ -30,6 +29,7 @@ public class PlayerInteraction : MonoBehaviour
 
     void CheckForInteractable()
     {
+        // Just checking for closest interactable for internal logic
         Vector3 center = transform.position + rangeOffset;
         Collider[] hits = Physics.OverlapBox(center, rangeSize / 2f, Quaternion.identity, interactLayer);
 
@@ -50,15 +50,7 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
 
-        if (closest != null)
-        {
-            interactText.text = closest.GetInteractText(gameObject);
-            interactText.gameObject.SetActive(true);
-        }
-        else
-        {
-            interactText.gameObject.SetActive(false);
-        }
+        // No need to handle interactText anymore
     }
 
     private void OnEnable()

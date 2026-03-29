@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     public Vector3 inputDir;
     public Vector3 lastMoveDir;
-    [SerializeField] private Transform graphics; 
+    [SerializeField] private Transform graphics;
     private PlayerInteractionState interactionState;
 
     private float currentSpeedMultiplier = 1f;
@@ -107,5 +107,9 @@ public class PlayerMovement : MonoBehaviour
             graphics.localScale = new Vector3(1, 1, 1);
         else if (xDir < -0.01f)
             graphics.localScale = new Vector3(-1, 1, 1);
+    }
+    public void SetSpeedMultiplier(float multiplier)
+    {
+        currentSpeedMultiplier = multiplier;
     }
 }

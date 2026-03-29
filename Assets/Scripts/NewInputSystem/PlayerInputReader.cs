@@ -10,7 +10,6 @@ public class PlayerInputReader : MonoBehaviour
     public bool InteractPressed { get; private set; }
     public bool JumpPressedThisFrame { get; private set; }
 
-    public event Action OnJumpPressedEvent;
     public event Action OnSprintPressed;
     public event Action OnSprintReleased;
     public event Action OnInteractPressed;

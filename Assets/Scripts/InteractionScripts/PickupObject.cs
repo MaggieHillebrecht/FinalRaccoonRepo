@@ -1,16 +1,59 @@
 using UnityEngine;
+using TMPro;
 
 public class PickupObject : MonoBehaviour, IInteractable
 {
-     private Rigidbody rb;
+    [Header("Pickup Settings")]
+    public float holdDistance = 1f;
+    public float holdHeight = -0.45f;
+    public float followSpeed = 15f;
+
+    [Header("UI & Highlight")]
+    [SerializeField] private TextMeshProUGUI interactText;
+    [SerializeField] private Outline outline;
+    [SerializeField] private float highlightRange = 3f;
+
+    private Rigidbody rb;
     private Collider objectCollider;
     private Collider playerCollider;
     private PlayerInteraction interaction;
+    private GameObject player;
+    private Vector3 lastFacingDir;
 
-    public float holdDistance = 1f; 
-    public float holdHeight = -.45f;     
-    public float followSpeed = 15f;
-    private Vector3 lastFacingDir; 
+    private void Awake()
+    {
+        if (outline != null) outline.enabled = false;
+        if (interactText != null) interactText.gameObject.SetActive(false);
+
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    private void LateUpdate()
+    {
+        if (player != null)
+        {
+            float distance = Vector3.Distance(player.transform.position, transform.position);
+            bool inRange = distance <= highlightRange;
+
+            if (outline != null) outline.enabled = inRange;
+            if (interactText != null)
+            {
+                interactText.gameObject.SetActive(inRange);
+                if (inRange) interactText.text = GetInteractText(player);
+            }
+        }
+
+        if (interaction != null && interaction.currentHeldObject == this)
+        {
+            PlayerMovement pm = interaction.GetComponent<PlayerMovement>();
+            if (pm != null && pm.inputDir.sqrMagnitude > 0.01f)
+                lastFacingDir = pm.inputDir.normalized;
+
+            Vector3 targetPos = interaction.transform.position + lastFacingDir * holdDistance + Vector3.up * holdHeight;
+            transform.position = Vector3.Lerp(transform.position, targetPos, followSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.LookRotation(lastFacingDir, Vector3.up);
+        }
+    }
 
     public void Interact(GameObject player)
     {
@@ -37,22 +80,32 @@ public class PickupObject : MonoBehaviour, IInteractable
 
         objectCollider = GetComponent<Collider>();
         playerCollider = player.GetComponent<Collider>();
-        if (objectCollider && playerCollider)
+        if (objectCollider != null && playerCollider != null)
             Physics.IgnoreCollision(objectCollider, playerCollider, true);
 
         interaction = inter;
         interaction.currentHeldObject = this;
+        this.player = player;
         state.StartHolding();
 
         PlayerMovement pm = player.GetComponent<PlayerMovement>();
-        if (pm != null && pm.inputDir.sqrMagnitude > 0.01f)
-            lastFacingDir = pm.inputDir.normalized;
+        if (pm != null)
+        {
+            if (pm.inputDir.sqrMagnitude > 0.01f)
+                lastFacingDir = pm.inputDir.normalized; // Use current input direction
+            else if (pm.lastMoveDir.sqrMagnitude > 0.01f)
+                lastFacingDir = pm.lastMoveDir.normalized; // Use last movement direction
+            else
+                lastFacingDir = Vector3.forward; // Fallback if standing still
+        }
         else
-            lastFacingDir = pm != null ? pm.lastMoveDir.normalized : Vector3.right;
-        
+        {
+            lastFacingDir = Vector3.forward;
+        }
+
         transform.position = interaction.transform.position + lastFacingDir * holdDistance + Vector3.up * holdHeight;
         transform.rotation = Quaternion.LookRotation(lastFacingDir, Vector3.up);
-    }
+    }   
 
     private void Drop(Rigidbody rb, PlayerInteractionState state, PlayerInteraction inter)
     {
@@ -68,38 +121,22 @@ public class PickupObject : MonoBehaviour, IInteractable
         state.StopHolding();
     }
 
-    private void LateUpdate()
-    {
-        if (interaction != null && interaction.currentHeldObject == this)
-        {
-            PlayerMovement pm = interaction.GetComponent<PlayerMovement>();
-            if (pm != null && pm.inputDir.sqrMagnitude > 0.01f)
-            {
-                lastFacingDir = pm.inputDir.normalized;
-            }
-
-            Vector3 targetPos = interaction.transform.position
-                                + lastFacingDir * holdDistance
-                                + Vector3.up * holdHeight;
-
-            transform.position = Vector3.Lerp(transform.position, targetPos, followSpeed * Time.deltaTime);
-
-            transform.rotation = Quaternion.LookRotation(lastFacingDir, Vector3.up);
-        }
-    }
-
     public string GetInteractText(GameObject player)
     {
         PlayerInputReader input = player.GetComponent<PlayerInputReader>();
         PlayerInteraction interaction = player.GetComponent<PlayerInteraction>();
-
         if (input == null || interaction == null) return "";
 
         string key = input.GetInteractKey();
+        return (interaction.currentHeldObject == this) ? $"[{key}] Drop" : $"[{key}] Pick Up";
+    }
 
-        if (interaction.currentHeldObject == this)
-            return $"[{key}] Drop";
-
-        return $"[{key}] Pick Up";
+    private void OnDrawGizmosSelected()
+    {
+        if (highlightRange > 0f)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, highlightRange);
+        }
     }
 }

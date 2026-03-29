@@ -8,7 +8,7 @@ public class HideSpot : MonoBehaviour, IInteractable
     [SerializeField] private float moveSmooth = 10f; 
 
     [Header("UI & Highlight")]
-    [SerializeField] private TextMeshProUGUI interactText; 
+    [SerializeField] private TextMeshProUGUI interactText; // assign child TMP object
     [SerializeField] private Outline outline;           
     [SerializeField] private float highlightRange = 3f;
 
