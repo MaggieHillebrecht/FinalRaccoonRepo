@@ -3,34 +3,35 @@ using UnityEngine;
 public class PlayerInteraction : MonoBehaviour
 {
     [Header("Interaction Settings")]
-    public float range = 3f;
+    public Vector3 rangeSize = new Vector3(3f, 2f, 3f); 
+    public Vector3 rangeOffset = new Vector3(0, 1f, 1f);
     public LayerMask interactLayer;
 
     [Header("References")]
     [SerializeField] PlayerInputReader input;
     [SerializeField] TMPro.TextMeshProUGUI interactText;
-    [SerializeField] Transform holdPoint; 
+    [SerializeField] Transform holdPoint;
 
     public PickupObject currentHeldObject;
     public bool IsClimbing;
     public bool ClimbedFromSide;
     public Vector3 ClimbWallNormal = Vector3.zero;
 
-    void Awake()
+    private void Awake()
     {
         if (!input)
             input = GetComponent<PlayerInputReader>();
     }
 
-    void Update()
+    private void Update()
     {
         CheckForInteractable();
     }
 
     void CheckForInteractable()
     {
-        Vector3 center = transform.position + Vector3.up * 1.5f;
-        Collider[] hits = Physics.OverlapSphere(center, range);
+        Vector3 center = transform.position + rangeOffset;
+        Collider[] hits = Physics.OverlapBox(center, rangeSize / 2f, Quaternion.identity, interactLayer);
 
         IInteractable closest = null;
         float closestDist = Mathf.Infinity;
@@ -60,13 +61,13 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-    void OnEnable()
+    private void OnEnable()
     {
         if (input != null)
             input.OnInteractPressed += TryInteract;
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
         if (input != null)
             input.OnInteractPressed -= TryInteract;
@@ -74,7 +75,8 @@ public class PlayerInteraction : MonoBehaviour
 
     void TryInteract()
     {
-        Collider[] hits = Physics.OverlapSphere(transform.position, range, interactLayer);
+        Vector3 center = transform.position + rangeOffset;
+        Collider[] hits = Physics.OverlapBox(center, rangeSize / 2f, Quaternion.identity, interactLayer);
 
         float closest = Mathf.Infinity;
         IInteractable closestInteractable = null;
@@ -108,9 +110,9 @@ public class PlayerInteraction : MonoBehaviour
         return holdPoint;
     }
 
-    void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position + Vector3.up * 1.5f, range);
+        Gizmos.DrawWireCube(transform.position + rangeOffset, rangeSize);
     }
 }

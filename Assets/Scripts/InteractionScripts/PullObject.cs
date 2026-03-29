@@ -38,10 +38,12 @@ public class PullObject : MonoBehaviour, IInteractable
         joint.zMotion = ConfigurableJointMotion.Limited;
 
         SoftJointLimit limit = new SoftJointLimit();
-        limit.limit = 1f; // distance from player
+        limit.limit = .5f; // distance from player
         joint.linearLimit = limit;
 
-        state.StartPulling();
+        Vector3 dir = (transform.position - playerRb.transform.position).normalized;
+
+        state.StartPulling(dir);
     }
 
     void StopPulling(PlayerInteractionState state)
