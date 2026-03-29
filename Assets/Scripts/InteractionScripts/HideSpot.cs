@@ -1,10 +1,16 @@
 using UnityEngine;
+using TMPro;
 
 public class HideSpot : MonoBehaviour, IInteractable
 {
     [Header("Hide Settings")]
     [SerializeField] private Transform hidePoint; 
     [SerializeField] private float moveSmooth = 10f; 
+
+    [Header("UI & Highlight")]
+    [SerializeField] private TextMeshProUGUI interactText; 
+    [SerializeField] private Outline outline;           
+    [SerializeField] private float highlightRange = 3f;
 
     private GameObject player;
     private PlayerMovement movement;
@@ -14,13 +20,49 @@ public class HideSpot : MonoBehaviour, IInteractable
 
     private bool isPlayerHidden => state != null && state.IsHidden;
 
+    private void Awake()
+    {
+        if (outline != null)
+            outline.enabled = false;
+
+        if (interactText != null)
+            interactText.gameObject.SetActive(false);
+
+        // Automatically find the player in the scene
+        GameObject p = GameObject.FindGameObjectWithTag("Player");
+        if (p != null)
+            player = p;
+    }
+
     private void LateUpdate()
     {
-        if (isPlayerHidden && player != null && hidePoint != null)
+        if (player == null) return;
+
+        float distance = Vector3.Distance(player.transform.position, transform.position);
+        bool inRange = distance <= highlightRange;
+
+        // Outline
+        if (outline != null)
+            outline.enabled = inRange;
+
+        // Interact Text
+        if (interactText != null)
         {
-            Vector3 targetPos = hidePoint.position;
+            interactText.gameObject.SetActive(inRange);
+
+            // Update text dynamically from player input
+            if (inRange)
+            {
+                interactText.text = GetInteractText(player);
+            }
+        }
+
+        // Smoothly move player if hidden
+        if (isPlayerHidden && hidePoint != null)
+        {
             if (rb != null && rb.isKinematic)
             {
+                Vector3 targetPos = hidePoint.position;
                 player.transform.position = Vector3.Lerp(player.transform.position, targetPos, moveSmooth * Time.deltaTime);
             }
         }
@@ -63,14 +105,12 @@ public class HideSpot : MonoBehaviour, IInteractable
         if (rb != null)
         {
             rb.linearVelocity = Vector3.zero;
-            rb.isKinematic = true;        // prevent physics from pushing player
+            rb.isKinematic = true;        
             rb.detectCollisions = false;  
         }
 
         if (hidePoint != null)
             player.transform.position = hidePoint.position;
-        else
-            Debug.LogWarning("HidePoint not assigned!", this);
 
         movement.enabled = false;
 
@@ -93,12 +133,19 @@ public class HideSpot : MonoBehaviour, IInteractable
         if (sprite != null)
             sprite.enabled = true;
     }
+
     private void OnDrawGizmosSelected()
     {
         if (hidePoint != null)
         {
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(hidePoint.position, 0.2f);
+        }
+
+        if (highlightRange > 0f)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, highlightRange);
         }
     }
 }
