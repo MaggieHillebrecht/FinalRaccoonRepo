@@ -13,8 +13,8 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
 
     private Rigidbody rb;
-    private Vector3 inputDir;
-    private Vector3 lastMoveDir;
+    public Vector3 inputDir;
+    public Vector3 lastMoveDir;
     [SerializeField] private Transform graphics; 
     private PlayerInteractionState interactionState;
 
@@ -62,18 +62,19 @@ public class PlayerMovement : MonoBehaviour
     {
         if (animator == null) return;
 
+        Vector3 dir;
+
         if (interactionState != null && interactionState.IsPulling)
         {
-            Vector3 dir = interactionState.PullDirection;
-
-            animator.SetFloat("MoveX", dir.x);
-            animator.SetFloat("MoveZ", dir.z);
+            dir = interactionState.PullDirection;
         }
         else
         {
-            animator.SetFloat("MoveX", inputDir.x);
-            animator.SetFloat("MoveZ", inputDir.z);
+            dir = inputDir.sqrMagnitude > 0.01f ? inputDir : lastMoveDir;
         }
+
+        animator.SetFloat("MoveX", dir.x);
+        animator.SetFloat("MoveZ", dir.z);
 
         animator.speed = currentSpeedMultiplier;
     }

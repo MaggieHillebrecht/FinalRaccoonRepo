@@ -2,64 +2,87 @@ using UnityEngine;
 
 public class PickupObject : MonoBehaviour, IInteractable
 {
-    Collider objectCollider;
-    Collider playerCollider;
+     private Rigidbody rb;
+    private Collider objectCollider;
+    private Collider playerCollider;
+    private PlayerInteraction interaction;
+
+    public float holdDistance = 1f; 
+    public float holdHeight = -.45f;     
+    public float followSpeed = 15f;
+    private Vector3 lastFacingDir; 
+
     public void Interact(GameObject player)
     {
-        Rigidbody rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         PlayerInteractionState state = player.GetComponent<PlayerInteractionState>();
-        PlayerInteraction interaction = player.GetComponent<PlayerInteraction>();
+        PlayerInteraction inter = player.GetComponent<PlayerInteraction>();
 
-        if (!rb || state == null || interaction == null) return;
+        if (!rb || state == null || inter == null) return;
 
-        if (interaction.currentHeldObject == this)
+        if (inter.currentHeldObject == this)
         {
-            Drop(rb, state, interaction);
+            Drop(rb, state, inter);
             return;
         }
 
-        if (interaction.currentHeldObject != null)
-            return;
+        if (inter.currentHeldObject != null) return;
 
-        Pickup(player, rb, state, interaction);
+        Pickup(player, rb, state, inter);
     }
 
-    void Pickup(GameObject player, Rigidbody rb, PlayerInteractionState state, PlayerInteraction interaction)
+    private void Pickup(GameObject player, Rigidbody rb, PlayerInteractionState state, PlayerInteraction inter)
     {
-        Debug.Log("[PICKUP] Picking up");
-
         rb.isKinematic = true;
 
         objectCollider = GetComponent<Collider>();
         playerCollider = player.GetComponent<Collider>();
-
         if (objectCollider && playerCollider)
-            Physics.IgnoreCollision(objectCollider, playerCollider, true); 
+            Physics.IgnoreCollision(objectCollider, playerCollider, true);
 
-        Transform holdPoint = interaction.GetHoldPoint();
-        transform.SetParent(holdPoint);
-        transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.identity;
-
+        interaction = inter;
         interaction.currentHeldObject = this;
         state.StartHolding();
+
+        PlayerMovement pm = player.GetComponent<PlayerMovement>();
+        if (pm != null && pm.inputDir.sqrMagnitude > 0.01f)
+            lastFacingDir = pm.inputDir.normalized;
+        else
+            lastFacingDir = player.transform.forward;
     }
 
-    void Drop(Rigidbody rb, PlayerInteractionState state, PlayerInteraction interaction)
+    private void Drop(Rigidbody rb, PlayerInteractionState state, PlayerInteraction inter)
     {
-        Debug.Log("[PICKUP] Dropping");
-
         rb.isKinematic = false;
 
         if (objectCollider && playerCollider)
-            Physics.IgnoreCollision(objectCollider, playerCollider, false); 
+            Physics.IgnoreCollision(objectCollider, playerCollider, false);
 
-        transform.SetParent(null);
-
-        rb.linearVelocity = interaction.transform.forward * 2f;
+        rb.linearVelocity = inter.transform.forward * 2f;
 
         interaction.currentHeldObject = null;
+        interaction = null;
         state.StopHolding();
+    }
+
+    private void LateUpdate()
+    {
+        if (interaction != null && interaction.currentHeldObject == this)
+        {
+            PlayerMovement pm = interaction.GetComponent<PlayerMovement>();
+            if (pm != null && pm.inputDir.sqrMagnitude > 0.01f)
+            {
+                lastFacingDir = pm.inputDir.normalized;
+            }
+
+            Vector3 targetPos = interaction.transform.position
+                                + lastFacingDir * holdDistance
+                                + Vector3.up * holdHeight;
+
+            transform.position = Vector3.Lerp(transform.position, targetPos, followSpeed * Time.deltaTime);
+
+            transform.rotation = Quaternion.LookRotation(lastFacingDir, Vector3.up);
+        }
     }
 
     public string GetInteractText(GameObject player)
