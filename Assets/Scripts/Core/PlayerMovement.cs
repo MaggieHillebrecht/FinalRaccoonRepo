@@ -82,7 +82,6 @@ public class PlayerMovement : MonoBehaviour
     public void SetMovementDirection(Vector3 dir, float speedMultiplier = 1f)
     {
         inputDir = dir.normalized;
-        currentSpeedMultiplier = speedMultiplier;
 
         if (inputDir != Vector3.zero)
             lastMoveDir = inputDir;
