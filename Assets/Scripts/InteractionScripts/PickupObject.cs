@@ -48,7 +48,10 @@ public class PickupObject : MonoBehaviour, IInteractable
         if (pm != null && pm.inputDir.sqrMagnitude > 0.01f)
             lastFacingDir = pm.inputDir.normalized;
         else
-            lastFacingDir = player.transform.forward;
+            lastFacingDir = pm != null ? pm.lastMoveDir.normalized : Vector3.right;
+        
+        transform.position = interaction.transform.position + lastFacingDir * holdDistance + Vector3.up * holdHeight;
+        transform.rotation = Quaternion.LookRotation(lastFacingDir, Vector3.up);
     }
 
     private void Drop(Rigidbody rb, PlayerInteractionState state, PlayerInteraction inter)
