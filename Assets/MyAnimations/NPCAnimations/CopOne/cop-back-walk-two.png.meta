@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0da7a9a03602c428a8553e3da323964f
+guid: bf2f0e60d65574d7ea1f62e378cf4e51
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 150
+  spritePixelsToUnits: 25
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -93,30 +93,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WalkingRightSpriteSheet_0
+      name: cop-back-walk-two_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
-        width: 63
-        height: 31
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,20 +112,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0f1b7edfb92c4aa0a9560a60853d563
-      internalID: -1512128772
+      spriteID: ba598868cebd140a8939492b27d3f820
+      internalID: -1351782911
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WalkingRightSpriteSheet_1
+      name: cop-back-walk-two_1
       rect:
         serializedVersion: 2
-        x: 65
+        x: 32
         y: 0
-        width: 63
-        height: 31
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,20 +134,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d6baa46095194db8a68af7f314074a3
-      internalID: -244181192
+      spriteID: 97c9d1e400e0a4d809ac228320053e77
+      internalID: -971659969
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WalkingRightSpriteSheet_2
+      name: cop-back-walk-two_2
       rect:
         serializedVersion: 2
-        x: 129
+        x: 64
         y: 0
-        width: 63
-        height: 32
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,20 +156,86 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4102473cf1ff647eaadf3908fcb1e82c
-      internalID: 2094342846
+      spriteID: 41f8a3350fa9148ba903fb2540f1aa0e
+      internalID: -1604789022
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WalkingRightSpriteSheet_3
+      name: cop-back-walk-two_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca19fb691258142c4baf9094c7042dd1
+      internalID: 752265365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cop-back-walk-two_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b40a3e51024994dff9f9359669445273
+      internalID: 1266449946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cop-back-walk-two_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17c32715c76494d37b1227f976c59102
+      internalID: -1267206827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cop-back-walk-two_6
       rect:
         serializedVersion: 2
         x: 192
         y: 0
-        width: 64
-        height: 31
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,20 +244,42 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0080f06a9ac5426fb81da7bd00b691c
-      internalID: -1733345750
+      spriteID: 30758cd99e4ff43f58007be4b65e9e7f
+      internalID: -464619460
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WalkingRightSpriteSheet_4
+      name: cop-back-walk-two_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccac2acbc64cf4b728caee3696b6626e
+      internalID: 1500589091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cop-back-walk-two_8
       rect:
         serializedVersion: 2
         x: 256
         y: 0
-        width: 64
-        height: 31
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,20 +288,42 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 76b61655099734f0b929a3032a00f3b9
-      internalID: 422847238
+      spriteID: a36b0428b805247f1800ca568412192b
+      internalID: 591639708
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WalkingRightSpriteSheet_5
+      name: cop-back-walk-two_9
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 871bebdc2c54249eeae4ac7a20183a99
+      internalID: 492620942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cop-back-walk-two_10
       rect:
         serializedVersion: 2
         x: 320
         y: 0
-        width: 64
-        height: 32
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,20 +332,42 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ba4c594e43904bd99185e07e94719cc
-      internalID: -762299546
+      spriteID: 4a4b3913a66ee4e40b45319a86b91b20
+      internalID: 1537700854
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WalkingRightSpriteSheet_6
+      name: cop-back-walk-two_11
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26640d0c6e5994ca2a660b29e93e977a
+      internalID: -1132594200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cop-back-walk-two_12
       rect:
         serializedVersion: 2
         x: 384
         y: 0
-        width: 64
-        height: 32
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,30 +376,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: badd9ebbaa07b4b689506f3a06905ea3
-      internalID: -522714907
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WalkingRightSpriteSheet_7
-      rect:
-        serializedVersion: 2
-        x: 450
-        y: 0
-        width: 62
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8642e32cc28394deaa713191c76d105f
-      internalID: 495930330
+      spriteID: b38d36b22ddad4e289a4460ca0e7d5a5
+      internalID: 228254231
       vertices: []
       indices: 
       edges: []
@@ -289,7 +386,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 26d26d581017b403c9ad6d39e7f53acd
+    spriteID: c312736f53e7441089f3e657c3e2d371
     internalID: 0
     vertices: []
     indices: 
@@ -299,16 +396,21 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      WalkingRightSpriteSheet_0: -1512128772
-      WalkingRightSpriteSheet_1: -244181192
-      WalkingRightSpriteSheet_2: 2094342846
-      WalkingRightSpriteSheet_3: -1733345750
-      WalkingRightSpriteSheet_4: 422847238
-      WalkingRightSpriteSheet_5: -762299546
-      WalkingRightSpriteSheet_6: -522714907
-      WalkingRightSpriteSheet_7: 495930330
+      cop-back-walk-two_0: -1351782911
+      cop-back-walk-two_1: -971659969
+      cop-back-walk-two_10: 1537700854
+      cop-back-walk-two_11: -1132594200
+      cop-back-walk-two_12: 228254231
+      cop-back-walk-two_2: -1604789022
+      cop-back-walk-two_3: 752265365
+      cop-back-walk-two_4: 1266449946
+      cop-back-walk-two_5: -1267206827
+      cop-back-walk-two_6: -464619460
+      cop-back-walk-two_7: 1500589091
+      cop-back-walk-two_8: 591639708
+      cop-back-walk-two_9: 492620942
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

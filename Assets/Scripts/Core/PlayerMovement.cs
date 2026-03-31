@@ -17,12 +17,14 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 lastMoveDir;
     [SerializeField] private Transform graphics;
     private PlayerInteractionState interactionState;
+    private PlayerInteraction playerInteraction; 
 
     private float currentSpeedMultiplier = 1f;
 
     void Awake()
     {
         interactionState = GetComponent<PlayerInteractionState>();
+        playerInteraction = GetComponent<PlayerInteraction>(); 
 
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -46,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
         float pullMultiplier = 1f;
         if (interactionState != null && interactionState.IsPulling)
-            pullMultiplier = 0.5f; //adjust for slowness speed, it goes by percentage of normal speed
+            pullMultiplier = 0.5f;
 
         float moveSpeed = speed * currentSpeedMultiplier * pullMultiplier;
 
@@ -62,19 +64,23 @@ public class PlayerMovement : MonoBehaviour
     {
         if (animator == null) return;
 
+        // NEW: drive isClimbing bool
+        bool climbing = playerInteraction != null && playerInteraction.IsClimbing;
+        animator.SetBool("isClimbing", climbing);
+
+        // Skip movement animation logic while climbing
+        if (climbing) return;
+
         Vector3 dir;
 
         if (interactionState != null && interactionState.IsPulling)
-        {
             dir = interactionState.PullDirection;
-        }
         else
-        {
             dir = inputDir.sqrMagnitude > 0.01f ? inputDir : lastMoveDir;
-        }
 
         animator.SetFloat("MoveX", dir.x);
         animator.SetFloat("MoveZ", dir.z);
+        animator.SetBool("isMoving", inputDir.sqrMagnitude > 0.01f);
 
         animator.speed = currentSpeedMultiplier;
     }
@@ -91,22 +97,22 @@ public class PlayerMovement : MonoBehaviour
     {
         if (graphics == null) return;
 
+        // Don't flip while climbing
+        if (playerInteraction != null && playerInteraction.IsClimbing) return;
+
         float xDir = 0f;
 
         if (interactionState != null && interactionState.IsPulling)
-        {
             xDir = interactionState.PullDirection.x;
-        }
         else
-        {
             xDir = inputDir.x;
-        }
 
         if (xDir > 0.01f)
             graphics.localScale = new Vector3(1, 1, 1);
         else if (xDir < -0.01f)
             graphics.localScale = new Vector3(-1, 1, 1);
     }
+
     public void SetSpeedMultiplier(float multiplier)
     {
         currentSpeedMultiplier = multiplier;

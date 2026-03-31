@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d1e891edd8c9248cb9a796a0002e2e45
+guid: 09ba2c05832c44ef094f1b91d757c01d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -93,30 +93,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: walkingForwardWalkSpriteSheet_0
+      name: Sprite-000001-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 32
-        height: 32
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,20 +112,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 714c463f915fd48538ae06f096b3c49b
-      internalID: 2004079388
+      spriteID: 3f8fee0f43d0643fbb3232cf4b9987f5
+      internalID: 600951864
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walkingForwardWalkSpriteSheet_1
+      name: Sprite-000001-Sheet_1
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 32
-        height: 32
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,20 +134,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c4a3928faab14251af14f5c7442cf6a
-      internalID: 2141081232
+      spriteID: f97e2ec9355be4111b936c40ee9e54a8
+      internalID: 1722133203
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walkingForwardWalkSpriteSheet_2
+      name: Sprite-000001-Sheet_2
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 32
-        height: 32
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,20 +156,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11c8ac81e6f90401ba22707264cf4cc3
-      internalID: -1528607286
+      spriteID: c8ef6bd3a276841d38cef279224976d2
+      internalID: -503001669
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walkingForwardWalkSpriteSheet_3
+      name: Sprite-000001-Sheet_3
       rect:
         serializedVersion: 2
         x: 96
         y: 0
         width: 32
-        height: 32
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,20 +178,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be7dd72b9b88b4a7988cde80c8607b77
-      internalID: 812245607
+      spriteID: 06ebb2239dd734928814652085c4d746
+      internalID: -2137082415
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walkingForwardWalkSpriteSheet_4
+      name: Sprite-000001-Sheet_4
       rect:
         serializedVersion: 2
         x: 128
         y: 0
         width: 32
-        height: 32
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9d2cfa28f2ba4f309cebaa850d49370
-      internalID: -7785482
+      spriteID: 181665c68eb53408fa0fe5b45009f490
+      internalID: -1634320077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walkingForwardWalkSpriteSheet_5
+      name: Sprite-000001-Sheet_5
       rect:
         serializedVersion: 2
         x: 160
         y: 0
         width: 32
-        height: 32
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,8 +222,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2671981f18d24df5a2ea35049fca578
-      internalID: 362542913
+      spriteID: 5adb0409c96c5409697533951bde0c1a
+      internalID: -1347197134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-000001-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 670525c0c22144e1cadfa4b4f631eb81
+      internalID: -737247711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-000001-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 158276bff7b1b4822900168cd10726d3
+      internalID: -1955918891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-000001-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 32
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f7f3975af49f4e7ca29bc9f32a6a6cc
+      internalID: -1946482379
       vertices: []
       indices: 
       edges: []
@@ -245,7 +298,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e1686caaf5842401e81ebccd8811df3a
+    spriteID: c7cdcd21846d940f996dfb51e53c74bf
     internalID: 0
     vertices: []
     indices: 
@@ -255,14 +308,17 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":40.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      walkingForwardWalkSpriteSheet_0: 2004079388
-      walkingForwardWalkSpriteSheet_1: 2141081232
-      walkingForwardWalkSpriteSheet_2: -1528607286
-      walkingForwardWalkSpriteSheet_3: 812245607
-      walkingForwardWalkSpriteSheet_4: -7785482
-      walkingForwardWalkSpriteSheet_5: 362542913
+      Sprite-000001-Sheet_0: 600951864
+      Sprite-000001-Sheet_1: 1722133203
+      Sprite-000001-Sheet_2: -503001669
+      Sprite-000001-Sheet_3: -2137082415
+      Sprite-000001-Sheet_4: -1634320077
+      Sprite-000001-Sheet_5: -1347197134
+      Sprite-000001-Sheet_6: -737247711
+      Sprite-000001-Sheet_7: -1955918891
+      Sprite-000001-Sheet_8: -1946482379
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
