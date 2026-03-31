@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 8533939845032235395}
   - component: {fileID: 2561065021876008089}
   m_Layer: 0
-  m_Name: NPCBase
+  m_Name: NPCBaseOne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,6 +74,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCController
   data: {fileID: 0}
+  currentState: 0
+  investigateTestPoint: {fileID: 0}
 --- !u!114 &3074311411916986494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,9 +88,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3485c4aa21ded4d19a109cbb521540b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCMovement
+  data: {fileID: 0}
   patrolPoints: []
-  patrolSpeed: 2
   reachThreshold: 0.1
+  animator: {fileID: 0}
+  graphics: {fileID: 0}
 --- !u!114 &9034508754870052259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,7 +105,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee7f8b0da78643bd81bebffdf356e80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCDetection
-  detectionRange: 6
+  data: {fileID: 0}
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!212 &2896544484338942145
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -149,12 +156,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b7d46e84af288ed4e8506766eb67e4e1, type: 3}
+  m_Sprite: {fileID: -1895791063, guid: a4b7953fe6c3a49f28c1cb750ecface9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.24, y: 10.24}
+  m_Size: {x: 1.28, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

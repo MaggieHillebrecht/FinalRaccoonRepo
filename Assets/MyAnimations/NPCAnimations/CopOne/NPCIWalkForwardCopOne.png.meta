@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0da7a9a03602c428a8553e3da323964f
+guid: 82d771e68dd474630b9f55879105e37f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 150
+  spritePixelsToUnits: 25
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -93,30 +93,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WalkingRightSpriteSheet_0
+      name: NPCIWalkForwardCopOne_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
-        width: 63
-        height: 31
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,20 +112,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0f1b7edfb92c4aa0a9560a60853d563
-      internalID: -1512128772
+      spriteID: 58d0c5c8a19c74f4f9ebcb89685c3f45
+      internalID: 941369862
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WalkingRightSpriteSheet_1
+      name: NPCIWalkForwardCopOne_1
       rect:
         serializedVersion: 2
-        x: 65
+        x: 32
         y: 0
-        width: 63
-        height: 31
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,20 +134,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d6baa46095194db8a68af7f314074a3
-      internalID: -244181192
+      spriteID: 20070ffccafe84b7a94c8c84e3c8bb29
+      internalID: -487091094
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WalkingRightSpriteSheet_2
+      name: NPCIWalkForwardCopOne_2
       rect:
         serializedVersion: 2
-        x: 129
+        x: 64
         y: 0
-        width: 63
-        height: 32
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,20 +156,86 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4102473cf1ff647eaadf3908fcb1e82c
-      internalID: 2094342846
+      spriteID: 439439ca9752a4bfe8aa40b44f82de38
+      internalID: -1278367297
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WalkingRightSpriteSheet_3
+      name: NPCIWalkForwardCopOne_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68d1d64ffc0ec40d88bc0531975f74bc
+      internalID: 411767992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPCIWalkForwardCopOne_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f64ac4448f4b24e09b38196c52c3f0b3
+      internalID: -1965448501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPCIWalkForwardCopOne_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eccb55259856b4fce9cc2f84bd734f76
+      internalID: -52654254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPCIWalkForwardCopOne_6
       rect:
         serializedVersion: 2
         x: 192
         y: 0
-        width: 64
-        height: 31
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,20 +244,42 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0080f06a9ac5426fb81da7bd00b691c
-      internalID: -1733345750
+      spriteID: 42152cb78eabe43f08d267c5234b59ff
+      internalID: -1450464466
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WalkingRightSpriteSheet_4
+      name: NPCIWalkForwardCopOne_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41cd7c1c70c9a4041be81d31d322ec4d
+      internalID: -1489162973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPCIWalkForwardCopOne_8
       rect:
         serializedVersion: 2
         x: 256
         y: 0
-        width: 64
-        height: 31
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,20 +288,42 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 76b61655099734f0b929a3032a00f3b9
-      internalID: 422847238
+      spriteID: e6ea17d35504d4d039608688aa0f51f8
+      internalID: 388805326
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WalkingRightSpriteSheet_5
+      name: NPCIWalkForwardCopOne_9
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b489506b1057497a8fe8308434379be
+      internalID: -985817540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPCIWalkForwardCopOne_10
       rect:
         serializedVersion: 2
         x: 320
         y: 0
-        width: 64
-        height: 32
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,20 +332,42 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ba4c594e43904bd99185e07e94719cc
-      internalID: -762299546
+      spriteID: 23996b315ad4646f4ade3bdead6d06f7
+      internalID: -2073216319
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WalkingRightSpriteSheet_6
+      name: NPCIWalkForwardCopOne_11
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cc1418f6bae64e2e899854444078c08
+      internalID: 1189643930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPCIWalkForwardCopOne_12
       rect:
         serializedVersion: 2
         x: 384
         y: 0
-        width: 64
-        height: 32
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,30 +376,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: badd9ebbaa07b4b689506f3a06905ea3
-      internalID: -522714907
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WalkingRightSpriteSheet_7
-      rect:
-        serializedVersion: 2
-        x: 450
-        y: 0
-        width: 62
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8642e32cc28394deaa713191c76d105f
-      internalID: 495930330
+      spriteID: f07a13c656bea45d38fa1565429a55df
+      internalID: -1655672787
       vertices: []
       indices: 
       edges: []
@@ -289,7 +386,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 26d26d581017b403c9ad6d39e7f53acd
+    spriteID: b68dc29ae6140481384f1470e2951ef7
     internalID: 0
     vertices: []
     indices: 
@@ -299,16 +396,21 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      WalkingRightSpriteSheet_0: -1512128772
-      WalkingRightSpriteSheet_1: -244181192
-      WalkingRightSpriteSheet_2: 2094342846
-      WalkingRightSpriteSheet_3: -1733345750
-      WalkingRightSpriteSheet_4: 422847238
-      WalkingRightSpriteSheet_5: -762299546
-      WalkingRightSpriteSheet_6: -522714907
-      WalkingRightSpriteSheet_7: 495930330
+      NPCIWalkForwardCopOne_0: 941369862
+      NPCIWalkForwardCopOne_1: -487091094
+      NPCIWalkForwardCopOne_10: -2073216319
+      NPCIWalkForwardCopOne_11: 1189643930
+      NPCIWalkForwardCopOne_12: -1655672787
+      NPCIWalkForwardCopOne_2: -1278367297
+      NPCIWalkForwardCopOne_3: 411767992
+      NPCIWalkForwardCopOne_4: -1965448501
+      NPCIWalkForwardCopOne_5: -52654254
+      NPCIWalkForwardCopOne_6: -1450464466
+      NPCIWalkForwardCopOne_7: -1489162973
+      NPCIWalkForwardCopOne_8: 388805326
+      NPCIWalkForwardCopOne_9: -985817540
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0da7a9a03602c428a8553e3da323964f
+guid: 5033f2699ab804f55b9f4b4c4f384e0b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 150
+  spritePixelsToUnits: 25
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -93,30 +93,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WalkingRightSpriteSheet_0
+      name: cop-back-walk-four_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
-        width: 63
-        height: 31
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,20 +112,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0f1b7edfb92c4aa0a9560a60853d563
-      internalID: -1512128772
+      spriteID: 5014aa9d6d8634dd58d1ff753934ee4d
+      internalID: -681766203
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WalkingRightSpriteSheet_1
+      name: cop-back-walk-four_1
       rect:
         serializedVersion: 2
-        x: 65
+        x: 32
         y: 0
-        width: 63
-        height: 31
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,20 +134,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d6baa46095194db8a68af7f314074a3
-      internalID: -244181192
+      spriteID: d7d1b0f9a9358415cbecf4cdb2321b24
+      internalID: 2004513844
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WalkingRightSpriteSheet_2
+      name: cop-back-walk-four_2
       rect:
         serializedVersion: 2
-        x: 129
+        x: 64
         y: 0
-        width: 63
-        height: 32
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,20 +156,86 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4102473cf1ff647eaadf3908fcb1e82c
-      internalID: 2094342846
+      spriteID: 8575d3bc2762f46629b7d607c76eb88c
+      internalID: -952856148
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WalkingRightSpriteSheet_3
+      name: cop-back-walk-four_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de0b76cb8eee045869600863bac41486
+      internalID: 57629332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cop-back-walk-four_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79933074a818149f596900bdd784747b
+      internalID: 854340517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cop-back-walk-four_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9687ab34ec9254dd58f3ca05986b0184
+      internalID: 1020340251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cop-back-walk-four_6
       rect:
         serializedVersion: 2
         x: 192
         y: 0
-        width: 64
-        height: 31
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,20 +244,42 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0080f06a9ac5426fb81da7bd00b691c
-      internalID: -1733345750
+      spriteID: c69e616059c774f148e5b28339622b5e
+      internalID: 1181428110
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WalkingRightSpriteSheet_4
+      name: cop-back-walk-four_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e086c7c856e14eaa9a9e7abdffa63f7
+      internalID: -1701349209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cop-back-walk-four_8
       rect:
         serializedVersion: 2
         x: 256
         y: 0
-        width: 64
-        height: 31
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,20 +288,42 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 76b61655099734f0b929a3032a00f3b9
-      internalID: 422847238
+      spriteID: 3464963f346494c13acad6a079acb889
+      internalID: -2107953508
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WalkingRightSpriteSheet_5
+      name: cop-back-walk-four_9
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3da5552f9ddb429787fd947ab552196
+      internalID: 1570514049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cop-back-walk-four_10
       rect:
         serializedVersion: 2
         x: 320
         y: 0
-        width: 64
-        height: 32
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,20 +332,42 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ba4c594e43904bd99185e07e94719cc
-      internalID: -762299546
+      spriteID: fb2c7db6ef40f46159194b0caecb8080
+      internalID: -1998737754
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WalkingRightSpriteSheet_6
+      name: cop-back-walk-four_11
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d68edba6b90f4e748502665755e7acc
+      internalID: 1509271965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cop-back-walk-four_12
       rect:
         serializedVersion: 2
         x: 384
         y: 0
-        width: 64
-        height: 32
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,30 +376,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: badd9ebbaa07b4b689506f3a06905ea3
-      internalID: -522714907
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WalkingRightSpriteSheet_7
-      rect:
-        serializedVersion: 2
-        x: 450
-        y: 0
-        width: 62
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8642e32cc28394deaa713191c76d105f
-      internalID: 495930330
+      spriteID: 3b6af5a0a7a3a40f0b6dc9645e26db14
+      internalID: 345084032
       vertices: []
       indices: 
       edges: []
@@ -289,7 +386,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 26d26d581017b403c9ad6d39e7f53acd
+    spriteID: 36e57042278384bfc8a1eb3edcd6d53c
     internalID: 0
     vertices: []
     indices: 
@@ -299,16 +396,21 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      WalkingRightSpriteSheet_0: -1512128772
-      WalkingRightSpriteSheet_1: -244181192
-      WalkingRightSpriteSheet_2: 2094342846
-      WalkingRightSpriteSheet_3: -1733345750
-      WalkingRightSpriteSheet_4: 422847238
-      WalkingRightSpriteSheet_5: -762299546
-      WalkingRightSpriteSheet_6: -522714907
-      WalkingRightSpriteSheet_7: 495930330
+      cop-back-walk-four_0: -681766203
+      cop-back-walk-four_1: 2004513844
+      cop-back-walk-four_10: -1998737754
+      cop-back-walk-four_11: 1509271965
+      cop-back-walk-four_12: 345084032
+      cop-back-walk-four_2: -952856148
+      cop-back-walk-four_3: 57629332
+      cop-back-walk-four_4: 854340517
+      cop-back-walk-four_5: 1020340251
+      cop-back-walk-four_6: 1181428110
+      cop-back-walk-four_7: -1701349209
+      cop-back-walk-four_8: -2107953508
+      cop-back-walk-four_9: 1570514049
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
