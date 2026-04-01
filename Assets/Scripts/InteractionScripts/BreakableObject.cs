@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class BreakableObject : MonoBehaviour, IInteractable
+public partial class BreakableObject : MonoBehaviour, IInteractable
 {
     [Header("UI & Highlight")]
     [SerializeField] private TextMeshProUGUI interactText;
