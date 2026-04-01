@@ -18,6 +18,8 @@ public class HideSpot : MonoBehaviour, IInteractable
     private Rigidbody rb;
     private SpriteRenderer sprite;
 
+    public AK.Wwise.State PauseState;
+
     private bool isPlayerHidden => state != null && state.IsHidden;
 
     private void Awake()
@@ -101,6 +103,7 @@ public class HideSpot : MonoBehaviour, IInteractable
     private void EnterHide()
     {
         state.EnterHide();
+        AkSoundEngine.SetState("PauseState", "Paused");
 
         if (rb != null)
         {
@@ -116,11 +119,14 @@ public class HideSpot : MonoBehaviour, IInteractable
 
         if (sprite != null)
             sprite.enabled = false;
+        
+        
     }
 
     private void ExitHide()
     {
         state.ExitHide();
+        AkSoundEngine.SetState("PauseState", "Unpaused");
 
         if (rb != null)
         {
