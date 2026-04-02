@@ -47,7 +47,7 @@ public class PlayerInteraction : MonoBehaviour
             TryClimb();
 
         if (IsClimbing && Keyboard.current.spaceKey.wasReleasedThisFrame)
-            StopClimb(cancelled: true);
+            StopClimb();
 
         if (!IsClimbing) return;
 
@@ -136,6 +136,36 @@ public class PlayerInteraction : MonoBehaviour
             if (movement.animator != null)
                 movement.animator.SetBool("isClimbing", false);
         }
+    }
+
+    void TryInteract()
+    {
+        // Block interaction while climbing
+        if (IsClimbing) return;
+
+        Vector3 center = transform.position + rangeOffset;
+        Collider[] hits = Physics.OverlapBox(center, rangeSize / 2f, Quaternion.identity, interactLayer);
+
+        float closest = Mathf.Infinity;
+        IInteractable closestInteractable = null;
+
+        foreach (Collider hit in hits)
+        {
+            IInteractable interactable = hit.GetComponentInParent<IInteractable>();
+            if (interactable == null) continue;
+
+            float dist = Vector3.Distance(transform.position, hit.transform.position);
+            if (dist < closest)
+            {
+                closest = dist;
+                closestInteractable = interactable;
+            }
+        }
+
+        if (closestInteractable != null)
+            closestInteractable.Interact(gameObject);
+        else
+            Debug.Log("No interactable nearby");
     }
     public Transform GetHoldPoint() => holdPoint;
 

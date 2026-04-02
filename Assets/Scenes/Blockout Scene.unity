@@ -69752,6 +69752,14 @@ PrefabInstance:
       propertyPath: m_LODs.Array.data[0].screenRelativeHeight
       value: 0.25280222
       objectReference: {fileID: 0}
+    - target: {fileID: 8654137077727963900, guid: 17f2a1733f7c942a79cfc2053eee6306, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.014
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654137077727963900, guid: 17f2a1733f7c942a79cfc2053eee6306, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.276
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -189134,7 +189142,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   climbSpeed: 20
-  spriteRenderer: {fileID: 983208457}
   input: {fileID: 2048831530}
   movement: {fileID: 2048831526}
   holdPoint: {fileID: 1485973320}
