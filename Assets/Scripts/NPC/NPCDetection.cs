@@ -32,6 +32,14 @@ public class NPCDetection : MonoBehaviour
     {
         if (player == null)
             return false;
+
+        // If the player has an interaction state and is currently hidden, we shouldn't be able to see them
+        var playerState = player.GetComponent<PlayerInteractionState>();
+        if (playerState != null && playerState.IsHidden)
+        {
+            Debug.Log($"{name} cannot see player: player is hidden (IsHidden=true)");
+            return false;
+        }
         
         Vector3 toPlayer = player.position - transform.position;
         float distanceToPlayer = toPlayer.magnitude;
