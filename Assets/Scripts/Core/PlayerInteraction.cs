@@ -10,7 +10,6 @@ public class PlayerInteraction : MonoBehaviour
 
     [Header("Climb Settings")]
     public float climbSpeed = 3f;
-    [SerializeField] private SpriteRenderer spriteRenderer;
 
     [Header("References")]
     [SerializeField] PlayerInputReader input;
@@ -19,12 +18,11 @@ public class PlayerInteraction : MonoBehaviour
 
     public PickupObject currentHeldObject;
 
-    // Climbing state (public so other scripts can read them)
-    public bool IsClimbing { get; private set; }
+    // Climbing state
+    public bool IsClimbing     { get; private set; }
     public bool ClimbedFromSide { get; private set; }
     public Vector3 ClimbWallNormal { get; private set; } = Vector3.zero;
 
-    // Internal climb tracking
     private float climbWallTop;
     private float climbStartY;
 
@@ -32,26 +30,14 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Awake()
     {
-        if (!input) input = GetComponent<PlayerInputReader>();
+        if (!input)    input    = GetComponent<PlayerInputReader>();
         if (!movement) movement = GetComponent<PlayerMovement>();
     }
 
-    private void OnEnable()
-    {
-        if (input != null)
-            input.OnInteractPressed += TryInteract;
-    }
+    private void OnEnable()  { if (input != null) input.OnInteractPressed += TryInteract; }
+    private void OnDisable() { if (input != null) input.OnInteractPressed -= TryInteract; }
 
-    private void OnDisable()
-    {
-        if (input != null)
-            input.OnInteractPressed -= TryInteract;
-    }
-
-    private void Update()
-    {
-        HandleClimbInput();
-    }
+    private void Update() { HandleClimbInput(); }
 
     // ===== Climb =====
 
@@ -61,7 +47,7 @@ public class PlayerInteraction : MonoBehaviour
             TryClimb();
 
         if (IsClimbing && Keyboard.current.spaceKey.wasReleasedThisFrame)
-            StopClimb();
+            StopClimb(cancelled: true);
 
         if (!IsClimbing) return;
 
@@ -73,28 +59,22 @@ public class PlayerInteraction : MonoBehaviour
         bool hasClimbed = PlayerTransform.position.y > climbStartY + 1f;
         if (hasClimbed && PlayerTransform.position.y >= climbWallTop)
         {
-            bool wasSideClimb = ClimbedFromSide;
-            Vector3 storedNormal = ClimbWallNormal;
-            float storedWallTop = climbWallTop;
+            Vector3 storedNormal  = ClimbWallNormal;
+            float   storedWallTop = climbWallTop;
 
-            StopClimb();
+            StopClimb();  
 
+            // Vault position — no sprite logic here anymore
             Vector3 vaultPos = PlayerTransform.position;
-            vaultPos.y = storedWallTop + 1f;
-            vaultPos += -storedNormal * 1.2f;
+            vaultPos.y  = storedWallTop + 1f;
+            vaultPos   += -storedNormal * 1.2f;
             PlayerTransform.position = vaultPos;
-
-            if (wasSideClimb && spriteRenderer != null)
-            {
-                PlayerTransform.rotation = Quaternion.identity;
-                spriteRenderer.flipX = storedNormal.x < 0;
-            }
         }
     }
 
     private void TryClimb()
     {
-        Vector3 origin = transform.position + Vector3.up * 1.5f;
+        Vector3   origin     = transform.position + Vector3.up * 1.5f;
         Vector3[] directions = { transform.forward, -transform.forward, transform.right, -transform.right };
 
         foreach (Vector3 dir in directions)
@@ -108,17 +88,16 @@ public class PlayerInteraction : MonoBehaviour
                 }
             }
         }
-
         Debug.Log("No climbable surface in range");
     }
 
     private void StartClimb(RaycastHit hit)
     {
-        ClimbWallNormal = hit.normal;
-        ClimbedFromSide = Mathf.Abs(hit.normal.x) > Mathf.Abs(hit.normal.z);
+        ClimbWallNormal  = hit.normal;
+        ClimbedFromSide  = Mathf.Abs(hit.normal.x) > Mathf.Abs(hit.normal.z);
 
         PlayerTransform.forward = -hit.normal;
-        climbStartY = PlayerTransform.position.y;
+        climbStartY  = PlayerTransform.position.y;
         climbWallTop = hit.collider.bounds.max.y;
 
         Rigidbody rb = movement.GetComponent<Rigidbody>();
@@ -131,8 +110,6 @@ public class PlayerInteraction : MonoBehaviour
             if (movement.animator != null)
                 movement.animator.SetBool("isClimbing", true);
         }
-
-        Debug.Log($"Climb started. Wall top at Y: {climbWallTop}");
     }
 
     private void StopClimb()
@@ -140,63 +117,26 @@ public class PlayerInteraction : MonoBehaviour
         Rigidbody rb = movement.GetComponent<Rigidbody>();
         if (rb != null)
         {
-            rb.isKinematic = false;
-            rb.linearVelocity = new Vector3(0f, -0.5f, 0f);
+            rb.isKinematic     = false;
+            rb.linearVelocity  = new Vector3(0f, -0.5f, 0f);
             rb.angularVelocity = Vector3.zero;
         }
 
-        IsClimbing = false;
-
-        if (ClimbedFromSide && spriteRenderer != null)
+        if (ClimbedFromSide)
         {
-            spriteRenderer.flipX = false;
             PlayerTransform.rotation = Quaternion.identity;
         }
-
-        ClimbedFromSide = false;
+        
+        IsClimbing               = false;
+        ClimbedFromSide          = false;
 
         if (movement != null)
         {
             movement.enabled = true;
             if (movement.animator != null)
                 movement.animator.SetBool("isClimbing", false);
-
         }
-        Debug.Log("Finished climbing");
     }
-
-    // ===== Interact =====
-
-    void TryInteract()
-    {
-        // Block interaction while climbing
-        if (IsClimbing) return;
-
-        Vector3 center = transform.position + rangeOffset;
-        Collider[] hits = Physics.OverlapBox(center, rangeSize / 2f, Quaternion.identity, interactLayer);
-
-        float closest = Mathf.Infinity;
-        IInteractable closestInteractable = null;
-
-        foreach (Collider hit in hits)
-        {
-            IInteractable interactable = hit.GetComponentInParent<IInteractable>();
-            if (interactable == null) continue;
-
-            float dist = Vector3.Distance(transform.position, hit.transform.position);
-            if (dist < closest)
-            {
-                closest = dist;
-                closestInteractable = interactable;
-            }
-        }
-
-        if (closestInteractable != null)
-            closestInteractable.Interact(gameObject);
-        else
-            Debug.Log("No interactable nearby");
-    }
-
     public Transform GetHoldPoint() => holdPoint;
 
     private void OnDrawGizmosSelected()
