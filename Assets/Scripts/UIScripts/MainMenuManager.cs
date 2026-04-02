@@ -21,12 +21,11 @@ public class MainMenuManager : MonoBehaviour
         // Safely post music event if it exists
         if (musicEvent != null)
         {
-            musicEvent.Post(
-                gameObject,
-                (uint)AkCallbackType.AK_MusicSyncUserCue,
-                MusicCallback);
+		uint playingId = musicEvent.Post(gameObject, 
+            (uint)(AkCallbackType.AK_MusicSyncUserCue), 
+            MusicCallback);
 
-            Debug.Log("Music Event: " + musicEvent.Name);
+        Debug.Log("Posted music event with ID = " + playingId);
         }
         else
         {
@@ -60,19 +59,17 @@ public class MainMenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        GameStateController.forceMainMenu = false; // skip menu next time
-        GameStateController.gameStarted = true;    // mark game as started
-        if (GameStateController.Instance != null)
-            GameStateController.Instance.SetState(GameState.Playing);
-
-        if (mainMenuCanvas != null)
-            mainMenuCanvas.SetActive(false);
+        GameplayState?.SetValue();
     }
 
-    private void MusicCallback(object cookie, AkCallbackType type, object info)
+    private void MusicCallback(object in_cookie, AkCallbackType in_type, object in_info)
     {
-        if (type != AkCallbackType.AK_MusicSyncUserCue) return;
-        RunGameplayStartLogic();
+        if (in_type == AkCallbackType.AK_MusicSyncUserCue)
+        {
+            AkMusicSyncCallbackInfo cueInfo = (AkMusicSyncCallbackInfo)in_info;
+            Debug.Log("🎵 USER CUE reached! Cue Name: " + cueInfo.userCueName);
+            RunGameplayStartLogic();
+        }
     }
 
     private void RunGameplayStartLogic()
@@ -82,6 +79,15 @@ public class MainMenuManager : MonoBehaviour
 
         if (GameStateController.Instance != null)
             GameStateController.Instance.ResumeGame();
+
+        GameStateController.forceMainMenu = false; // skip menu next time
+        GameStateController.gameStarted = true;    // mark game as started
+        if (GameStateController.Instance != null)
+            GameStateController.Instance.SetState(GameState.Playing);
+
+        if (mainMenuCanvas != null)
+            mainMenuCanvas.SetActive(false);
+
     }
     public void GoToMainMenu()
     {
