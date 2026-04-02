@@ -17,8 +17,8 @@ MonoBehaviour:
   patrolWaitTime: 1
   investigateSpeed: 18
   investigateArrivalDistance: 0.5
-  investigateWaitTime: 3
+  investigateWaitTime: 2
   chaseSpeed: 35
   detectionRange: 50
   viewAngle: 170
-  loseSightDelay: 8
+  loseSightDelay: 2
